@@ -11,6 +11,10 @@ body {
     background-color: #5F1571;
 }
 
+.search-bar button:hover, .search-bar button:active, .search-bar button:focus {
+    background-color: #82229a !important;
+}
+
 .navbar-brand, .nav-link, .btn {
     color: #FFFFFF;
 }
@@ -21,16 +25,9 @@ body {
     padding-left: 20px;
 }
 
-.navbar-brand:hover, .nav-link:hover {
-    color: #FFFFFF;
-}
-
-.navbar-brand:active, .nav-link:active {
-    color: #FFFFFF;
-}
-
-.navbar-brand:visited, .nav-link:visited {
-    color: #FFFFFF;
+.navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus,
+.nav-link:hover, .nav-link:active, .nav-link:focus {
+    color: #e6e6e6;
 }
 
 .navbar-nav {
@@ -49,17 +46,22 @@ body {
     height: 50px;
 }
 
-.search-bar button {
-    height: 35px;
-}
-
 .search-bar button, .search-bar input::placeholder {
     font-size: 12px;
 }
 
 .search-bar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
     border: none;
     position: absolute;
     right: 17px;
     top: 28px;
+}
+
+.icon-search {
+    margin-top: 3px;
+    margin-left: 5px;
 }
