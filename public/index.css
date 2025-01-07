@@ -1,0 +1,170 @@
+/*---------------------------------*/
+/* Estilização do banner slideshow */
+/*---------------------------------*/
+
+iframe {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#customCarousel .carousel-item img {
+    height: 450px;
+    position: relative;
+}
+
+#customCarousel .carousel-caption {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    text-align: left;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#customCarousel .carousel-caption h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#customCarousel .carousel-caption p {
+    font-size: 1.3rem;
+}
+
+.carousel-control-prev-icon {
+    width: 50px; 
+    height: 50px; 
+    transform: scale(1.4); 
+    margin-right: 150px;
+}
+
+.carousel-control-next-icon {
+    width: 50px;
+    height: 50px; 
+    transform: scale(1.4); 
+    margin-left: 150px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    top: 50% !important;
+    transform: translateY(-50%); 
+    background: none; 
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to top, rgba(130, 34, 154, 0.85), rgba(130, 34, 154, 0.4), rgba(130, 34, 154, 0)); 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px;
+    color: white;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.carousel-item:hover .carousel-caption {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.carousel-indicators button {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important; 
+    background-color: #888; 
+    border: none; 
+    z-index: 2;
+}
+
+.carousel-indicators .active {
+    background-color: #333; 
+}
+
+.btn-comprar {
+    background-color: #5f1571 !important; 
+    border: none;
+    color: white;
+    padding: 15px 30px; 
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.537);
+    position: relative;
+    z-index: 2;
+}
+
+.btn-comprar:hover {
+    background-color: #6a1a7d;
+}
+
+/*--------------------------------*/
+/* Estilização das seções e cards */
+/*--------------------------------*/
+
+.family-section {
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    font-size: 1.7rem;
+    font-weight: bold !important;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.event-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.event-card .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.event-card .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.687);
+}
+
+.event-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-card .card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #070707;
+    text-align: left;
+}
+
+.event-card .card-text {
+    font-size: 1.2rem;
+    font-weight: 14px;
+    color: #070707;
+    text-align: left;
+}
