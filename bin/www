@@ -30,6 +30,17 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /**
+ * SIGINT (Ctrl + C) event capture.
+ */
+process.on('SIGINT', () => {
+  console.log('Servidor encerrado');
+  server.close(() => {
+    console.log('Processo finalizado');
+    process.exit(0); // Encerra o processo
+  });
+});
+
+/**
  * Normalize a port into a number, string, or false.
  */
 
