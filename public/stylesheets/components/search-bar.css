@@ -1,0 +1,42 @@
+@import url(../style.css);
+
+.navbar {
+    background-color: #5f1571;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-inline button:hover, .form-inline button:active, .form-inline button:focus {
+    background-color: #82229a !important;
+}
+
+.form-inline {
+    width: 40%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-inline input {
+    height: 50px;
+    width: 100%;
+}
+
+.form-inline button, .form-inline input::placeholder {
+    font-size: 12px;
+}
+
+.form-inline button {
+    background-color: #5f1571;
+    color: white;
+    display: flex;
+    height: 35px;
+    border: none;
+    position: absolute;
+    right: 30.5%;
+    bottom: 30%;
+}
+
+.icon-search {
+    margin-top: 3px;
+    margin-left: 5px;
+}

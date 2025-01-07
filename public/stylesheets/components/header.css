@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:wght@300;400;500&display=swap');
+@import url(../style.css);
+
+.navbar {
+    background-color: #5F1571;
+}
+
+.navbar-brand {
+    font-family: 'Jaro';
+    font-size: 32px;
+    padding-left: 20px;
+}
+
+.navbar-nav {
+    padding-right: 20px;
+    gap: 15px;
+}
+
+.nav-link, .navbar-brand {
+    color: white;
+}
+
+.nav-link:hover, .navbar-brand:hover  {
+    text-decoration: underline;
+    color: #e6e6e6;
+}

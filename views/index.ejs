@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/index.css" rel="stylesheet"> 
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/index.js"></script>
+
+        <title>ShowPass</title>
+    </head>
+    <body>
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content" id="content">
+            <!-- Barra de pesquisa -->
+            <%- include('components/search-bar') %>
+
+            <!-- Banner SlideShow inicial -->
+            <div id="custom-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#custom-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#custom-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#custom-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#custom-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <!-- Primeiro Slide -->
+                    <div class="carousel-item active">
+                        <a href="oliviaRodrigo.html">
+                            <img src="/images/oliviaRodrigo.gif" class="d-block w-100" alt="Olivia Rodrigo">
+                        </a>
+                        <div class="carousel-caption">
+                            <h5>OLIVIA RODRIGO</h5>
+                            <p>GUTS - World Tour com St. Vincent</p>
+                            <a href="oliviaRodrigo.html" class="btn btn-shop">Comprar</a>
+                        </div> 
+                    </div>
+                    <!-- Segundo Slide -->
+                    <div class="carousel-item">
+                        <a href="lollapalooza.html">
+                            <img src="/images/lollapalooza.gif" class="d-block w-100" alt="Lollapalooza Brasil 2025">
+                        </a>
+                        <div class="carousel-caption">
+                            <h5>LOLLAPALOOZA BRASIL 2025</h5>
+                            <p>Shows no dia 28, 29 e 30 de março</p>
+                            <a href="lollapalooza.html" class="btn btn-shop">Comprar</a>
+                        </div>
+                    </div>
+                    <!-- Terceiro Slide -->
+                    <div class="carousel-item">
+                        <a href="coldplay.html">
+                            <img src="/images/coldplay.jpg" class="d-block w-100" alt="Coldplay">
+                        </a>
+                        <div class="carousel-caption">
+                            <h5>COLDPLAY</h5>
+                            <p>Music of the Spheres - Em breve mais informações</p>
+                        </div>
+                    </div>
+                    <!-- Quarto Slide -->
+                    <div class="carousel-item">
+                        <a href="theTown.html">
+                            <img src="/images/theTown.gif" class="d-block w-100" alt="The Town">
+                        </a>
+                        <div class="carousel-caption">
+                            <h5>THE TOWN 2025</h5>
+                            <p>6, 7, 12, 13, 14 de setembro</p>
+                            <a href="theTown.html" class="btn btn-shop">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#custom-carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#custom-carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+
+            <!-- Seção "Para toda a família" -->
+            <section class="family-section py-5">
+                <div class="container">
+                    <!-- Título -->
+                    <div class="text-center mb-4">
+                        <h2 class="section-title">Para toda a família</h2>
+                    </div>
+                    <!-- Cards de eventos -->
+                    <div class="row">
+                        <!-- Evento 1 -->
+                        <div class="col-md-4 mb-4">
+                            <a href="oliviaRodrigo.html" class="event-card">
+                                <div class="card h-100">
+                                    <img src="/images/oliviaRodrigo.gif" class="card-img-top" alt="Evento 1">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">GUTS World Tour - Olivia Rodrigo</h5>
+                                        <p class="card-text">Datas em março de 2025.</p>
+                                        <a href="oliviaRodrigo.html" class="btn btn-shop">Comprar</a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Evento 2 -->
+                        <div class="col-md-4 mb-4">
+                            <a href="lollapalooza.html" class="event-card">
+                                <div class="card h-100">
+                                    <img src="/images/lollapalooza.gif" class="card-img-top" alt="Evento 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Lollapalooza Brasil 2025</h5>
+                                        <p class="card-text">Múltiplas datas em São Paulo</p>
+                                        <a href="lollapalooza.html" class="btn btn-shop">Comprar</a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Evento 3 -->
+                        <div class="col-md-4 mb-4">
+                            <a href="theTown.html" class="event-card">
+                                <div class="card h-100">
+                                    <img src="/images/theTown.gif" class="card-img-top" alt="Evento 3">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">The Town 2025</h5>
+                                        <p class="card-text">Múltiplas datas em São Paulo</p>
+                                        <a href="theTown.html" class="btn btn-shop">Comprar</a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer>   
+        </footer>
+    </div> -->
+    </body>
+</html>
