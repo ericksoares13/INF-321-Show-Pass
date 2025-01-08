@@ -12,7 +12,6 @@
 
 .form-inline {
     width: 40%;
-    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -22,7 +21,7 @@
 }
 
 .form-inline button, .form-inline input::placeholder {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .form-inline button {
