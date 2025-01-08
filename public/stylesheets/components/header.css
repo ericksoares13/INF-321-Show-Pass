@@ -16,12 +16,15 @@
     gap: 15px;
 }
 
+.nav-link {
+    margin-top: 12px;
+}
+
 .nav-link, .navbar-brand {
     color: white;
 }
 
-.nav-link:hover  {
-    text-decoration: underline;
+.nav-link:hover {
     color: #e6e6e6;
 }
 

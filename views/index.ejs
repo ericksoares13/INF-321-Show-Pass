@@ -12,14 +12,14 @@
         <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
         <title>ShowPass</title>
     </head>
-    <body>
+    <body class="flex-column min-vh-100">
         <!-- Barra de navegação -->
         <header id="header">
             <%- include('components/header') %>
         </header>
 
         <!-- Conteúdo da página -->
-        <div class="content" id="content">
+        <div class="content flex-grow-1" id="content">
             <!-- Barra de pesquisa -->
             <%- include('components/search-bar') %>
 

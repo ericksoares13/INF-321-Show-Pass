@@ -109,8 +109,8 @@
     z-index: 2;
 }
 
-.btn-shop:hover {
-    background-color: #6a1a7d;
+.btn-shop:hover, .btn-shop:active {
+    background-color: #6a1a7d !important;
 }
 
 /*--------------------------------*/
@@ -186,7 +186,7 @@
     margin-top: 10px;
 }
 
-#btn-card-shop:hover {
-    background-color: #78258d;
+#btn-card-shop:hover, #btn-card-shop:active {
+    background-color: #78258d !important;
     color: white;
 }
