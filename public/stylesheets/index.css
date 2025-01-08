@@ -128,12 +128,27 @@ header {
     background-color: #f8f9fa;
 }
 
+.family-section .container {
+    max-width: 100%;
+}
+
+.family-section .row {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+
+.family-section .col-md-4 {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
 .section-title {
     font-size: 1.7rem;
     font-weight: bold !important;
     color: #000000;
-    margin-bottom: 20px;
     text-align: left;
+    padding-left: 3%;
 }
 
 .event-card {
