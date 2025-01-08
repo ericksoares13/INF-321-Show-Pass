@@ -141,33 +141,44 @@ header {
     color: inherit;
 }
 
-.event-card .card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
+.card {
+    position: relative;
+    border: 1px solid #c2c2c2;
+    border-radius: 20px;
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
 }
 
-.event-card .card:hover {
+.card:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.687);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.516);
 }
 
-.event-card .card-img-top {
+.card-img-top {
     height: 200px;
     object-fit: cover;
 }
 
-.event-card .card-title {
+.card-title {
     font-size: 1.3rem;
     font-weight: bold;
     color: #070707;
     text-align: left;
 }
 
-.event-card .card-text {
-    font-size: 1.2rem;
-    font-weight: 14px;
+.card-text {
+    font-size: 1.25rem;
+    font-weight: 500;
     color: #070707;
     text-align: left;
+}
+
+#btn-card-shop {
+    position: relative;
+    margin-top: 10px;
+}
+
+#btn-card-shop:hover {
+    background-color: #78258d;
+    color: white;
 }
