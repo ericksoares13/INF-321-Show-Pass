@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/register.css" rel="stylesheet"> 
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/register.js" defer></script>
+
+        <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body>
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content" id="content">
+            <form class="forms row g-3 needs-validation" novalidate>
+                <div class="col-12">
+                    <label for="name" class="form-label">Nome completo</label>
+                    <input type="text" class="form-control" id="name" placeholder="Joãozinho Fulano de Tal" required>
+                </div>
+                <div class="col-12">
+                    <label for="user" class="form-label">Usuário</label>
+                    <input type="text" class="form-control" id="user" placeholder="jzinho13" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="number" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+                    <div class="invalid-feedback">
+                        Por favor, forneça um CPF válido.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="birth-date" class="form-label">Data de nascimento</label>
+                    <input type="date" class="form-control" id="birth-date" required>
+                </div>
+                <div class="col-12">
+                    <label for="cellphone" class="form-label">Celular</label>
+                    <input type="number" class="form-control" id="cellphone" placeholder="(00) 00000-0000" required>
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="joaozinho@email.com" required>
+                </div>
+                <div class="col-12">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="********" required>
+                </div>
+                <div class="col-12">
+                    <label for="check-password" class="form-label">Confirme sua senha</label>
+                    <input type="password" class="form-control" id="check-password" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('components/footer') %>
+        </footer>
+    </body>
+</html>
