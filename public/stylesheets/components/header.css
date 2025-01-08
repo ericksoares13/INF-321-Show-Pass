@@ -16,6 +16,10 @@
     gap: 15px;
 }
 
+.nav-link {
+    margin-top: 12px;
+}
+
 .nav-link, .navbar-brand {
     color: white;
 }
