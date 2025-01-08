@@ -1,16 +1,45 @@
 'use strict';
 
 const validateName = (name) => {
-    return name != '';
+    if (name == '') {
+        errorMessages['name'] = 'Campo obrigatório.';
+        return false;
+    }
+
+    return true;
 };
 
 const validateUser = (userName) => {
-    return userName != '';
+    if (userName == '') {
+        errorMessages['user'] ='Campo obrigatório.';
+        return false;
+    }
+
+    if (userName.length < 3 || userName.length > 20) {
+        errorMessages['user'] = 'O nome de usuário deve ter entre 3 e 20 caracteres.';
+        return false;
+    }
+
+    const usernamePattern = /^[a-zA-Z0-9_-]+$/;
+    if (!usernamePattern.test(userName) || userName.includes(" ")) {
+        errorMessages['user'] = 'O nome de usuário só pode conter letras, números, underlines (_) e hífens (-).';
+        return false
+    }
+    
+    return true;
 };
 
 const validateCPF = (cpf) => {
+    if (cpf == '') {
+        errorMessages['cpf'] ='Campo obrigatório.';
+        return false;
+    }
+
     cpf = cpf.replace(/[^\d]/g, '');
-    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+        errorMessages['cpf'] ='CPF inválido.';
+        return false;
+    }
 
     let sum = 0;
     for (let i = 0; i < 9; i++) {
@@ -28,45 +57,91 @@ const validateCPF = (cpf) => {
     let dig2 = (sum * 10) % 11;
     if (dig2 === 10) dig2 = 0;
 
-    return dig1 === parseInt(cpf.charAt(9)) && dig2 === parseInt(cpf.charAt(10));
+    if (dig1 === parseInt(cpf.charAt(9)) && dig2 === parseInt(cpf.charAt(10))) {
+        return true;
+    }
+
+    errorMessages['cpf'] ='CPF inválido.';
+    return false;
 };
 
-//const validateBirthDate;
+const validateBirthDate = (date) => {
+    if (date == '') {
+        errorMessages['birth-date'] ='Campo obrigatório.';
+        return false;
+    }
+
+    return true;
+};
 
 const validateCellphone = (number) => {
+    if (number == '') {
+        errorMessages['cellphone'] ='Campo obrigatório.';
+        return false;
+    }
+
     number = number.replace(/[^\d]/g, '');
     const regex = /^[1-9][0-9]{10}$/;
-    return regex.test(number);
+
+    if (regex.test(number)) {
+        return true;
+    }
+
+    errorMessages['cellphone'] ='Celular inválido.';
+    return false;
 };
 
 const validarEmail = (email) => {
+    if (email == '') {
+        errorMessages['email'] ='Campo obrigatório.';
+        return false;
+    }
+
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return regex.test(email);
+
+    if (regex.test(email)) {
+        return true;
+    }
+
+    errorMessages['email'] ='Email inválido.';
+    return false;
 };
 
-//const validatePassword;
+const validatePassword = (password) => {
+    if (password == '') {
+        errorMessages['password'] ='Campo obrigatório.';
+        return false;
+    }
+};
 
-//const validateCheckPassword;
+const validateCheckPassword = (password) => {
+    if (password == '') {
+        errorMessages['check-password'] ='Campo obrigatório.';
+        return false;
+    }
+};
 
+let errorMessages = {};
 
 (() => {
     const validators = {
         'name': validateName,
         'user': validateUser,
         'cpf': validateCPF,
-        //'birth-date': validateBirthDate,
+        'birth-date': validateBirthDate,
         'cellphone': validateCellphone,
         'email': validarEmail,
-        //'password': validatePassword,
-        //'check-password': validateCheckPassword
+        'password': validatePassword,
+        'check-password': validateCheckPassword
     };
-  
+
     const forms = document.querySelectorAll('.needs-validation');
   
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             Array.from(form.elements).forEach(input => {
                 let valid = true;
+                let feedbackElement = input.nextElementSibling;
 
                 const id = input.id;
 
@@ -76,8 +151,10 @@ const validarEmail = (email) => {
                     if (!isValid) {
                         valid = false;
                         input.classList.add('is-invalid');
+                        feedbackElement.textContent = errorMessages[id];
                     } else {
                         input.classList.remove('is-invalid');
+                        feedbackElement.textContent = '';
                     }
                 }
 
@@ -91,3 +168,64 @@ const validarEmail = (email) => {
         }, false);
     });
 })();
+
+$(document).ready(function() {
+    $('#cpf').mask('000.000.000-00');
+});
+
+$(document).ready(function() {
+    $('#cellphone').mask('(00) 00000-0000');
+});
+
+$(document).ready(function () {
+    const passwordField = $('#password');
+    const strengthMeter = $('#password-strength-meter');
+    const strengthMessage = $('#password-strength-msg');
+    
+    passwordField.on('input', function () {
+        const password = passwordField.val();
+
+        const strength = calculatePasswordStrength(password);
+
+        strengthMeter.css('width', strength.percent + '%').attr('aria-valuenow', strength.percent);
+
+        strengthMeter.removeClass('progress-bar-danger progress-bar-warning progress-bar-success');
+        if (strength.percent < 50) {
+            strengthMeter.addClass('progress-bar-danger');
+        } else if (strength.percent < 75) {
+            strengthMeter.addClass('progress-bar-warning');
+        } else {
+            strengthMeter.addClass('progress-bar-success');
+        }
+
+        strengthMessage.text(strength.message).removeClass('text-danger text-warning text-success').addClass(strength.class);
+    });
+
+    function calculatePasswordStrength(password) {
+        let strength = 0;
+        let message = '';
+        let className = '';
+
+        if (password.length >= 8) strength += 25;
+        if (password.length >= 12) strength += 25;
+
+        if (/\d/.test(password)) strength += 25;
+
+        if (/[A-Z]/.test(password)) strength += 15;
+
+        if (/[^A-Za-z0-9]/.test(password)) strength += 15;
+
+        if (strength < 50) {
+            message = 'Fraca';
+            className = 'text-danger';
+        } else if (strength < 75) {
+            message = 'Moderada';
+            className = 'text-warning';
+        } else {
+            message = 'Forte';
+            className = 'text-success';
+        }
+
+        return { percent: strength, message: message, class: className };
+    }
+});
