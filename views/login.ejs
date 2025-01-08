@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/components/header.css" rel="stylesheet">
+        <link href="/stylesheets/login.css" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js"></script>
+
+        <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <form class="form-input row g-1">
+                <!-- Usuário/Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label text-start d-block">Usuário/Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu usuário ou email">
+                </div>
+
+                <!-- Senha -->
+                <div class="mb-3">
+                    <label for="password" class="form-label text-start d-block">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                    <div class="text-end mt-1">
+                        <a href="" class="small text-decoration-none" id="password-forgotten">Esqueceu sua senha?</a>
+                    </div>
+                </div>
+
+                <!-- Botão Enviar -->
+                <div class="d-grid">
+                    <a href="/" class="text-decoration-none">
+                        <button type="button" class="btn btn-primary">Enviar</button>
+                    </a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('components/footer') %>
+        </footer>
+    </body>
+</html>

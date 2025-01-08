@@ -8,8 +8,10 @@
     padding: 30px;
 }
 
-.forms {
+.form-input {
     width: 42%;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .form-control {
@@ -28,11 +30,6 @@
     color: #adabab;
 }
 
-.form-input {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
 .form-label {
     color: #555;
 }
@@ -44,12 +41,23 @@
     font-weight: bold;
     height: 50px;
     width: 60%;
+    display: block;
+    margin: 0 auto;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.537);
-    display: block;
-    margin: 20px auto 5px auto;
 }
 
-.btn-primary:hover {
-    background-color: #721e86;
+.btn-primary:hover, .btn-primary:active {
+    background-color: #721e86 !important;
+}
+
+#password-forgotten {
+    color: #555;
+    font-size: 1.2rem;
+    position: relative;
+    top: -5px;
+}
+
+#password-forgotten:hover {
+    color: #7d848a;
 }
