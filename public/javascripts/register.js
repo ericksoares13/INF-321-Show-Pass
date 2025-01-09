@@ -1,5 +1,88 @@
 'use strict';
 
+// APLICAÇÃO DAS MÁSCARAS
+
+$(document).ready(function() {
+    $('#cpf').mask('000.000.000-00');
+});
+
+$(document).ready(function() {
+    $('#cellphone').mask('(00) 00000-0000');
+});
+
+// CÁLCULO DA FORÇA DA SENHA
+
+$(document).ready(function () {
+    const passwordField = $('#password');
+    const strengthMeter = $('#password-strength-meter');
+    const strengthMessage = $('#password-strength-msg');
+    const progressContainer = $('.progress-container');
+    
+    passwordField.on('input', function () {
+        const password = passwordField.val();
+
+        progressContainer.css('display', 'flex');
+        
+        const strength = calculatePasswordStrength(password);
+
+        strengthMeter.css('width', strength.percent + '%').attr('aria-valuenow', strength.percent);
+
+        strengthMeter.removeClass('progress-bar-danger progress-bar-warning progress-bar-success');
+        if (strength.percent < 50) {
+            strengthMeter.addClass('progress-bar-danger');
+        } else if (strength.percent < 75) {
+            strengthMeter.addClass('progress-bar-warning');
+        } else {
+            strengthMeter.addClass('progress-bar-success');
+        }
+
+        strengthMessage.text(strength.message).removeClass('text-danger text-warning text-success').addClass(strength.class);
+    });
+
+    function calculatePasswordStrength(password) {
+        let strength = 0;
+        let message = '';
+        let className = '';
+
+        if (password.length >= 8) strength += 20;
+        if (password.length >= 12) strength += 20;
+        if (/\d/.test(password)) strength += 20;
+        if (/[A-Z]/.test(password)) strength += 20;
+        if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+
+        if (strength < 50) {
+            message = 'Fraca';
+            className = 'text-danger';
+        } else if (strength < 75) {
+            message = 'Moderada';
+            className = 'text-warning';
+        } else {
+            message = 'Forte';
+            className = 'text-success';
+        }
+
+        return { percent: strength, message: message, class: className };
+    }
+});
+
+// LIDA COM A OPÇÃO DE EXIBIR A SENHA
+
+$(document).ready(function() {
+    [['#toggle-password-1', '#password'], ['#toggle-password-2', '#check-password']]
+    .forEach(button => {
+        $(button[0]).click(function() {
+            const passwordField = $(button[1]);
+            const passwordType = passwordField.attr('type') === 'password' ? 'text' : 'password';
+            const icon = passwordField.attr('type') === 'password' ? 'eye' : 'eye-off';
+    
+            passwordField.attr('type', passwordType);
+            $(this).find('ion-icon').attr('name', icon);
+        });
+    });
+});
+
+// FUNÇÕES DE VALIDAÇÃO DE DADOS
+
 const validateName = (name) => {
     if (name == '') {
         errorMessages['name'] = 'Campo obrigatório.';
@@ -11,7 +94,7 @@ const validateName = (name) => {
 
 const validateUser = (userName) => {
     if (userName == '') {
-        errorMessages['user'] ='Campo obrigatório.';
+        errorMessages['user'] = 'Campo obrigatório.';
         return false;
     }
 
@@ -31,13 +114,13 @@ const validateUser = (userName) => {
 
 const validateCPF = (cpf) => {
     if (cpf == '') {
-        errorMessages['cpf'] ='Campo obrigatório.';
+        errorMessages['cpf'] = 'Campo obrigatório.';
         return false;
     }
 
     cpf = cpf.replace(/[^\d]/g, '');
     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
-        errorMessages['cpf'] ='CPF inválido.';
+        errorMessages['cpf'] = 'CPF inválido.';
         return false;
     }
 
@@ -61,13 +144,13 @@ const validateCPF = (cpf) => {
         return true;
     }
 
-    errorMessages['cpf'] ='CPF inválido.';
+    errorMessages['cpf'] = 'CPF inválido.';
     return false;
 };
 
 const validateBirthDate = (date) => {
     if (date == '') {
-        errorMessages['birth-date'] ='Campo obrigatório.';
+        errorMessages['birth-date'] = 'Campo obrigatório.';
         return false;
     }
 
@@ -76,7 +159,7 @@ const validateBirthDate = (date) => {
 
 const validateCellphone = (number) => {
     if (number == '') {
-        errorMessages['cellphone'] ='Campo obrigatório.';
+        errorMessages['cellphone'] = 'Campo obrigatório.';
         return false;
     }
 
@@ -87,13 +170,13 @@ const validateCellphone = (number) => {
         return true;
     }
 
-    errorMessages['cellphone'] ='Celular inválido.';
+    errorMessages['cellphone'] = 'Celular inválido.';
     return false;
 };
 
 const validarEmail = (email) => {
     if (email == '') {
-        errorMessages['email'] ='Campo obrigatório.';
+        errorMessages['email'] = 'Campo obrigatório.';
         return false;
     }
 
@@ -103,22 +186,40 @@ const validarEmail = (email) => {
         return true;
     }
 
-    errorMessages['email'] ='Email inválido.';
+    errorMessages['email'] = 'Email inválido.';
     return false;
 };
 
 const validatePassword = (password) => {
     if (password == '') {
-        errorMessages['password'] ='Campo obrigatório.';
+        errorMessages['password'] = 'Campo obrigatório.';
         return false;
     }
+
+    const className = $('#password-strength-msg').attr('class');
+
+    if (className.includes('text-success')) {
+        return true;
+    }
+
+    errorMessages['password'] = '';
+    return false;
 };
 
-const validateCheckPassword = (password) => {
-    if (password == '') {
-        errorMessages['check-password'] ='Campo obrigatório.';
+const validateCheckPassword = (checkPassword) => {
+    if (checkPassword == '') {
+        errorMessages['check-password'] = 'Campo obrigatório.';
         return false;
     }
+
+    const password = $('#password').val();
+
+    if (password == checkPassword) {
+        return true;
+    }
+
+    errorMessages['check-password'] = 'As senhas não coincidem.';
+    return false;
 };
 
 let errorMessages = {};
@@ -168,64 +269,3 @@ let errorMessages = {};
         }, false);
     });
 })();
-
-$(document).ready(function() {
-    $('#cpf').mask('000.000.000-00');
-});
-
-$(document).ready(function() {
-    $('#cellphone').mask('(00) 00000-0000');
-});
-
-$(document).ready(function () {
-    const passwordField = $('#password');
-    const strengthMeter = $('#password-strength-meter');
-    const strengthMessage = $('#password-strength-msg');
-    
-    passwordField.on('input', function () {
-        const password = passwordField.val();
-
-        const strength = calculatePasswordStrength(password);
-
-        strengthMeter.css('width', strength.percent + '%').attr('aria-valuenow', strength.percent);
-
-        strengthMeter.removeClass('progress-bar-danger progress-bar-warning progress-bar-success');
-        if (strength.percent < 50) {
-            strengthMeter.addClass('progress-bar-danger');
-        } else if (strength.percent < 75) {
-            strengthMeter.addClass('progress-bar-warning');
-        } else {
-            strengthMeter.addClass('progress-bar-success');
-        }
-
-        strengthMessage.text(strength.message).removeClass('text-danger text-warning text-success').addClass(strength.class);
-    });
-
-    function calculatePasswordStrength(password) {
-        let strength = 0;
-        let message = '';
-        let className = '';
-
-        if (password.length >= 8) strength += 25;
-        if (password.length >= 12) strength += 25;
-
-        if (/\d/.test(password)) strength += 25;
-
-        if (/[A-Z]/.test(password)) strength += 15;
-
-        if (/[^A-Za-z0-9]/.test(password)) strength += 15;
-
-        if (strength < 50) {
-            message = 'Fraca';
-            className = 'text-danger';
-        } else if (strength < 75) {
-            message = 'Moderada';
-            className = 'text-warning';
-        } else {
-            message = 'Forte';
-            className = 'text-success';
-        }
-
-        return { percent: strength, message: message, class: className };
-    }
-});

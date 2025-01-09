@@ -9,20 +9,22 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="/javascripts/components/header.js" defer></script>
         <script src="/javascripts/register.js" defer></script>
 
         <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
         <title>ShowPass</title>
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <!-- Barra de navegação -->
         <header id="header">
             <%- include('components/header') %>
         </header>
 
         <!-- Conteúdo da página -->
-        <div class="content" id="content">
+        <div class="content flex-grow-1" id="content">
             <form class="forms row g-3 needs-validation" novalidate>
                 <div class="col-12">
                     <label for="name" class="form-label">Nome completo</label>
@@ -56,8 +58,13 @@
                 </div>
                 <div class="col-12">
                     <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" placeholder="********" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="password" placeholder="********" required>
+                        <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                        <button type="button" id="toggle-password-1" class="btn btn-secondary">
+                            <ion-icon name="eye-off"></ion-icon>
+                        </button>
+                    </div>
                     <div class="progress-container">
                         <div class="progress">
                             <div id="password-strength-meter" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -67,8 +74,13 @@
                 </div>
                 <div class="col-12">
                     <label for="check-password" class="form-label">Confirme sua senha</label>
-                    <input type="password" class="form-control" id="check-password" placeholder="********" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="check-password" placeholder="********" required>
+                        <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                        <button type="button" id="toggle-password-2" class="btn btn-secondary">
+                            <ion-icon name="eye-off"></ion-icon>
+                        </button>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>

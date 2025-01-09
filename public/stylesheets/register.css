@@ -28,6 +28,15 @@
     color: #adabab;
 }
 
+input[type="date"]:not(:focus):invalid {
+    color: #adabab;
+}
+
+input[type="date"]:focus,
+input[type="date"]:valid {
+    color: var(--bs-body-color);
+}
+
 .form-input {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -54,6 +63,12 @@
     background-color: #721e86 !important;
 }
 
+.progress-container {
+    align-items: center;
+    gap: 10px;
+    display: none;
+}
+
 .progress {
     width: 40%;
     height: 10px;
@@ -63,6 +78,10 @@
 .progress-bar {
     border-radius: 10px;
     transition: width 0.3s ease;
+}
+
+.strength-message {
+    font-weight: bold;
 }
 
 .progress-bar-danger {
@@ -87,14 +106,34 @@
 
 .text-success {
     color: #721e86 !important;
-}        
-
-.progress-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
-.strength-message {
-    font-weight: bold;
+.password-container {
+    position: relative;
+    display: block;
+}
+
+#toggle-password-1, #toggle-password-2 {
+    position: absolute;
+    right: 3px;
+    top: 29px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+#toggle-password-1 ion-icon, #toggle-password-2 ion-icon {
+    font-size: 24px;
+    color: #555;
+}
+
+.form-control.is-invalid ~ #toggle-password-1 {
+    right: 25px;
+}
+
+.form-control.is-invalid ~ #toggle-password-2 {
+    right: 25px;
 }
