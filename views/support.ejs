@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/components/header.css" rel="stylesheet">
+        <link href="/stylesheets/support.css" rel="stylesheet"> 
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/support.js" defer></script>
+
+        <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <section class="search-section">
+                <h1>Olá, como podemos te ajudar?</h1>
+            
+                <!-- Formulário de dúvidas -->
+                <form class="form-input row g-4">
+                    <!-- Caixa de seleção de categoria -->
+                    <select class="form-select">
+                        <option value="" disabled selected>Selecione uma categoria</option>
+                        <option value="1">Processo de compra</option>
+                        <option value="2">Cancelamento e Troca</option>
+                        <option value="3">Perfis/Cadastros</option>
+                        <option value="4">Meia-entrada e crianças</option>
+                    </select>
+            
+                    <!-- Campo de entrada de texto -->
+                    <textarea class="form-control" placeholder="Digite aqui suas dúvidas e o que procura"></textarea>
+                    
+                    <!-- Botão de envio -->
+                    <button class="btn btn-primary mt-4" type="submit">Enviar</button>
+                </form>
+            </section>
+        </div>
+
+        <nav class="tab-bar">
+            <button class="tab-button active" data-tab="tab1">Processo de Compra</button>
+            <button class="tab-button" data-tab="tab2">Cancelamento e Troca</button>
+            <button class="tab-button" data-tab="tab3">Perfis/Cadastros</button>
+            <button class="tab-button" data-tab="tab4">Meia-Entrada e Crianças</button>
+        </nav>
+
+        <main class="questions">
+            <!-- Conteúdo das abas -->
+            <div class="tab-content active" id="tab1">
+                <div class="faq-item">
+                    <button class="faq-question">Como faço uma compra pela ShowPass?</button>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Faça a busca do evento de seu interesse;</li>
+                            <li>Ao encontrar o show ou festival, confira a cidade, horário, endereço e as informações que sempre colocamos na página;</li>
+                            <li>Veja os setores ofertados e selecione de acordo com o que estiver disponível;</li>
+                            <li>Lembre-se de verificar se você precisa de uma inteira ou meia (e qual tipo de meia-entrada), e escolha conforme a disponibilidade;</li>
+                            <li>Se você escolher ingressos de meia-entrada, é obrigatório informar os documentos e dados do beneficiário;</li>
+                            <li>Revise a seleção realizada e clique em “Confirme sua reserva”. Somente após esta etapa, mediante disponibilidade, os ingressos estarão temporariamente reservados para que o pagamento seja realizado. É importante realizar o pagamento dentro do tempo estipulado.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Finalizei meu pedido, mas sem parcelamento. É possível alterar?</button>
+                    <div class="faq-answer">
+                        <p>Não é possível. Depois que o pedido é finalizado, a ShowPass não consegue fazer alterações. Se você tiver interesse, poderá entrar em contato com o emissor do cartão utilizado e verificar se existe essa possibilidade diretamente com a prestadora de crédito.</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="tab-content" id="tab2">
+                <div class="faq-item">
+                    <button class="faq-question">Como cancelar um ingresso?</button>
+                    <div class="faq-answer">
+                        <p>Você pode cancelar o ingresso acessando a área de "Meus pedidos" em até 7 dias após a compra. Para ingressos de eventos que aconteçam em 07 dias ou menos da data da compra, o limite para a solicitação de cancelamento é de no máximo 48 horas antes da sua realização.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Posso realizar a troca de setor, data ou tipo de ingresso?</button>
+                    <div class="faq-answer">
+                        <p>Não é possível fazer qualquer tipo de troca para o mesmo ou outro evento comercializado na ShowPass.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab3">
+                <div class="faq-item">
+                    <button class="faq-question">CPF e dados já cadastrados, mas não se recorda do login?</button>
+                    <div class="faq-answer">
+                        <p>Você pode pedir a redefinição da senha. Ao realizar a troca de senha é possível encerrar que todas as sessões ativas em outros dispositivos clicando em "Fechar todas as outras sessões".<br><br> Ao realizar esta ação, será necessário fornecer novamente login e a nova senha cadastrada em qualquer navegador que esteja com sua conta logada. Embora não seja obrigatório, para garantir maior segurança dos seus dados, esta ação é altamente recomendada.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quero excluir meus dados cadastrados</button>
+                    <div class="faq-answer">
+                        <p>Se você deseja excluir seus dados ou sua conta da ShowPass, por favor, envie essa solicitação através do formulário de contato. Informamos que não poderemos excluir contas com pedidos ativos, pois você perderá o acesso à sua compra, sendo necessário enviar a solicitação após a realização ao seu evento.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Menores de 18 podem ter conta na ShowPass?</button>
+                    <div class="faq-answer">
+                        <p>Não pode. É preciso que o cadastro seja obrigatoriamente em nome de uma pessoa maior de 18 anos.<br><br>É muito importante que o CPF e todos os outros dados como nome, endereço, telefone e o e-mail sejam da mesma pessoa que deve ser a titular do cartão de crédito ou do PIX que será usado na compra. O CPF cadastrado é um item inalterável e não será modificado.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab4">
+                <div class="faq-item">
+                    <button class="faq-question">Regras de Meia-Entrada</button>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>A Lei Federal de meia-entrada n.º 12933/2013 não contempla desconto ou gratuidades para crianças que não comprovem a sua condição de estudante na forma da Lei.</li>
+                            <li>Conforme autorizado pela Lei, os documentos de meia-entrada serão exigidos tanto para compras on-line como nos canais presenciais.</li>
+                            <li>Mesmo já tendo apresentado ou fornecido o documento de meia-entrada durante a compra, é exigido por Lei que, no acesso ao evento, esta comprovação também seja feita.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quem pode pagar Meia-Entrada?</button>
+                    <div class="faq-answer">
+                        <p>Estudantes, idosos, pessoas com deficiência e jovens de baixa renda têm direito à meia-entrada.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('components/footer') %>
+        </footer>
+    </body>
+</html>
