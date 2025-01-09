@@ -28,8 +28,8 @@
     color: #e6e6e6;
 }
 
-.navbar-brand:hover {
-    color: white;
+.navbar-brand:hover, .navbar-brand:visited, .nav-link:focus {
+    color: white !important;
 }
 
 .logo {
