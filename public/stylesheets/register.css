@@ -137,3 +137,17 @@ input[type="date"]:valid {
 .form-control.is-invalid ~ #toggle-password-2 {
     right: 25px;
 }
+
+.info-icon {
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.tooltip-custom {
+    text-align: left;
+    font-family: 'JetBrains Mono';
+    padding: 2px;
+}
