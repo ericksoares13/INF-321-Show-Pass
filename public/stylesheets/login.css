@@ -61,3 +61,25 @@
 #password-forgotten:hover {
     color: #7d848a;
 }
+
+.password-container {
+    position: relative;
+    display: block;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 3px;
+    top: 29px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+#toggle-password ion-icon {
+    font-size: 24px;
+    color: #555;
+}
