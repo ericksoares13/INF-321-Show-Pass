@@ -13,8 +13,9 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="/javascripts/components/header.js" defer></script>
         <script src="/javascripts/register.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
 
-        <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
         <title>ShowPass</title>
     </head>
     <body class="d-flex flex-column min-vh-100">
@@ -70,6 +71,19 @@
                             <div id="password-strength-meter" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div id="password-strength-msg" class="strength-message"></div>
+                        <ion-icon name="information-circle-outline" class="info-icon" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right"
+                            title="<div class='tooltip-custom'>
+                                        A senha deve conter:
+                                        <br><br>
+                                        <ul style='margin: 0; padding-left: 20px;'>
+                                            <li>Pelo menos 8 caracteres</li>
+                                            <li>Uma letra maiúscula</li>
+                                            <li>Uma letra minúscula</li>
+                                            <li>Um número</li>
+                                            <li>Um caractere especial</li>
+                                        </ul>
+                                    </div>">
+                        </ion-icon>
                     </div>
                 </div>
                 <div class="col-12">
