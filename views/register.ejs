@@ -26,41 +26,41 @@
 
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
-            <form class="forms row g-3 needs-validation" novalidate>
+            <form action="cadastrar-usuario" method="POST" class="forms row g-3 needs-validation" novalidate>
                 <div class="col-12">
                     <label for="name" class="form-label">Nome completo</label>
-                    <input type="text" class="form-control" id="name" placeholder="Joãozinho Fulano de Tal" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Joãozinho Fulano de Tal" required>
                     <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="user" class="form-label">Usuário</label>
-                    <input type="text" class="form-control" id="user" placeholder="jzinho13" required>
+                    <input type="text" class="form-control" id="user" name="user" placeholder="jzinho13" required>
                     <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-md-6">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required>
                     <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-md-6">
-                    <label for="birth-date" class="form-label">Data de nascimento</label>
-                    <input type="date" class="form-control" id="birth-date" required>
+                    <label for="birthDate" class="form-label">Data de nascimento</label>
+                    <input type="date" class="form-control" id="birthDate" name="birthDate" required>
                     <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="cellphone" class="form-label">Celular</label>
-                    <input type="text" class="form-control" id="cellphone" placeholder="(00) 00000-0000" required>
+                    <input type="text" class="form-control" id="cellphone" name="cellphone" placeholder="(00) 00000-0000" required>
                     <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="joaozinho@email.com" required>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="joaozinho@email.com" required>
                     <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="password" class="form-label">Senha</label>
                     <div class="password-container">
-                        <input type="password" class="form-control" id="password" placeholder="********" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
                         <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                         <button type="button" id="toggle-password-1" class="btn btn-secondary">
                             <ion-icon name="eye-off"></ion-icon>
@@ -87,9 +87,9 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label for="check-password" class="form-label">Confirme sua senha</label>
+                    <label for="checkPassword" class="form-label">Confirme sua senha</label>
                     <div class="password-container">
-                        <input type="password" class="form-control" id="check-password" placeholder="********" required>
+                        <input type="password" class="form-control" id="checkPassword" name="checkPassword" placeholder="********" required>
                         <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                         <button type="button" id="toggle-password-2" class="btn btn-secondary">
                             <ion-icon name="eye-off"></ion-icon>

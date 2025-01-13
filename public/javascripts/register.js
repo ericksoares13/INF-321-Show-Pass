@@ -68,7 +68,7 @@ $(document).ready(function () {
 // LIDA COM A OPÇÃO DE EXIBIR A SENHA
 
 $(document).ready(function() {
-    [['#toggle-password-1', '#password'], ['#toggle-password-2', '#check-password']]
+    [['#toggle-password-1', '#password'], ['#toggle-password-2', '#checkPassword']]
     .forEach(button => {
         $(button[0]).click(function() {
             const passwordField = $(button[1]);
@@ -159,7 +159,7 @@ const validateCPF = (cpf) => {
 
 const validateBirthDate = (date) => {
     if (date == '') {
-        errorMessages['birth-date'] = 'Campo obrigatório.';
+        errorMessages['birthDate'] = 'Campo obrigatório.';
         return false;
     }
 
@@ -217,7 +217,7 @@ const validatePassword = (password) => {
 
 const validateCheckPassword = (checkPassword) => {
     if (checkPassword == '') {
-        errorMessages['check-password'] = 'Campo obrigatório.';
+        errorMessages['checkPassword'] = 'Campo obrigatório.';
         return false;
     }
 
@@ -227,7 +227,7 @@ const validateCheckPassword = (checkPassword) => {
         return true;
     }
 
-    errorMessages['check-password'] = 'As senhas não coincidem.';
+    errorMessages['checkPassword'] = 'As senhas não coincidem.';
     return false;
 };
 
@@ -238,11 +238,11 @@ let errorMessages = {};
         'name': validateName,
         'user': validateUser,
         'cpf': validateCPF,
-        'birth-date': validateBirthDate,
+        'birthDate': validateBirthDate,
         'cellphone': validateCellphone,
         'email': validarEmail,
         'password': validatePassword,
-        'check-password': validateCheckPassword
+        'checkPassword': validateCheckPassword
     };
 
     const forms = document.querySelectorAll('.needs-validation');
