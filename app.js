@@ -1,17 +1,36 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const connectDB = require('./db/connect');
+const session = require('express-session');
+const flash = require('connect-flash');
+const populateDatabase = require('./db/populate');
+
+const app = express();
+
+const usersRouter = require('./routes/users');
+
+const start = async () => {
+  try {
+    await connectDB(process.env.DB_URL);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 require('dotenv').config();
-
-var usersRouter = require('./routes/users');
-
-var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(flash());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,15 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', usersRouter);
 
-const start = async () => {
-  try {
-    await connectDB('mongodb://127.0.0.1:27017/ShowPass');
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-start();
+start().then(populateDatabase());
 
 app.use(function(req, res, next) {
   next(createError(404));

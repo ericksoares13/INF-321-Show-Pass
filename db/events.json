@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Olivia Rodrigo",
+        "image": "/images/oliviaRodrigo.gif",
+        "description": "GUTS - World Tour com St. Vincent",
+        "dates": [
+            {
+                "state": "Paraná",
+                "city": "Curitiba",
+                "date": "2025-03-26T21:00:00Z",
+                "locale": "Estádio Couto Pereira",
+                "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
+                "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
+                "infos": "Vai ter um textinho com mais informações aqui.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "950",
+                        "totalAmount": "8000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "475",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada idoso",
+                        "value": "475",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada PCD",
+                        "value": "475",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Inteira",
+                        "value": "660",
+                        "totalAmount": "2019",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada",
+                        "value": "330",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada idoso",
+                        "value": "330",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada PCD",
+                        "value": "330",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Inteira",
+                        "value": "550",
+                        "totalAmount": "4875",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada",
+                        "value": "275",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada idoso",
+                        "value": "275",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada PCD",
+                        "value": "275",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    }
+                ]
+            }
+        ]
+    }
+]
