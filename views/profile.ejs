@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link href="/stylesheets/profile.css" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/profile.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
+
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h2>
+                    <i class="fa fa-bars"></i> Opções de Conta
+                </h2>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="" class="nav-link active" id="info-tab">
+                            <i class="fa fa-user-circle"></i> Informações Pessoais
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="password-tab">
+                            <i class="fa fa-lock"></i> Senha
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/suporte" class="nav-link" id="help-tab">
+                            <i class="bi bi-question-circle"></i> <!-- Ícone de ajuda -->
+                            Você precisa de ajuda?
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        
+
+            <div class="content-info" id="content-area">
+                <!-- Informações Pessoais -->
+                <div id="info-section">
+                    <form class="row g-3">
+                        <h2>Informações Pessoais</h2>
+                        <div class="col-md-12">
+                            <label for="name" class="form-label">Nome completo</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="userName" class="form-label">Usuário</label>
+                            <input type="text" class="form-control" id="userName" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" disabled required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" disabled required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="birthDate" class="form-label">Data de nascimento</label>
+                            <input type="date" class="form-control" id="birthDate" disabled required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="phone" class="form-label">Celular</label>
+                            <input type="text" class="form-control" id="phone" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                    </form>
+                </div>
+
+                <!-- Senha -->
+                <div class="password" id="password-section">
+                    <form class="row g-3">
+                        <h2>Alterar Senha</h2>
+                        <div class="col-md-12">
+                            <label for="old-password" class="form-label">Senha antiga</label>
+                            <input type="password" class="form-control" id="old-password" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="new-password" class="form-label">Nova senha</label>
+                            <input type="password" class="form-control" id="new-password" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="confirm-password" class="form-label">Confirme sua senha</label>
+                            <input type="password" class="form-control" id="confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar nova senha</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('components/footer') %>
+        </footer>
+    </body>
+</html>
