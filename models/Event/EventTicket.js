@@ -10,15 +10,15 @@ const EventTicketSchema = new mongoose.Schema({
         required: true
     },
     value: {
-        type: Date,
+        type: Number,
         required: true
     },
     totalAmount: {
-        type: String,
+        type: Number,
         required: true
     },
     soldAmount: {
-        type: String,
+        type: Number,
         required: true
     }
 });

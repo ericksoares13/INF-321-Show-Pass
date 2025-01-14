@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const Event = require('../models/Event/Event');
+const Event = require('../models/event/Event');
 
 async function populateFromJSON() {
     await Event.deleteMany({});

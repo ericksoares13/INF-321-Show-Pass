@@ -117,21 +117,21 @@
 /* Estilização das seções e cards */
 /*--------------------------------*/
 
-.family-section {
+.event-section {
     background-color: #f8f9fa;
 }
 
-.family-section .container {
+.event-section .container {
     max-width: 100%;
 }
 
-.family-section .row {
+.event-section .row {
     display: flex;
     justify-content: center;
     gap: 2%;
 }
 
-.family-section .col-md-4 {
+.event-section .col-md-4 {
     flex: 0 0 30%;
     max-width: 30%;
 }

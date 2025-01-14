@@ -2,10 +2,21 @@ var express = require('express');
 var router = express.Router();
 
 const UserService = require('../services/userService');
+const EventService = require('../services/eventService');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index');
+router.get('/', async function(req, res, next) {
+    try {
+        const carouselEvents = await EventService.getCarousel();
+        const eventsSections = await EventService.getEventsSections();
+
+        res.render('index', {
+            carouselEvents: carouselEvents,
+            eventsSections: eventsSections
+        });
+    } catch (e) {
+        res.status(400).json({ message: 'Não foi possível carregar a tela inicial.' });
+    }
 });
 
 /* GET support page. */
