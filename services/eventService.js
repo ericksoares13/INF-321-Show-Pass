@@ -31,11 +31,11 @@ class EventService {
         return [
             {
                 'section': 'Para toda a família',
-                'events': array
+                'events': array.slice(0, 3)
             },
             {
                 'section': 'Destaques da semana',
-                'events': array.slice(0, 3)
+                'events': [array[0], array[1], array[3]]
             }
         ];
     }

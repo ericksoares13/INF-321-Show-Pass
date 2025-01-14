@@ -5,6 +5,10 @@
 /* Estilização do banner slideshow */
 /*---------------------------------*/
 
+#custom-carousel {
+    margin-bottom: 25px;
+}
+
 #custom-carousel .carousel-item img {
     height: 450px;
     position: relative;
@@ -127,13 +131,14 @@
 
 .event-section .row {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 2%;
+    margin-left: 2%;
 }
 
 .event-section .col-md-4 {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 31%;
 }
 
 .section-title {
@@ -154,6 +159,7 @@
     border: 1px solid #c2c2c2;
     border-radius: 20px;
     transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 15px;
     overflow: hidden;
 }
 
@@ -164,7 +170,7 @@
 
 .card-img-top {
     height: 200px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .card-title {

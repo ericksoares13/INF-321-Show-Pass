@@ -152,13 +152,13 @@
         ]
     },
     {
-        "name": "Olivia Rodrigo",
+        "name": "The Town 2025",
         "image": "/images/theTown.gif",
         "description": "GUTS - World Tour com St. Vincent",
         "dates": [
             {
-                "state": "Paraná",
-                "city": "Curitiba",
+                "state": "São Paulo",
+                "city": "São Paulo",
                 "date": "2025-03-26T21:00:00Z",
                 "locale": "Estádio Couto Pereira",
                 "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
