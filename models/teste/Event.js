@@ -17,6 +17,9 @@ const EventSchema = new mongoose.Schema({
     dates: {
         type: [EventDateInfosSchema],
         required: true
+    },
+    name: {
+        
     }
 });
 
