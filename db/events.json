@@ -1,8 +1,434 @@
 [
     {
-        "name": "Olivia Rodrigo",
+        "name": "CAETANO VELOSO & MARIA BETHÂNIA",
+        "image": "/images/caetano_bethania.gif",
+        "description": "Múltiplas datas em 2025",
+        "dates": [
+            {
+                "state": "Bahia",
+                "city": "Salvador",
+                "date": "2025-02-08T20:00:00Z",
+                "locale": "Casa de Apostas Arena Fonte Nova",
+                "address": "Ladeira da Fonte das Pedras, s/n - Nazaré, Salvador - BA, 40050-565",
+                "classification": "Livre para todos os públicos.",
+                "infos": "Apresentando clássicos de suas carreiras em nova turnê. Show extra devido à alta demanda.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "360",
+                        "totalAmount": "8000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada idoso",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada PCD",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Inteira",
+                        "value": "340",
+                        "totalAmount": "2019",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada idoso",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada PCD",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Inteira",
+                        "value": "140",
+                        "totalAmount": "4875",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada idoso",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada PCD",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    }
+                ]
+            },
+            {
+                "state": "Rio de Janeiro",
+                "city": "Rio de Janeiro",
+                "date": "2025-03-15T20:00:00Z",
+                "locale": "Farmasi Arena",
+                "address": "Av. Embaixador Abelardo Bueno, 3401 - Barra da Tijuca, Rio de Janeiro - RJ, 22775-040",
+                "classification": "Livre para todos os públicos.",
+                "infos": "Último show da turnê no Rio de Janeiro.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "360",
+                        "totalAmount": "8000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada idoso",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada PCD",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Inteira",
+                        "value": "340",
+                        "totalAmount": "2019",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada idoso",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada PCD",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Inteira",
+                        "value": "140",
+                        "totalAmount": "4875",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada idoso",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada PCD",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    }
+                ]
+            },
+            {
+                "state": "Rio Grande do Sul",
+                "city": "Porto Alegre",
+                "date": "2025-03-22T20:00:00Z",
+                "locale": "Arena do Grêmio",
+                "address": "Av. Padre Leopoldo Brentano, 110 - Humaitá, Porto Alegre - RS, 90250-590",
+                "classification": "Livre para todos os públicos.",
+                "infos": "Primeira apresentação da dupla na cidade em anos.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "360",
+                        "totalAmount": "8000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada idoso",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada PCD",
+                        "value": "180",
+                        "totalAmount": "3200",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Inteira",
+                        "value": "340",
+                        "totalAmount": "2019",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada idoso",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira inferior",
+                        "category": "Meia-entrada PCD",
+                        "value": "170",
+                        "totalAmount": "808",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Inteira",
+                        "value": "140",
+                        "totalAmount": "4875",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada idoso",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira superior",
+                        "category": "Meia-entrada PCD",
+                        "value": "120",
+                        "totalAmount": "1950",
+                        "soldAmount": "0"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "NATIRUTS - LEVE COM VOCÊ",
+        "image": "/images/natiruts.png",
+        "description": "02 de agosto de 2025, em Brasília",
+        "dates": [
+            {
+                "state": "Distrito Federal",
+                "city": "Brasília",
+                "date": "2025-08-02T21:00:00Z",
+                "locale": "ARENA BRB - MANÉ GARRINCHA",
+                "address": "SRPN Portão 1, SRPN - Asa Norte, Brasília - DF, 70070-701",
+                "classification": "Entrada e permanência de crianças/adolescentes de 05 a 15 anos de idade, acompanhados dos pais ou responsáveis, e de 16 a 17 anos, desacompanhados dos pais ou responsáveis legais.",
+                "infos": "Show de despedida da banda Natiruts em sua cidade natal.",
+                "tickets": [
+                    {
+                        "sector": "Cadeira Inferior",
+                        "category": "Inteira",
+                        "value": "250",
+                        "totalAmount": "5000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Cadeira Inferior",
+                        "category": "Meia-entrada",
+                        "value": "125",
+                        "totalAmount": "2000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista Premium",
+                        "category": "Inteira",
+                        "value": "390",
+                        "totalAmount": "4000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "Pista Premium",
+                        "category": "Meia-entrada",
+                        "value": "195",
+                        "totalAmount": "1600",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "VIP Leve Com Você",
+                        "category": "Inteira",
+                        "value": "890",
+                        "totalAmount": "1000",
+                        "soldAmount": "0"
+                    },
+                    {
+                        "sector": "VIP Leve Com Você",
+                        "category": "Meia-entrada",
+                        "value": "695",
+                        "totalAmount": "400",
+                        "soldAmount": "0"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "MENINAS MALVADAS – O MUSICAL",
+        "image": "/images/meninasMalvadas.jpeg",
+        "description": "13 de março a 29 de junho de 2025",
+        "dates": [
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-03-13T20:00:00Z",
+                "locale": "Teatro Santander",
+                "address": "Av. Pres. Juscelino Kubitschek, 2041, Itaim Bibi, São Paulo, SP, 04543-011",
+                "classification": "Livre, menores de 12 anos acompanhados dos pais ou responsáveis legais.",
+                "infos": "Adaptação brasileira do sucesso da Broadway, dirigida por Mariano Detry.",
+                "tickets": [
+                {
+                    "sector": "Plateia VIP",
+                    "category": "Inteira",
+                    "value": "400",
+                    "totalAmount": "200",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Plateia VIP",
+                    "category": "Meia-entrada",
+                    "value": "200",
+                    "totalAmount": "80",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Plateia Premium",
+                    "category": "Inteira",
+                    "value": "300",
+                    "totalAmount": "300",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Plateia Premium",
+                    "category": "Meia-entrada",
+                    "value": "150",
+                    "totalAmount": "120",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Plateia",
+                    "category": "Inteira",
+                    "value": "200",
+                    "totalAmount": "500",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Plateia",
+                    "category": "Meia-entrada",
+                    "value": "100",
+                    "totalAmount": "200",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Balcão",
+                    "category": "Inteira",
+                    "value": "100",
+                    "totalAmount": "400",
+                    "soldAmount": "0"
+                },
+                {
+                    "sector": "Balcão",
+                    "category": "Meia-entrada",
+                    "value": "50",
+                    "totalAmount": "160",
+                    "soldAmount": "0"
+                }
+                ]
+            }
+        ]
+    },   
+    {
+        "name": "GUTS WORLD TOUR",
         "image": "/images/oliviaRodrigo.gif",
-        "description": "GUTS - World Tour com St. Vincent",
+        "description": "26 de março, com St. Vincent",
         "dates": [
             {
                 "state": "Paraná",
@@ -11,7 +437,7 @@
                 "locale": "Estádio Couto Pereira",
                 "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
                 "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
-                "infos": "Vai ter um textinho com mais informações aqui.",
+                "infos": "Primeiro show de Olivia Rodrigo no Brasil, com participação especial de St. Vincent.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -102,63 +528,95 @@
         ]
     },
     {
-        "name": "Olivia Rodrigo",
+        "name": "LOLLAPALOOZA BRASIL 2025",
         "image": "/images/lollapalooza.gif",
-        "description": "GUTS - World Tour com St. Vincent",
-        "dates": [
-            {
-                "state": "Paraná",
-                "city": "Curitiba",
-                "date": "2025-03-26T21:00:00Z",
-                "locale": "Estádio Couto Pereira",
-                "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
-                "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
-                "infos": "Vai ter um textinho com mais informações aqui.",
-                "tickets": [
-                    {
-                        "sector": "Pista",
-                        "category": "Inteira",
-                        "value": "950",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Olivia Rodrigo",
-        "image": "/images/coldplay.jpg",
-        "description": "GUTS - World Tour com St. Vincent",
-        "dates": [
-            {
-                "state": "Paraná",
-                "city": "Curitiba",
-                "date": "2025-03-26T21:00:00Z",
-                "locale": "Estádio Couto Pereira",
-                "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
-                "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
-                "infos": "Vai ter um textinho com mais informações aqui.",
-                "tickets": [
-                    {
-                        "sector": "Pista",
-                        "category": "Inteira",
-                        "value": "950",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "The Town 2025",
-        "image": "/images/theTown.gif",
-        "description": "GUTS - World Tour com St. Vincent",
+        "description": "Datas em 28, 29 e 30 de março",
         "dates": [
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
+                "date": "2025-03-28T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
+                "infos": "Shows de Olivia Rodrigo, Tool e Alanis Morissette.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "1000",
+                        "totalAmount": "30000",
+                        "soldAmount": "15000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "600",
+                        "totalAmount": "10000",
+                        "soldAmount": "7000"
+                    }
+                ]
+            },
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-03-29T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
+                "infos": "Shows de Justin Timberlake, Shawn Mendes e Rüfüs.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "1000",
+                        "totalAmount": "30000",
+                        "soldAmount": "12000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "600",
+                        "totalAmount": "10000",
+                        "soldAmount": "6000"
+                    }
+                ]
+            },
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-03-30T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
+                "infos": "Encerramento com grandes surpresas do lineup.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "1000",
+                        "totalAmount": "30000",
+                        "soldAmount": "10000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "600",
+                        "totalAmount": "10000",
+                        "soldAmount": "5000"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "COLDPLAY",
+        "image": "/images/coldplay.jpg",
+        "description": "Em breve mais informações",
+        "dates": [
+            {
+                "state": "Paraná",
+                "city": "Curitiba",
                 "date": "2025-03-26T21:00:00Z",
                 "locale": "Estádio Couto Pereira",
                 "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
@@ -171,6 +629,208 @@
                         "value": "950",
                         "totalAmount": "8000",
                         "soldAmount": "0"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "THE TOWN 2025",
+        "image": "/images/theTown.gif",
+        "description": "Datas em 6, 7, 12, 13 e 14 de setembro",
+        "dates": [
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-09-06T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
+                "infos": "Shows de Katy Perry e outros artistas internacionais.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "815",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Inteira",
+                        "value": "1379",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "407.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Meia-entrada",
+                        "value": "689.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    }
+                ]
+            },
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-09-07T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
+                "infos": "Dia do Rock com Green Day, Bruce Dickinson e CPM 22.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "815",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Inteira",
+                        "value": "1379",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "407.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Meia-entrada",
+                        "value": "689.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    }
+                ]
+            },
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-09-12T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
+                "infos": "Shows de artistas brasileiros e internacionais.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "815",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Inteira",
+                        "value": "1379",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "407.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Meia-entrada",
+                        "value": "689.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    }
+                ]
+            },
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-09-13T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
+                "infos": "Apresentações focadas no pop e música eletrônica.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "815",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Inteira",
+                        "value": "1379",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "407.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Meia-entrada",
+                        "value": "689.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    }
+                ]
+            },
+            {
+                "state": "São Paulo",
+                "city": "São Paulo",
+                "date": "2025-09-14T12:00:00Z",
+                "locale": "Autódromo de Interlagos",
+                "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
+                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
+                "infos": "Encerramento com Katy Perry e outros grandes artistas.",
+                "tickets": [
+                    {
+                        "sector": "Pista",
+                        "category": "Inteira",
+                        "value": "815",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Inteira",
+                        "value": "1379",
+                        "totalAmount": "40000",
+                        "soldAmount": "20000"
+                    },
+                    {
+                        "sector": "Pista",
+                        "category": "Meia-entrada",
+                        "value": "407.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
+                    },
+                    {
+                        "sector": "Área VIP",
+                        "category": "Meia-entrada",
+                        "value": "689.50",
+                        "totalAmount": "10000",
+                        "soldAmount": "2500"
                     }
                 ]
             }

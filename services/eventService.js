@@ -11,12 +11,14 @@ class EventService {
     async getCarousel() {
         const events = await Event.find({});
 
-        return events.map(element => ({
+        const carouselEvents = events.map(element => ({
             'name': element.name,
             'image': element.image,
             'description': element.description,
             'link': element.link
         }));
+
+        return carouselEvents.slice(3, 7);
     }
 
     async getEventsSections() {
@@ -35,7 +37,7 @@ class EventService {
             },
             {
                 'section': 'Destaques da semana',
-                'events': [array[0], array[1], array[3]]
+                'events': [array[3], array[4], array[6]]
             }
         ];
     }
