@@ -11,6 +11,7 @@ const populateDatabase = require('./db/populate');
 const app = express();
 
 const usersRouter = require('./routes/users');
+const eventsRouter = require('./routes/events');
 
 const start = async () => {
   try {
@@ -39,6 +40,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', usersRouter);
+app.use('/eventos', eventsRouter);
 
 start().then(populateDatabase());
 

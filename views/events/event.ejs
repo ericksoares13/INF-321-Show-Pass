@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/events/event.css" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
+
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('../components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <!-- Imagem do evento -->
+            <div class="event-img">
+                <img src="/images/oliviaRodrigo.gif" alt="Banner do evento">
+            </div>
+
+            <!-- Informações de datas e ingressos -->
+            <div class="event-info">
+                <div>
+                    <label for="date-select" class="me-2">Escolha uma data:</label>
+                    <select id="date-select">
+                        <option value="2025-03-26">Curitiba - 26 de Março de 2025</option>
+                    </select>
+                </div>
+                <button id="ticket-button" class="btn btn-primary">Ingressos</button>
+            </div>
+
+            <!-- Detalhes do show -->
+            <div class="details">
+                <h2>Informações do Evento</h2>
+                <p>A venda geral para os shows começa a partir do dia 10 de janeiro de 2025. Não perca a chance de participar dessa turnê histórica!</p>
+                <p>Os ingressos podem ser adquiridos diretamente no nosso site ou nos pontos de venda autorizados.</p>
+            </div>
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('../components/footer') %>
+        </footer>
+    </body>
+</html>

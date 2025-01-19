@@ -15,7 +15,7 @@ class EventService {
             'name': element.name,
             'image': element.image,
             'description': element.description,
-            'link': element.link
+            'link': 'eventos/olivia-rodrigo'
         }));
 
         return carouselEvents.slice(3, 7);
@@ -27,7 +27,7 @@ class EventService {
             'name': element.name,
             'image': element.image,
             'description': element.description,
-            'link': element.link
+            'link': 'eventos/olivia-rodrigo'
         }));
 
         return [

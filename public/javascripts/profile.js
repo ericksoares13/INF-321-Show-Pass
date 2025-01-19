@@ -1,3 +1,5 @@
+// SCRIPT PARA ALTERAÇÃO DA VISUALIZAÇÃO CONFORME A OPÇÃO DE CONTA ESCOLHIDA PELO USUÁRIO
+
 document.getElementById('info-tab').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('info-section').style.display = 'block';
