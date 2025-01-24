@@ -1,9 +1,3 @@
-Corrigir validação do register (mostrando confirma verde)
-Corrigir status de erro da senha (deve ser forte)
-Colocar validação de login
-Corrigir o json de popular eventos, coloquei só as rotas das imagens corretas
-Corrigir mensagens de erro do navegador no meu perfil
+Corrigir mensagens de erro do navegador no meu perfil e suporte ao fã
 Gerar mapeamento dos eventos com links dinâmicos link: `/events/${event.name.toLowerCase().replace(/\s+/g, '')}`  // Exemplo de link baseado no nome
-Criar modelo para o Carrossel e corrigir função para retornar ele
-Criar modelo para as seções e corrigir funão para retornar elas
-Colocar seta nas seções para deslizar para o lado
+Remover botão comprar de eventos futuros (criar flag de evento "ativo")
