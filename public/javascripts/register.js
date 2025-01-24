@@ -211,7 +211,7 @@ const validatePassword = (password) => {
         return true;
     }
 
-    errorMessages['password'] = '';
+    errorMessages['password'] = 'A senha precisa ser forte.';
     return false;
 };
 
@@ -271,8 +271,6 @@ let errorMessages = {};
                 if (!form.checkValidity() || !valid) {
                     event.preventDefault();
                     event.stopPropagation();
-                } else {
-                    form.classList.add('was-validated');
                 }
             });
         }, false);
