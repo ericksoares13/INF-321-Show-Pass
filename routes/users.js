@@ -4,15 +4,40 @@ var router = express.Router();
 const UserService = require('../services/userService');
 const EventService = require('../services/eventService');
 
+async function getEventInfos(eventId) {
+    const event = await EventService.getEventById(eventId);
+    return {
+        name: event.name,
+        image: event.image,
+        description: event.description,
+        link: 'eventos/olivia-rodrigo'
+    };
+}
+
 /* GET home page. */
 router.get('/', async function(req, res, next) {
     try {
-        const carouselEvents = await EventService.getCarousel();
-        const eventsSections = await EventService.getEventsSections();
+        const carouselEventIds = await EventService.getCarousel();
+        const carouselEvents = await Promise.all(
+            carouselEventIds.map(async eventId => await getEventInfos(eventId))
+        );
+        
+        const sections = await EventService.getSections();
+        const sectionsEvents = await Promise.all(
+            sections.map(async section => {
+                const eventInfos = await Promise.all(
+                    section.events.map(async eventId => await getEventInfos(eventId))
+                );
+                return {
+                    section: section.name,
+                    events: eventInfos
+                };
+            })
+        );
 
         res.render('index', {
             carouselEvents: carouselEvents,
-            eventsSections: eventsSections
+            eventsSections: sectionsEvents
         });
     } catch (e) {
         res.status(400).json({ message: 'Não foi possível carregar a tela inicial.' });
