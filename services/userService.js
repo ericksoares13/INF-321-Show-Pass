@@ -1,14 +1,29 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 class UserService {
+    static SALT_ROUNDS = 10;
+    
     async getAllUsers() {
         return await User.find({});
     }
 
     async createUser(user) {
         this.#validateUser(user);
+        user.password = await this.hashPassword(user.password);
+        console.log(user);
         const createdUser = await User.create(user);
         return createdUser;
+    }
+
+    async hashPassword(password) {
+        const hash = await bcrypt.hash(password, UserService.SALT_ROUNDS);
+        return hash;
+    }
+
+    async checkPassword(password, hashPassword) {
+        const isMatch = await bcrypt.compare(password, hashPassword);
+        return isMatch;
     }
 
     #validateUser(user) {
