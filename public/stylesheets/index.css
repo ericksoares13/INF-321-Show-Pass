@@ -10,7 +10,7 @@
 }
 
 #custom-carousel .carousel-item img {
-    height: 450px;
+    height: 520px;
     position: relative;
 }
 
@@ -122,7 +122,7 @@
 /*--------------------------------*/
 
 .event-section {
-    background-color: #f8f9fa;
+    background-color: #fff;
 }
 
 .event-section .container {
