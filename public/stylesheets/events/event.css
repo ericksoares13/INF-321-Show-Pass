@@ -3,6 +3,11 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 section {
@@ -50,7 +55,7 @@ section {
 
 .tickets .col-md-4 {
     flex: 0 0 39.5%;
-    max-width: 48%; 
+    max-width: 45%; 
     box-sizing: border-box;
 }
 
