@@ -26,42 +26,42 @@
 
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
-            <form action="cadastrar-usuario" method="POST" class="forms row g-3 needs-validation" novalidate>
+            <form action="cadastrar" method="POST" class="forms row g-3 needs-validation" novalidate>
                 <div class="col-12">
                     <label for="name" class="form-label">Nome completo</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Joãozinho Fulano de Tal" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="text" class="form-control <%= error?.name ? 'is-invalid' : '' %>" id="name" name="name" value="<%= user?.name || '' %>" placeholder="Joãozinho Fulano de Tal" required>
+                    <div class="invalid-feedback"><%= error?.name || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="user" class="form-label">Usuário</label>
-                    <input type="text" class="form-control" id="user" name="user" placeholder="jzinho13" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="text" class="form-control <%= error?.user ? 'is-invalid' : '' %>" id="user" name="user" value="<%= user?.user || '' %>" placeholder="jzinho13" required>
+                    <div class="invalid-feedback"><%= error?.user || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-md-6">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="text" class="form-control <%= error?.cpf ? 'is-invalid' : '' %>" id="cpf" name="cpf" value="<%= user?.cpf || '' %>" placeholder="000.000.000-00" required>
+                    <div class="invalid-feedback"><%= error?.cpf || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-md-6">
                     <label for="birthDate" class="form-label">Data de nascimento</label>
-                    <input type="date" class="form-control" id="birthDate" name="birthDate" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="date" class="form-control <%= error?.birthDate ? 'is-invalid' : '' %>" id="birthDate" name="birthDate" value="<%= user?.birthDate || '' %>" required>
+                    <div class="invalid-feedback"><%= error?.birthDate || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="cellphone" class="form-label">Celular</label>
-                    <input type="text" class="form-control" id="cellphone" name="cellphone" placeholder="(00) 00000-0000" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="text" class="form-control <%= error?.cellphone ? 'is-invalid' : '' %>" id="cellphone" name="cellphone" value="<%= user?.cellphone || '' %>" placeholder="(00) 00000-0000" required>
+                    <div class="invalid-feedback"><%= error?.cellphone || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="joaozinho@email.com" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="text" class="form-control <%= error?.email ? 'is-invalid' : '' %>" id="email" name="email" value="<%= user?.email || '' %>" placeholder="joaozinho@email.com" required>
+                    <div class="invalid-feedback"><%= error?.email || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
                 <div class="col-12">
                     <label for="password" class="form-label">Senha</label>
                     <div class="password-container">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
-                        <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                        <input type="password" class="form-control <%= error?.password ? 'is-invalid' : '' %>" id="password" name="password" value="<%= user?.password || '' %>" placeholder="********" required>
+                        <div class="invalid-feedback"><%= error?.password || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                         <button type="button" id="toggle-password-1" class="btn btn-secondary">
                             <ion-icon name="eye-off"></ion-icon>
                         </button>
@@ -89,8 +89,8 @@
                 <div class="col-12">
                     <label for="checkPassword" class="form-label">Confirme sua senha</label>
                     <div class="password-container">
-                        <input type="password" class="form-control" id="checkPassword" name="checkPassword" placeholder="********" required>
-                        <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                        <input type="password" class="form-control <%= error?.checkPassword ? 'is-invalid' : '' %>" id="checkPassword" name="checkPassword" value="<%= user?.checkPassword || '' %>" placeholder="********" required>
+                        <div class="invalid-feedback"><%= error?.checkPassword || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                         <button type="button" id="toggle-password-2" class="btn btn-secondary">
                             <ion-icon name="eye-off"></ion-icon>
                         </button>

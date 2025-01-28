@@ -51,7 +51,10 @@ router.get('/suporte', function(req, res, next) {
 
 /* GET register page. */
 router.get('/cadastrar', function(req, res, next) {
-    res.render('register');
+    res.render('register', {
+        user: {},
+        error: {}
+    });
 });
 
 /* GET login page. */
@@ -70,7 +73,7 @@ router.get('/meu-perfil', function(req, res, next) {
 });
 
 /* Register user */
-router.post('/cadastrar-usuario', async function(req, res, next) {
+router.post('/cadastrar', async function(req, res, next) {
     const user = {
         name: req.body.name,
         user: req.body.user,
@@ -83,10 +86,10 @@ router.post('/cadastrar-usuario', async function(req, res, next) {
     }
 
     try {
-        const createdUser = await UserService.createUser(user);
+        await UserService.createUser(user);
         res.redirect('/');
-    } catch (e) {
-        res.status(400).json({ message: e });
+    } catch (error) {
+        res.status(400).render('register', { user, error });
     }
 });
 

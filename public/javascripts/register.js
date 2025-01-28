@@ -12,6 +12,31 @@ $(document).ready(function() {
 
 // CÁLCULO DA FORÇA DA SENHA
 
+function calculatePasswordStrength(password) {
+    let strength = 0;
+    let message = '';
+    let className = '';
+
+    if (password.length >= 8) strength += 20;
+    if (password.length >= 12) strength += 20;
+    if (/\d/.test(password)) strength += 20;
+    if (/[A-Z]/.test(password)) strength += 20;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+
+    if (strength < 50) {
+        message = 'Fraca';
+        className = 'text-danger';
+    } else if (strength < 75) {
+        message = 'Moderada';
+        className = 'text-warning';
+    } else {
+        message = 'Forte';
+        className = 'text-success';
+    }
+
+    return { percent: strength, message: message, class: className };
+}
+
 $(document).ready(function () {
     const passwordField = $('#password');
     const strengthMeter = $('#password-strength-meter');
@@ -38,31 +63,6 @@ $(document).ready(function () {
 
         strengthMessage.text(strength.message).removeClass('text-danger text-warning text-success').addClass(strength.class);
     });
-
-    function calculatePasswordStrength(password) {
-        let strength = 0;
-        let message = '';
-        let className = '';
-
-        if (password.length >= 8) strength += 20;
-        if (password.length >= 12) strength += 20;
-        if (/\d/.test(password)) strength += 20;
-        if (/[A-Z]/.test(password)) strength += 20;
-        if (/[^A-Za-z0-9]/.test(password)) strength += 20;
-
-        if (strength < 50) {
-            message = 'Fraca';
-            className = 'text-danger';
-        } else if (strength < 75) {
-            message = 'Moderada';
-            className = 'text-warning';
-        } else {
-            message = 'Forte';
-            className = 'text-success';
-        }
-
-        return { percent: strength, message: message, class: className };
-    }
 });
 
 // LIDA COM A OPÇÃO DE EXIBIR A SENHA
@@ -205,9 +205,8 @@ const validatePassword = (password) => {
         return false;
     }
 
-    const className = $('#password-strength-msg').attr('class');
-
-    if (className.includes('text-success')) {
+    const strength = calculatePasswordStrength(password);
+    if (strength.class.includes('text-success')) {
         return true;
     }
 

@@ -8,12 +8,9 @@ class UserService {
         return await User.find({});
     }
 
-    async createUser(user) {
-        this.#validateUser(user);
-        user.password = await this.hashPassword(user.password);
-        console.log(user);
-        const createdUser = await User.create(user);
-        return createdUser;
+    async getUserByField(fieldAndValue) {
+        const user = await User.findOne(fieldAndValue);
+        return user;
     }
 
     async hashPassword(password) {
@@ -26,51 +23,74 @@ class UserService {
         return isMatch;
     }
 
-    #validateUser(user) {
-        this.#validateName(user.name);
-        this.#validateUserName(user.user);
-        this.#validateCPF(user.cpf);
-        this.#validateBirthDate(user.birthDate);
-        this.#validateCellphone(user.cellphone);
-        this.#validateEmail(user.email);
-        this.#validatePassword(user.password);
-        this.#validateCheckPassword(user.password, user.checkPassword);
+    async createUser(user) {
+        await this.#validateUser(user);
+        user.password = await this.hashPassword(user.password);
+        const createdUser = await User.create(user);
+        return createdUser;
     }
 
-    #validateName(name) {
-        if (name == '') {
-            throw 'O campo \"Nome Completo\" é obrigatório.';
+    async #validateUser(user) {
+        const error = {};
+
+        this.#validateName(user.name, error);
+        await this.#validateUserName(user.user, error);
+        await this.#validateCPF(user.cpf, error);
+        this.#validateBirthDate(user.birthDate, error);
+        this.#validateCellphone(user.cellphone, error);
+        await this.#validateEmail(user.email, error);
+        this.#validatePassword(user.password, error);
+        this.#validateCheckPassword(user.password, user.checkPassword, error);
+
+        if (Object.keys(error).length > 0) {
+            throw error;
         }
     }
 
-    #validateUserName(userName) {
+    #validateName(name, error) {
+        if (name == '') {
+            error.name = 'O campo \"Nome Completo\" é obrigatório.';
+        }
+    }
+
+    async #validateUserName(userName, error) {
         if (userName == '') {
-            throw 'O campo \"Usuário\" é obrigatório.';
+            error.user = 'O campo \"Usuário\" é obrigatório.';
+            return;
         }
     
         if (userName.length < 3 || userName.length > 20) {
-            throw 'O nome de usuário deve ter entre 3 e 20 caracteres.';
+            error.user = 'O nome de usuário deve ter entre 3 e 20 caracteres.';
+            return;
         }
     
         const usernamePattern = /^[a-zA-Z0-9_-]+$/;
         if (!usernamePattern.test(userName) || userName.includes(" ")) {
-            throw 'O nome de usuário só pode conter letras, números, underlines (_) e hífens (-).';
+            error.user = 'O nome de usuário só pode conter letras, números, underlines (_) e hífens (-).';
+            return;
+        }
+
+        const user = await this.getUserByField({user: userName});
+        if (user) {
+            error.user = 'O nome de usuário escolhido já está em uso.';
         }
     }
 
-    #validateCPF(cpf) {
+    async #validateCPF(cpf, error) {
         if (cpf == '') {
-            throw 'O campo \"CPF\" é obrigatório.';
+            error.cpf = 'O campo \"CPF\" é obrigatório.';
+            return;
         }
     
-        cpf = cpf.replace(/[^\d]/g, '');
-        if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
-            throw 'CPF inválido.';
+        const copiedCpf = cpf.replace(/[^\d]/g, '');
+        if (copiedCpf.length !== 11 || /^(\d)\1+$/.test(copiedCpf)) {
+            error.cpf = 'CPF inválido.';
+            return;
         }
     
         let sum = 0;
         for (let i = 0; i < 9; i++) {
-            sum += parseInt(cpf.charAt(i)) * (10 - i);
+            sum += parseInt(copiedCpf.charAt(i)) * (10 - i);
         }
     
         let dig1 = (sum * 10) % 11;
@@ -78,39 +98,48 @@ class UserService {
     
         sum = 0;
         for (let i = 0; i < 10; i++) {
-            sum += parseInt(cpf.charAt(i)) * (11 - i);
+            sum += parseInt(copiedCpf.charAt(i)) * (11 - i);
         }
     
         let dig2 = (sum * 10) % 11;
         if (dig2 === 10) dig2 = 0;
     
-        if (dig1 === parseInt(cpf.charAt(9)) && dig2 === parseInt(cpf.charAt(10))) {
+        if (dig1 === parseInt(copiedCpf.charAt(9)) && dig2 === parseInt(copiedCpf.charAt(10))) {
+            const user = await this.getUserByField({cpf: cpf});
+            if (user) {
+                error.cpf = 'O CPF informado já está em uso.';
+                return;
+            }
+
             return;
         }
     
-        throw 'CPF inválido.';
+        error.cpf = 'CPF inválido.'
     }
 
-    #validateBirthDate(date) {
+    #validateBirthDate(date, error) {
         if (date == '') {
-            throw 'O campo \"Data de nascimento\" é obrigatório.';
+            error.birthDate = 'O campo \"Data de nascimento\" é obrigatório.';
+            return;
         }
 
         const birthDate = new Date(date);
 
         if (isNaN(birthDate.getTime())) {
-            throw 'A data fornecida é inválida.';
+            error.birthDate = 'A data fornecida é inválida.';
+            return;
         }
 
         const today = new Date();
         if (birthDate > today) {
-            throw 'A data de nascimento não pode ser no futuro.';
+            error.birthDate = 'A data de nascimento não pode ser no futuro.';
         }
     }
 
-    #validateCellphone(number) {
+    #validateCellphone(number, error) {
         if (number == '') {
-            throw 'O campo \"Celular\" é obrigatório.';
+            error.cellphone = 'O campo \"Celular\" é obrigatório.';
+            return;
         }
     
         number = number.replace(/[^\d]/g, '');
@@ -120,32 +149,40 @@ class UserService {
             return;
         }
     
-        throw 'Celular inválido.';
+        error.cellphone = 'Celular inválido.';
     }
 
-    #validateEmail(email) {
+    async #validateEmail(email, error) {
         if (email == '') {
-            throw 'O campo \"Email\" é obrigatório.';
+            error.email = 'O campo \"Email\" é obrigatório.';
+            return;
         }
     
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     
         if (regex.test(email)) {
+            const user = await this.getUserByField({email: email});
+            if (user) {
+                error.email = 'O email informado já está em uso.';
+                return;
+            }
+
             return;
         }
     
-        throw 'Email inválido.';
+        error.email = 'Email inválido.';
     }
 
-    #validatePassword(password) {
+    #validatePassword(password, error) {
         if (password == '') {
-            throw 'O campo \"Senha\" é obrigatório.';
+            error.password = 'O campo \"Senha\" é obrigatório.';
+            return;
         }
     
-        this.#passwordStrength(password);
+        this.#passwordStrength(password, error);
     }
 
-    #passwordStrength(password) {
+    #passwordStrength(password, error) {
         let strength = 0;
 
         if (password.length >= 8) strength += 20;
@@ -155,22 +192,23 @@ class UserService {
         if (/[^A-Za-z0-9]/.test(password)) strength += 20;
 
         if (strength < 50) {
-            throw 'Senha Fraca.';
+            error.password = 'Senha Fraca.';
         } else if (strength < 75) {
-            throw 'Senha Moderada.';
+            error.password = 'Senha Moderada.';
         }
     }
 
-    #validateCheckPassword(password, checkPassword) {
+    #validateCheckPassword(password, checkPassword, error) {
         if (!checkPassword || checkPassword == '') {
-            throw 'O campo \"Confirme sua senha\" é obrigatório.';
+            error.checkPassword = 'O campo \"Confirme sua senha\" é obrigatório.';
+            return;
         }
     
         if (password == checkPassword) {
             return;
         }
     
-        throw 'As senhas não coincidem.';
+        error.checkPassword = 'As senhas não coincidem.';
     }
 }
 
