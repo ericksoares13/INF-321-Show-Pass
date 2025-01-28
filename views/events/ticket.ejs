@@ -29,27 +29,26 @@
                         <img src="/images/setoresOlivia.png" alt="Mapa do evento">
                     </div>
         
-                    <!-- Lista de setores ou ingressos -->
                     <div class="col-md-4 p-4">
                         <!-- Lista de setores -->
                         <div id="sector-list" class="ticket-section">
                             <h4 class="mb-4">Selecione um setor</h4>
                             <ul class="list-group">
-                                <li class="list-group-item" onclick="showTickets()">
+                                <li class="list-group-item" onclick="showTickets(this)">
                                     <div class="info">
                                         <strong>Pista</strong><br>
                                         <span>A partir de R$ 475,00</span>
                                     </div>
                                     <span class="arrow">></span>
                                 </li>
-                                <li class="list-group-item" onclick="showTickets()">
+                                <li class="list-group-item" onclick="showTickets(this)">
                                     <div class="info">
                                         <strong>Cadeira Inferior</strong><br>
                                         <span>A partir de R$ 330,00</span>
                                     </div>
                                     <span class="arrow">></span>
                                 </li>
-                                <li class="list-group-item" onclick="showTickets()">
+                                <li class="list-group-item" onclick="showTickets(this)">
                                     <div class="info">
                                         <strong>Cadeira Superior</strong><br>
                                         <span>A partir de R$ 275,00</span>
@@ -63,33 +62,41 @@
                         <div id="ticket-list" class="ticket-section d-none">
                             <button class="btn btn-back" onclick="goBack()"> 
                                 &larr; 
-                                <h4 id="selected-sector" class="mb-4">Selecione uma categoria</h4> 
+                                <h4 id="selected-sector" class="mb-4"></h4> 
                             </button>
                             <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="info">
-                                        <strong>Inteira</strong>
-                                    </div>
-                                    <span class="price">R$ 950,00</span>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="info">
-                                        <strong>Meia-Entrada</strong>
-                                    </div>
-                                    <span class="price">R$ 475,00</span>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="info">
-                                        <strong>Meia-Entrada Idoso</strong>
-                                    </div>
-                                    <span class="price">R$ 475,00</span>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="info">
-                                        <strong>Meia-Entrada PCD</strong>
-                                    </div>
-                                    <span class="price">R$ 475,00</span>
-                                </li>
+                                <a href="/" class="text-decoration-none">
+                                    <li class="list-group-item">
+                                        <div class="info">
+                                            <strong>Inteira</strong>
+                                        </div>
+                                        <span class="price">R$ 950,00</span>
+                                    </li>
+                                </a>
+                                <a href="/" class="text-decoration-none">
+                                    <li class="list-group-item">
+                                        <div class="info">
+                                            <strong>Meia-Entrada</strong>
+                                        </div>
+                                        <span class="price">R$ 475,00</span>
+                                    </li>
+                                </a>
+                                <a href="/" class="text-decoration-none">
+                                    <li class="list-group-item">
+                                        <div class="info">
+                                            <strong>Meia-Entrada Idoso</strong>
+                                        </div>
+                                        <span class="price">R$ 475,00</span>
+                                    </li>
+                                </a>
+                                <a href="/" class="text-decoration-none">
+                                    <li class="list-group-item">
+                                        <div class="info">
+                                            <strong>Meia-Entrada PCD</strong>
+                                        </div>
+                                        <span class="price">R$ 475,00</span>
+                                    </li>
+                                </a>
                             </ul>
                         </div>
                     </div>
