@@ -1,0 +1,93 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+@import url(../style.css);
+
+
+.sector-list, .ticket-list {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.map-container {
+    position: relative;
+}
+
+.map-container img {
+    margin-top: -0.6%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.list-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.list-group-item {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.329);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+.list-group-item .info {
+    flex: 1;
+}
+
+.list-group-item .price {
+    font-weight: bold;
+    color: #555;
+}
+
+.list-group-item .arrow {
+    color: #888;
+    
+}
+
+.ticket-section {
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.btn-back {
+    background-color: none; 
+    border: none;
+    color: black;
+    font-size: 2.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    margin-bottom: 35px;
+}
+
+.btn-back:hover, .btn-back:active {
+    color: black;
+}
+
+.btn-back h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 33px;
+    margin-left: 10px;
+}

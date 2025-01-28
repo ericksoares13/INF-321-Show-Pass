@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/events/ticket.css" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
+        <script src="/javascripts/ticket.js" defer></script>
+
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('../components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Mapa do evento -->
+                    <div class="col-md-8 map-container">
+                        <img src="/images/setoresOlivia.png" alt="Mapa do evento">
+                    </div>
+        
+                    <!-- Lista de setores ou ingressos -->
+                    <div class="col-md-4 p-4">
+                        <!-- Lista de setores -->
+                        <div id="sector-list" class="ticket-section">
+                            <h4 class="mb-4">Selecione um setor</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item" onclick="showTickets()">
+                                    <div class="info">
+                                        <strong>Pista</strong><br>
+                                        <span>A partir de R$ 475,00</span>
+                                    </div>
+                                    <span class="arrow">></span>
+                                </li>
+                                <li class="list-group-item" onclick="showTickets()">
+                                    <div class="info">
+                                        <strong>Cadeira Inferior</strong><br>
+                                        <span>A partir de R$ 330,00</span>
+                                    </div>
+                                    <span class="arrow">></span>
+                                </li>
+                                <li class="list-group-item" onclick="showTickets()">
+                                    <div class="info">
+                                        <strong>Cadeira Superior</strong><br>
+                                        <span>A partir de R$ 275,00</span>
+                                    </div>
+                                    <span class="arrow">></span>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <!-- Lista de ingressos (oculta inicialmente) -->
+                        <div id="ticket-list" class="ticket-section d-none">
+                            <button class="btn btn-back" onclick="goBack()"> 
+                                &larr; 
+                                <h4 id="selected-sector" class="mb-4">Selecione uma categoria</h4> 
+                            </button>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Inteira</strong>
+                                    </div>
+                                    <span class="price">R$ 950,00</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Meia-Entrada</strong>
+                                    </div>
+                                    <span class="price">R$ 475,00</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Meia-Entrada Idoso</strong>
+                                    </div>
+                                    <span class="price">R$ 475,00</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Meia-Entrada PCD</strong>
+                                    </div>
+                                    <span class="price">R$ 475,00</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('../components/footer') %>
+        </footer>
+    </body>
+</html>
