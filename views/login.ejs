@@ -26,20 +26,20 @@
 
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
-            <form action="logar" method="POST" class="form-input row g-1 needs-validation" novalidate>
+            <form action="entrar" method="POST" class="form-input row g-1 needs-validation" novalidate>
                 <!-- Usuário/Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label text-start d-block">Usuário/Email</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Digite seu usuário ou email" required>
-                    <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                    <input type="text" class="form-control <%= error?.email ? 'is-invalid' : '' %>" id="email" name="email" value="<%= user?.email || '' %>" placeholder="Digite seu usuário ou email" required>
+                    <div class="invalid-feedback"><%= error?.email || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                 </div>
 
                 <!-- Senha -->
                 <div class="mb-3">
                     <label for="password" class="form-label text-start d-block">Senha</label>
                     <div class="password-container">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
-                        <div class="invalid-feedback"><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
+                        <input type="password" class="form-control <%= error?.password ? 'is-invalid' : '' %>" id="password" name="password" value="<%= user?.password || '' %>" placeholder="********" required>
+                        <div class="invalid-feedback"><%= error?.password || '' %><!-- A mensagem de erro será alterada dinamicamente aqui --></div>
                         <button type="button" id="toggle-password" class="btn btn-secondary">
                             <ion-icon name="eye-off"></ion-icon>
                         </button>

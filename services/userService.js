@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 class UserService {
     static SALT_ROUNDS = 10;
@@ -28,6 +29,30 @@ class UserService {
         user.password = await this.hashPassword(user.password);
         const createdUser = await User.create(user);
         return createdUser;
+    }
+
+    async loginUser(user) {
+        const loggedUser = await this.getUserByField({ $or: [
+            { email: user.email },
+            { user: user.email }]
+        });
+
+        if (!loggedUser) {
+            throw { email : 'Usuário/Email não encontrado.' };
+        }
+
+        const isMatch = await bcrypt.compare(user.password, loggedUser.password);
+
+        if (!isMatch) {
+            throw { password: 'Senha incorreta.' };
+        }
+
+        return loggedUser;
+    }
+
+    generateToken(user) {
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        return token;
     }
 
     async #validateUser(user) {

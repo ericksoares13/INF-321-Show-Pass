@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const jwt = require('jsonwebtoken');
 
 const UserService = require('../services/userService');
 const EventService = require('../services/eventService');
@@ -13,6 +14,20 @@ async function getEventInfos(eventId) {
         link: 'eventos/olivia-rodrigo'
     };
 }
+
+/* Authenticate user */
+const authenticate = function(req, res, next) {
+    const authToken = req.cookies.authToken;
+  
+    if (!authToken) return res.status(401).json({ message: 'Acesso negado.' });
+  
+    try {
+        const verified = jwt.verify(authToken, process.env.JWT_SECRET);
+        next();
+    } catch (error) {
+        res.status(400).json({ message: 'Acesso negado.' });
+    }
+};
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -44,6 +59,16 @@ router.get('/', async function(req, res, next) {
     }
 });
 
+/* GET orders page. */
+router.get('/meus-pedidos', authenticate, function(req, res, next) {
+    res.render('orders');
+});
+
+/* GET profile page. */
+router.get('/meu-perfil', authenticate, function(req, res, next) {
+    res.render('profile');
+});
+
 /* GET support page. */
 router.get('/suporte', function(req, res, next) {
     res.render('support');
@@ -55,21 +80,6 @@ router.get('/cadastrar', function(req, res, next) {
         user: {},
         error: {}
     });
-});
-
-/* GET login page. */
-router.get('/entrar', function(req, res, next) {
-    res.render('login');
-});
-
-/* GET orders page. */
-router.get('/meus-pedidos', function(req, res, next) {
-    res.render('orders');
-});
-
-/* GET profile page. */
-router.get('/meu-perfil', function(req, res, next) {
-    res.render('profile');
 });
 
 /* Register user */
@@ -86,11 +96,52 @@ router.post('/cadastrar', async function(req, res, next) {
     }
 
     try {
-        await UserService.createUser(user);
+        const createdUser = await UserService.createUser(user);
+        const token = UserService.generateToken(createdUser);
+        res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 3600000 });
+        req.session.userId = createdUser._id;
         res.redirect('/');
     } catch (error) {
         res.status(400).render('register', { user, error });
     }
+});
+
+/* GET login page. */
+router.get('/entrar', function(req, res, next) {
+    res.render('login', {
+        user: {},
+        error: {}
+    });
+});
+
+/* Login user */
+router.post('/entrar', async function(req, res, next) {
+    const user = {
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    try {
+        const loggedUser = await UserService.loginUser(user);
+        const token = UserService.generateToken(loggedUser);
+        res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 3600000 });
+        req.session.userId = loggedUser._id;
+        res.redirect('/');
+    } catch (error) {
+        res.status(400).render('login', { user, error });
+    }
+});
+
+/* Logout user */
+router.get('/sair', function(req, res, next) {
+    res.clearCookie('authToken');
+    delete req.session.userId;
+    res.redirect('/');
+});
+
+/* Authenticate user */
+router.get('/authenticate', authenticate, function(req, res, next) {
+    res.status(200).json({ message: 'Acesso permitido.' });
 });
 
 module.exports = router;
