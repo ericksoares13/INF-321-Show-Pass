@@ -77,7 +77,7 @@ async function populateUsers() {
         const existingUser = await User.findOne({ _id: user._id });
 
         if (!existingUser) {
-            await User.create(userData);
+            await User.create(user);
         }
     }
 }
