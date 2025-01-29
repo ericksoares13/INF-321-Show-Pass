@@ -50,3 +50,40 @@ function goBack() {
     document.getElementById('sector-list').classList.remove('d-none');
     document.getElementById('ticket-list').classList.add('d-none');
 }
+
+function changeQuantity(button, delta) {
+    const quantityDisplay = button.parentElement.querySelector('.quantity-display');
+    const price = parseFloat(quantityDisplay.getAttribute('data-price'));
+    let currentQuantity = parseInt(quantityDisplay.textContent, 10);
+
+    currentQuantity = Math.max(0, currentQuantity + delta);
+    quantityDisplay.textContent = currentQuantity;
+
+    updateTotal();
+}
+
+function updateTotal() {
+    const quantities = document.querySelectorAll('.quantity-display');
+    let total = 0;
+    let hasSelection = false;
+
+    quantities.forEach(display => {
+        const quantity = parseInt(display.textContent, 10);
+        const price = parseFloat(display.getAttribute('data-price'));
+
+        if (quantity > 0) {
+            total += quantity * price;
+            hasSelection = true;
+        }
+    });
+
+    const checkoutSection = document.getElementById('checkout-section');
+    const totalPriceElement = document.getElementById('total-price');
+
+    if (hasSelection) {
+        totalPriceElement.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        checkoutSection.classList.remove('d-none');
+    } else {
+        checkoutSection.classList.add('d-none');
+    }
+}

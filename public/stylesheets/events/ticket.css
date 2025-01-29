@@ -42,18 +42,23 @@ img {
     transition: background-color 0.3s;
 }
 
+.list-group-item span {
+    font-size: 1.2rem;
+}
+
 .list-group-item .info {
     flex: 1;
 }
 
 .list-group-item .price {
-    font-weight: bold;
-    color: #555;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin-top: 5px;
 }
 
 .list-group-item .arrow {
     color: #888;
-    
 }
 
 .ticket-section {
@@ -90,4 +95,80 @@ img {
     justify-content: center;
     margin-top: 33px;
     margin-left: 10px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-display {
+    width: 40px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-minus, .btn-plus {
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-minus:hover, .btn-plus:hover {
+    background-color: #bbb;
+}
+
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.total-display {
+    background-color: rgb(255, 255, 255);
+    width: 60%;
+    padding-top: 12px;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.329);
+    text-align: center;
+}
+
+.checkout-btn {
+    background-color: #5f1571; 
+    border: none;
+    color: white;
+    padding: 10px 20px; 
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.329);
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkout-btn:hover, .checkout-btn:active {
+    background-color: #6a1a7d !important;
 }

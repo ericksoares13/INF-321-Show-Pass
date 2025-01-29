@@ -65,39 +65,58 @@
                                 <h4 id="selected-sector" class="mb-4"></h4> 
                             </button>
                             <ul class="list-group">
-                                <a href="/" class="text-decoration-none">
-                                    <li class="list-group-item">
-                                        <div class="info">
-                                            <strong>Inteira</strong>
-                                        </div>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Inteira</strong>
                                         <span class="price">R$ 950,00</span>
-                                    </li>
-                                </a>
-                                <a href="/" class="text-decoration-none">
-                                    <li class="list-group-item">
-                                        <div class="info">
-                                            <strong>Meia-Entrada</strong>
-                                        </div>
+                                    </div>
+                                    <div class="quantity-selector">
+                                        <button class="btn btn-minus" onclick="changeQuantity(this, -1)">-</button>
+                                        <span class="quantity-display" data-price="950">0</span>
+                                        <button class="btn btn-plus" onclick="changeQuantity(this, 1)">+</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Meia-Entrada</strong>
                                         <span class="price">R$ 475,00</span>
-                                    </li>
-                                </a>
-                                <a href="/" class="text-decoration-none">
-                                    <li class="list-group-item">
-                                        <div class="info">
-                                            <strong>Meia-Entrada Idoso</strong>
-                                        </div>
+                                    </div>
+                                    <div class="quantity-selector">
+                                        <button class="btn btn-minus" onclick="changeQuantity(this, -1)">-</button>
+                                        <span class="quantity-display" data-price="475">0</span>
+                                        <button class="btn btn-plus" onclick="changeQuantity(this, 1)">+</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Meia-Entrada Idoso</strong>
                                         <span class="price">R$ 475,00</span>
-                                    </li>
-                                </a>
-                                <a href="/" class="text-decoration-none">
-                                    <li class="list-group-item">
-                                        <div class="info">
-                                            <strong>Meia-Entrada PCD</strong>
-                                        </div>
+                                    </div>
+                                    <div class="quantity-selector">
+                                        <button class="btn btn-minus" onclick="changeQuantity(this, -1)">-</button>
+                                        <span class="quantity-display" data-price="475">0</span>
+                                        <button class="btn btn-plus" onclick="changeQuantity(this, 1)">+</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="info">
+                                        <strong>Meia-Entrada PCD</strong>
                                         <span class="price">R$ 475,00</span>
-                                    </li>
-                                </a>
+                                    </div>
+                                    <div class="quantity-selector">
+                                        <button class="btn btn-minus" onclick="changeQuantity(this, -1)">-</button>
+                                        <span class="quantity-display" data-price="475">0</span>
+                                        <button class="btn btn-plus" onclick="changeQuantity(this, 1)">+</button>
+                                    </div>
+                                </li>
                             </ul>
+
+                            <div id="checkout-section" class="checkout-container d-none mt-4">
+                                <div class="total-display">
+                                    <p id="total-price" class="fw-bold">Total: R$ 0,00</p>
+                                </div>
+                                <button class="btn btn-primary checkout-btn">Continuar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
