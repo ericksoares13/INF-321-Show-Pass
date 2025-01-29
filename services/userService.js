@@ -39,6 +39,30 @@ class UserService {
         return createdUser;
     }
 
+    async updateUser(userId, params) {
+        const user = await this.getUserById(userId);
+        
+        if (params.name && Object.entries(params).every(([key, value]) => user[key] === value)) {
+            return user;
+        } else if (params.name) {
+            const error = {};
+            this.#validateName((user.name = params.name), error);
+            await this.#validateUserName((user.user = params.user), error);
+            this.#validateCellphone((user.cellphone = params.cellphone), error);
+
+            if (Object.keys(error).length > 0) {
+                throw {
+                    user: user,
+                    error: error
+                };
+            }
+        } else {
+            console.log(params);
+        }
+
+        await User.findOneAndUpdate({ _id: user._id }, { $set: user });
+    }
+
     async loginUser(user) {
         const loggedUser = await this.getUserByField({ $or: [
             { email: user.email },

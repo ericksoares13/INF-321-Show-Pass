@@ -21,7 +21,7 @@ async function getUserInfos(userId) {
         name: user.name,
         user: user.user,
         cpf: user.cpf,
-        birthDate: user.birthDate,
+        birthDate: new Date(user.birthDate).toISOString().split('T')[0],
         cellphone: user.cellphone,
         email: user.email
     };
@@ -80,7 +80,35 @@ router.get('/meus-pedidos', authenticate, function(req, res, next) {
 router.get('/meu-perfil', authenticate, async function(req, res, next) {
     const userId = req.cookies.userId;
     const user = await getUserInfos(userId);
-    res.render('profile', { user });
+    res.render('profile', { user, error: {} });
+});
+
+/* PATCH profile page. */
+router.post('/meu-perfil', authenticate, async function(req, res, next) {
+    const userId = req.cookies.userId;
+    let user = await getUserInfos(userId);
+    let params = {};
+
+    if (req.body.name) {
+        params.name = req.body.name;
+        params.user = req.body.user;
+        params.cellphone = req.body.cellphone;
+    }
+
+    if (req.body.password) {
+        params.oldPassword = req.body.oldPassword;
+        params.password = req.body.password;
+        params.checkPassword = req.body.checkPassword;
+    }
+
+    try {
+        await UserService.updateUser(userId, params);
+        user = await getUserInfos(userId);
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.status(400).render('profile', error);
+    }
 });
 
 /* GET support page. */
