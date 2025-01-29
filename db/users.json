@@ -1,0 +1,17 @@
+[
+    {
+        "_id": {
+            "$oid": "679984765e3635f5728e7898"
+        },
+        "name": "Joãozinho Fulano de Tal",
+        "user": "jzinho13",
+        "cpf": "090.637.110-42",
+        "birthDate": {
+            "$date": "2000-10-19T20:00:00.000Z"
+        },
+        "cellphone": "(31) 99851-1325",
+        "email": "joaozinho@email.com",
+        "password": "$2b$10$pUexUr46PHp2jd4Fd2p9w.iyO5acH0fKZRY0urRIQRy5zkYfuPWXu",
+        "__v": 0
+    }
+]

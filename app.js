@@ -4,8 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectDB = require('./db/connect');
-const session = require('express-session');
-const flash = require('connect-flash');
 const populateDatabase = require('./db/populate');
 
 const app = express();
@@ -25,13 +23,6 @@ require('dotenv').config();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(flash());
 
 app.use(logger('dev'));
 app.use(express.json());

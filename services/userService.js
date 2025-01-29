@@ -8,6 +8,14 @@ class UserService {
     async getAllUsers() {
         return await User.find({});
     }
+    
+    async getUserById(userId) {
+        const user = await User.findById(userId);
+        if (!user) {
+            return;
+        }
+        return user;
+    }
 
     async getUserByField(fieldAndValue) {
         const user = await User.findOne(fieldAndValue);

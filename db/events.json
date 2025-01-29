@@ -1,5 +1,8 @@
 [
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e1e"
+        },
         "name": "CAETANO VELOSO & MARIA BETHÂNIA",
         "image": "/images/caetano_bethania.gif",
         "description": "Múltiplas datas em 2025",
@@ -7,7 +10,9 @@
             {
                 "state": "Bahia",
                 "city": "Salvador",
-                "date": "2025-02-08T20:00:00Z",
+                "date": {
+                    "$date": "2025-02-08T20:00:00.000Z"
+                },
                 "locale": "Casa de Apostas Arena Fonte Nova",
                 "address": "Ladeira da Fonte das Pedras, s/n - Nazaré, Salvador - BA, 40050-565",
                 "classification": "Livre para todos os públicos.",
@@ -16,93 +21,134 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "360",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
+                        "value": 360,
+                        "totalAmount": 8000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e20"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e21"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada idoso",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e22"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada PCD",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e23"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Inteira",
-                        "value": "340",
-                        "totalAmount": "2019",
-                        "soldAmount": "0"
+                        "value": 340,
+                        "totalAmount": 2019,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e24"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e25"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada idoso",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e26"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada PCD",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e27"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Inteira",
-                        "value": "140",
-                        "totalAmount": "4875",
-                        "soldAmount": "0"
+                        "value": 140,
+                        "totalAmount": 4875,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e28"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e29"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada idoso",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e2a"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada PCD",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e2b"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e1f"
+                }
             },
             {
                 "state": "Rio de Janeiro",
                 "city": "Rio de Janeiro",
-                "date": "2025-03-15T20:00:00Z",
+                "date": {
+                    "$date": "2025-03-15T20:00:00.000Z"
+                },
                 "locale": "Farmasi Arena",
                 "address": "Av. Embaixador Abelardo Bueno, 3401 - Barra da Tijuca, Rio de Janeiro - RJ, 22775-040",
                 "classification": "Livre para todos os públicos.",
@@ -111,93 +157,134 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "360",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
+                        "value": 360,
+                        "totalAmount": 8000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e2d"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e2e"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada idoso",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e2f"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada PCD",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e30"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Inteira",
-                        "value": "340",
-                        "totalAmount": "2019",
-                        "soldAmount": "0"
+                        "value": 340,
+                        "totalAmount": 2019,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e31"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e32"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada idoso",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e33"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada PCD",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e34"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Inteira",
-                        "value": "140",
-                        "totalAmount": "4875",
-                        "soldAmount": "0"
+                        "value": 140,
+                        "totalAmount": 4875,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e35"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e36"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada idoso",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e37"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada PCD",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e38"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e2c"
+                }
             },
             {
                 "state": "Rio Grande do Sul",
                 "city": "Porto Alegre",
-                "date": "2025-03-22T20:00:00Z",
+                "date": {
+                    "$date": "2025-03-22T20:00:00.000Z"
+                },
                 "locale": "Arena do Grêmio",
                 "address": "Av. Padre Leopoldo Brentano, 110 - Humaitá, Porto Alegre - RS, 90250-590",
                 "classification": "Livre para todos os públicos.",
@@ -206,92 +293,135 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "360",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
+                        "value": 360,
+                        "totalAmount": 8000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e3a"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e3b"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada idoso",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e3c"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada PCD",
-                        "value": "180",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 180,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e3d"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Inteira",
-                        "value": "340",
-                        "totalAmount": "2019",
-                        "soldAmount": "0"
+                        "value": 340,
+                        "totalAmount": 2019,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e3e"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e3f"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada idoso",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e40"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada PCD",
-                        "value": "170",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 170,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e41"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Inteira",
-                        "value": "140",
-                        "totalAmount": "4875",
-                        "soldAmount": "0"
+                        "value": 140,
+                        "totalAmount": 4875,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e42"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e43"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada idoso",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e44"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada PCD",
-                        "value": "120",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 120,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e45"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e39"
+                }
             }
-        ]
+        ],
+        "__v": 0
     },
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e46"
+        },
         "name": "NATIRUTS - LEVE COM VOCÊ",
         "image": "/images/natiruts.png",
         "description": "02 de agosto de 2025, em Brasília",
@@ -299,7 +429,9 @@
             {
                 "state": "Distrito Federal",
                 "city": "Brasília",
-                "date": "2025-08-02T21:00:00Z",
+                "date": {
+                    "$date": "2025-08-02T21:00:00.000Z"
+                },
                 "locale": "ARENA BRB - MANÉ GARRINCHA",
                 "address": "SRPN Portão 1, SRPN - Asa Norte, Brasília - DF, 70070-701",
                 "classification": "Entrada e permanência de crianças/adolescentes de 05 a 15 anos de idade, acompanhados dos pais ou responsáveis, e de 16 a 17 anos, desacompanhados dos pais ou responsáveis legais.",
@@ -308,50 +440,75 @@
                     {
                         "sector": "Cadeira Inferior",
                         "category": "Inteira",
-                        "value": "250",
-                        "totalAmount": "5000",
-                        "soldAmount": "0"
+                        "value": 250,
+                        "totalAmount": 5000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e48"
+                        }
                     },
                     {
                         "sector": "Cadeira Inferior",
                         "category": "Meia-entrada",
-                        "value": "125",
-                        "totalAmount": "2000",
-                        "soldAmount": "0"
+                        "value": 125,
+                        "totalAmount": 2000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e49"
+                        }
                     },
                     {
                         "sector": "Pista Premium",
                         "category": "Inteira",
-                        "value": "390",
-                        "totalAmount": "4000",
-                        "soldAmount": "0"
+                        "value": 390,
+                        "totalAmount": 4000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e4a"
+                        }
                     },
                     {
                         "sector": "Pista Premium",
                         "category": "Meia-entrada",
-                        "value": "195",
-                        "totalAmount": "1600",
-                        "soldAmount": "0"
+                        "value": 195,
+                        "totalAmount": 1600,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e4b"
+                        }
                     },
                     {
                         "sector": "VIP Leve Com Você",
                         "category": "Inteira",
-                        "value": "890",
-                        "totalAmount": "1000",
-                        "soldAmount": "0"
+                        "value": 890,
+                        "totalAmount": 1000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e4c"
+                        }
                     },
                     {
                         "sector": "VIP Leve Com Você",
                         "category": "Meia-entrada",
-                        "value": "695",
-                        "totalAmount": "400",
-                        "soldAmount": "0"
+                        "value": 695,
+                        "totalAmount": 400,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e4d"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e47"
+                }
             }
-        ]
+        ],
+        "__v": 0
     },
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e4e"
+        },
         "name": "MENINAS MALVADAS - O MUSICAL",
         "image": "/images/meninasMalvadas.jpeg",
         "description": "13 de março a 29 de junho de 2025",
@@ -359,73 +516,106 @@
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-03-13T20:00:00Z",
+                "date": {
+                    "$date": "2025-03-13T20:00:00.000Z"
+                },
                 "locale": "Teatro Santander",
                 "address": "Av. Pres. Juscelino Kubitschek, 2041, Itaim Bibi, São Paulo, SP, 04543-011",
                 "classification": "Livre, menores de 12 anos acompanhados dos pais ou responsáveis legais.",
                 "infos": "Adaptação brasileira do sucesso da Broadway, dirigida por Mariano Detry.",
                 "tickets": [
-                {
-                    "sector": "Plateia VIP",
-                    "category": "Inteira",
-                    "value": "400",
-                    "totalAmount": "200",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Plateia VIP",
-                    "category": "Meia-entrada",
-                    "value": "200",
-                    "totalAmount": "80",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Plateia Premium",
-                    "category": "Inteira",
-                    "value": "300",
-                    "totalAmount": "300",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Plateia Premium",
-                    "category": "Meia-entrada",
-                    "value": "150",
-                    "totalAmount": "120",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Plateia",
-                    "category": "Inteira",
-                    "value": "200",
-                    "totalAmount": "500",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Plateia",
-                    "category": "Meia-entrada",
-                    "value": "100",
-                    "totalAmount": "200",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Balcão",
-                    "category": "Inteira",
-                    "value": "100",
-                    "totalAmount": "400",
-                    "soldAmount": "0"
-                },
-                {
-                    "sector": "Balcão",
-                    "category": "Meia-entrada",
-                    "value": "50",
-                    "totalAmount": "160",
-                    "soldAmount": "0"
+                    {
+                        "sector": "Plateia VIP",
+                        "category": "Inteira",
+                        "value": 400,
+                        "totalAmount": 200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e50"
+                        }
+                    },
+                    {
+                        "sector": "Plateia VIP",
+                        "category": "Meia-entrada",
+                        "value": 200,
+                        "totalAmount": 80,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e51"
+                        }
+                    },
+                    {
+                        "sector": "Plateia Premium",
+                        "category": "Inteira",
+                        "value": 300,
+                        "totalAmount": 300,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e52"
+                        }
+                    },
+                    {
+                        "sector": "Plateia Premium",
+                        "category": "Meia-entrada",
+                        "value": 150,
+                        "totalAmount": 120,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e53"
+                        }
+                    },
+                    {
+                        "sector": "Plateia",
+                        "category": "Inteira",
+                        "value": 200,
+                        "totalAmount": 500,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e54"
+                        }
+                    },
+                    {
+                        "sector": "Plateia",
+                        "category": "Meia-entrada",
+                        "value": 100,
+                        "totalAmount": 200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e55"
+                        }
+                    },
+                    {
+                        "sector": "Balcão",
+                        "category": "Inteira",
+                        "value": 100,
+                        "totalAmount": 400,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e56"
+                        }
+                    },
+                    {
+                        "sector": "Balcão",
+                        "category": "Meia-entrada",
+                        "value": 50,
+                        "totalAmount": 160,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e57"
+                        }
+                    }
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e4f"
                 }
-                ]
             }
-        ]
-    },   
+        ],
+        "__v": 0
+    },
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e58"
+        },
         "name": "GUTS WORLD TOUR",
         "image": "/images/oliviaRodrigo.gif",
         "description": "26 de março, com St. Vincent",
@@ -433,7 +623,9 @@
             {
                 "state": "Paraná",
                 "city": "Curitiba",
-                "date": "2025-03-26T21:00:00Z",
+                "date": {
+                    "$date": "2025-03-26T21:00:00.000Z"
+                },
                 "locale": "Estádio Couto Pereira",
                 "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
                 "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
@@ -442,92 +634,135 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "950",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
+                        "value": 950,
+                        "totalAmount": 8000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e5a"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "475",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 475,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e5b"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada idoso",
-                        "value": "475",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 475,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e5c"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada PCD",
-                        "value": "475",
-                        "totalAmount": "3200",
-                        "soldAmount": "0"
+                        "value": 475,
+                        "totalAmount": 3200,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e5d"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Inteira",
-                        "value": "660",
-                        "totalAmount": "2019",
-                        "soldAmount": "0"
+                        "value": 660,
+                        "totalAmount": 2019,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e5e"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada",
-                        "value": "330",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 330,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e5f"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada idoso",
-                        "value": "330",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 330,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e60"
+                        }
                     },
                     {
                         "sector": "Cadeira inferior",
                         "category": "Meia-entrada PCD",
-                        "value": "330",
-                        "totalAmount": "808",
-                        "soldAmount": "0"
+                        "value": 330,
+                        "totalAmount": 808,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e61"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Inteira",
-                        "value": "550",
-                        "totalAmount": "4875",
-                        "soldAmount": "0"
+                        "value": 550,
+                        "totalAmount": 4875,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e62"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada",
-                        "value": "275",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 275,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e63"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada idoso",
-                        "value": "275",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 275,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e64"
+                        }
                     },
                     {
                         "sector": "Cadeira superior",
                         "category": "Meia-entrada PCD",
-                        "value": "275",
-                        "totalAmount": "1950",
-                        "soldAmount": "0"
+                        "value": 275,
+                        "totalAmount": 1950,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e65"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e59"
+                }
             }
-        ]
+        ],
+        "__v": 0
     },
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e66"
+        },
         "name": "LOLLAPALOOZA BRASIL 2025",
         "image": "/images/lollapalooza.gif",
         "description": "Datas em 28, 29 e 30 de março",
@@ -535,7 +770,9 @@
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-03-28T12:00:00Z",
+                "date": {
+                    "$date": "2025-03-28T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
@@ -544,23 +781,34 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "1000",
-                        "totalAmount": "30000",
-                        "soldAmount": "15000"
+                        "value": 1000,
+                        "totalAmount": 30000,
+                        "soldAmount": 15000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e68"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "600",
-                        "totalAmount": "10000",
-                        "soldAmount": "7000"
+                        "value": 600,
+                        "totalAmount": 10000,
+                        "soldAmount": 7000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e69"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e67"
+                }
             },
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-03-29T12:00:00Z",
+                "date": {
+                    "$date": "2025-03-29T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
@@ -569,23 +817,34 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "1000",
-                        "totalAmount": "30000",
-                        "soldAmount": "12000"
+                        "value": 1000,
+                        "totalAmount": 30000,
+                        "soldAmount": 12000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e6b"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "600",
-                        "totalAmount": "10000",
-                        "soldAmount": "6000"
+                        "value": 600,
+                        "totalAmount": 10000,
+                        "soldAmount": 6000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e6c"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e6a"
+                }
             },
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-03-30T12:00:00Z",
+                "date": {
+                    "$date": "2025-03-30T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
@@ -594,22 +853,35 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "1000",
-                        "totalAmount": "30000",
-                        "soldAmount": "10000"
+                        "value": 1000,
+                        "totalAmount": 30000,
+                        "soldAmount": 10000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e6e"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "600",
-                        "totalAmount": "10000",
-                        "soldAmount": "5000"
+                        "value": 600,
+                        "totalAmount": 10000,
+                        "soldAmount": 5000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e6f"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e6d"
+                }
             }
-        ]
+        ],
+        "__v": 0
     },
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e70"
+        },
         "name": "COLDPLAY",
         "image": "/images/coldplay.jpg",
         "description": "Em breve mais informações",
@@ -617,7 +889,9 @@
             {
                 "state": "Paraná",
                 "city": "Curitiba",
-                "date": "2025-03-26T21:00:00Z",
+                "date": {
+                    "$date": "2025-03-26T21:00:00.000Z"
+                },
                 "locale": "Estádio Couto Pereira",
                 "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
                 "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
@@ -626,15 +900,25 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "950",
-                        "totalAmount": "8000",
-                        "soldAmount": "0"
+                        "value": 950,
+                        "totalAmount": 8000,
+                        "soldAmount": 0,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e72"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e71"
+                }
             }
-        ]
+        ],
+        "__v": 0
     },
     {
+        "_id": {
+            "$oid": "679987884fcf0fdfe9533e73"
+        },
         "name": "THE TOWN 2025",
         "image": "/images/theTown.gif",
         "description": "Datas em 6, 7, 12, 13 e 14 de setembro",
@@ -642,7 +926,9 @@
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-09-06T12:00:00Z",
+                "date": {
+                    "$date": "2025-09-06T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
@@ -651,37 +937,54 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "815",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 815,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e75"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Inteira",
-                        "value": "1379",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 1379,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e76"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "407.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 407.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e77"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Meia-entrada",
-                        "value": "689.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 689.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e78"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e74"
+                }
             },
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-09-07T12:00:00Z",
+                "date": {
+                    "$date": "2025-09-07T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
@@ -690,37 +993,54 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "815",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 815,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e7a"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Inteira",
-                        "value": "1379",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 1379,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e7b"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "407.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 407.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e7c"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Meia-entrada",
-                        "value": "689.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 689.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e7d"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e79"
+                }
             },
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-09-12T12:00:00Z",
+                "date": {
+                    "$date": "2025-09-12T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
@@ -729,37 +1049,54 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "815",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 815,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e7f"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Inteira",
-                        "value": "1379",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 1379,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e80"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "407.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 407.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e81"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Meia-entrada",
-                        "value": "689.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 689.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e82"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e7e"
+                }
             },
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-09-13T12:00:00Z",
+                "date": {
+                    "$date": "2025-09-13T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
@@ -768,37 +1105,54 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "815",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 815,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e84"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Inteira",
-                        "value": "1379",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 1379,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e85"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "407.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 407.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e86"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Meia-entrada",
-                        "value": "689.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 689.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e87"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e83"
+                }
             },
             {
                 "state": "São Paulo",
                 "city": "São Paulo",
-                "date": "2025-09-14T12:00:00Z",
+                "date": {
+                    "$date": "2025-09-14T12:00:00.000Z"
+                },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
                 "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
@@ -807,33 +1161,49 @@
                     {
                         "sector": "Pista",
                         "category": "Inteira",
-                        "value": "815",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 815,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e89"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Inteira",
-                        "value": "1379",
-                        "totalAmount": "40000",
-                        "soldAmount": "20000"
+                        "value": 1379,
+                        "totalAmount": 40000,
+                        "soldAmount": 20000,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e8a"
+                        }
                     },
                     {
                         "sector": "Pista",
                         "category": "Meia-entrada",
-                        "value": "407.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 407.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e8b"
+                        }
                     },
                     {
                         "sector": "Área VIP",
                         "category": "Meia-entrada",
-                        "value": "689.50",
-                        "totalAmount": "10000",
-                        "soldAmount": "2500"
+                        "value": 689.5,
+                        "totalAmount": 10000,
+                        "soldAmount": 2500,
+                        "_id": {
+                            "$oid": "679987884fcf0fdfe9533e8c"
+                        }
                     }
-                ]
+                ],
+                "_id": {
+                    "$oid": "679987884fcf0fdfe9533e88"
+                }
             }
-        ]
+        ],
+        "__v": 0
     }
 ]

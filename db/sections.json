@@ -1,0 +1,38 @@
+[
+    {
+        "_id": {
+            "$oid": "679989dc1aa7bc550f1f5e27"
+        },
+        "name": "Para toda a família",
+        "events": [
+            {
+                "$oid": "679987884fcf0fdfe9533e1e"
+            },
+            {
+                "$oid": "679987884fcf0fdfe9533e46"
+            },
+            {
+                "$oid": "679987884fcf0fdfe9533e4e"
+            }
+        ],
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "679989dc1aa7bc550f1f5e28"
+        },
+        "name": "Destaques da semana",
+        "events": [
+            {
+                "$oid": "679987884fcf0fdfe9533e58"
+            },
+            {
+                "$oid": "679987884fcf0fdfe9533e66"
+            },
+            {
+                "$oid": "679987884fcf0fdfe9533e73"
+            }
+        ],
+        "__v": 0
+    }
+]

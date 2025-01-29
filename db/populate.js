@@ -2,58 +2,91 @@ const fs = require('fs').promises;
 const Event = require('../models/event/Event');
 const Carousel = require('../models/event/sections/Carousel');
 const Section = require('../models/event/sections/Section');
+const User = require('../models/User');
+const mongoose = require('mongoose');
 
 async function populateEvents() {
-    await Event.deleteMany({});
     const data = await fs.readFile('./db/events.json', 'utf-8');
-    await Event.insertMany(JSON.parse(data));
+    const events = JSON.parse(data).map(event => ({
+        ...event,
+        _id: new mongoose.Types.ObjectId(event._id.$oid),
+        dates: event.dates.map(date => ({
+            ...date,
+            _id: new mongoose.Types.ObjectId(date._id.$oid),
+            date: new Date(date.date.$date),
+            tickets: date.tickets.map(ticket => ({
+                ...ticket,
+                _id: new mongoose.Types.ObjectId(ticket._id.$oid),
+            }))
+        })),
+    }));
+
+    for (const event of events) {
+        const existingEvent = await Event.findOne({ _id: event._id });
+
+        if (!existingEvent) {
+            await Event.create(event);
+        }
+    }
 }
 
 async function populateCarousel() {
     await Carousel.deleteMany({});
+    const data = await fs.readFile('./db/carousel.json', 'utf-8');
+    const carousels = JSON.parse(data).map(carousel => ({
+        ...carousel,
+        _id: new mongoose.Types.ObjectId(carousel._id.$oid),
+        events: carousel.events.map(eventId => new mongoose.Types.ObjectId(eventId.$oid)),
+    }));
 
-    const olivia = await Event.find({ name: /GUTS WORLD TOUR/ });
-    const lolla = await Event.find({ name: /LOLLAPALOOZA BRASIL 2025/ });
-    const coldplay = await Event.find({ name: /COLDPLAY/ });
-    const theTown = await Event.find({ name: /THE TOWN 2025/ });
-    const caetano = await Event.find({ name: /CAETANO VELOSO & MARIA BETHÂNIA/ });
+    for (const carousel of carousels) {
+        const existingCarousel = await Carousel.findOne({ _id: carousel._id });
 
-    const carousel = new Carousel({
-        events: [olivia[0]._id, lolla[0]._id, coldplay[0]._id, theTown[0]._id, caetano[0]._id]
-    });
-
-    await carousel.save();
+        if (!existingCarousel) {
+            await Carousel.create(carousel);
+        }
+    }
 }
 
 async function populateSections() {
-    await Section.deleteMany({});
+    const data = await fs.readFile('./db/sections.json', 'utf-8');
+    const sections = JSON.parse(data).map(section => ({
+        ...section,
+        _id: new mongoose.Types.ObjectId(section._id.$oid),
+        events: section.events.map(eventId => new mongoose.Types.ObjectId(eventId.$oid)),
+    }));
 
-    const caetano = await Event.find({ name: /CAETANO VELOSO & MARIA BETHÂNIA/ });
-    const natirues = await Event.find({ name: /NATIRUTS - LEVE COM VOCÊ/ });
-    const malvadas = await Event.find({ name: /MENINAS MALVADAS - O MUSICAL/ });
+    for (const section of sections) {
+        const existingSection = await Section.findOne({ _id: section._id });
 
-    const olivia = await Event.find({ name: /GUTS WORLD TOUR/ });
-    const lolla = await Event.find({ name: /LOLLAPALOOZA BRASIL 2025/ });
-    const theTown = await Event.find({ name: /THE TOWN 2025/ });
+        if (!existingSection) {
+            await Section.create(section);
+        }
+    }
+}
 
-    const forAllFamily = new Section({
-        name: 'Para toda a família',
-        events: [caetano[0]._id, natirues[0]._id, malvadas[0]._id]
-    });
+async function populateUsers() {
+    const data = await fs.readFile('./db/users.json', 'utf-8');
+    const users = JSON.parse(data).map(user => ({
+        ...user,
+        _id: new mongoose.Types.ObjectId(user._id.$oid),
+        birthDate: new Date(user.birthDate.$date)
+    }));
 
-    const weekHighlights = new Section({
-        name: 'Destaques da semana',
-        events: [olivia[0]._id, lolla[0]._id, theTown[0]._id]
-    });
+    for (const user of users) {
+        const existingUser = await User.findOne({ _id: user._id });
 
-    await forAllFamily.save();
-    await weekHighlights.save();
+        if (!existingUser) {
+            await User.create(userData);
+        }
+    }
 }
 
 async function populateFromJSON() {
     await populateEvents();
     await populateCarousel();
     await populateSections();
+    await populateUsers();
 }
 
 module.exports = populateFromJSON;

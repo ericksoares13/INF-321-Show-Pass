@@ -15,6 +15,18 @@ async function getEventInfos(eventId) {
     };
 }
 
+async function getUserInfos(userId) {
+    const user = await UserService.getUserById(userId);
+    return {
+        name: user.name,
+        user: user.user,
+        cpf: user.cpf,
+        birthDate: user.birthDate,
+        cellphone: user.cellphone,
+        email: user.email
+    };
+}
+
 /* Authenticate user */
 const authenticate = function(req, res, next) {
     const authToken = req.cookies.authToken;
@@ -65,8 +77,10 @@ router.get('/meus-pedidos', authenticate, function(req, res, next) {
 });
 
 /* GET profile page. */
-router.get('/meu-perfil', authenticate, function(req, res, next) {
-    res.render('profile');
+router.get('/meu-perfil', authenticate, async function(req, res, next) {
+    const userId = req.cookies.userId;
+    const user = await getUserInfos(userId);
+    res.render('profile', { user });
 });
 
 /* GET support page. */
@@ -99,7 +113,7 @@ router.post('/cadastrar', async function(req, res, next) {
         const createdUser = await UserService.createUser(user);
         const token = UserService.generateToken(createdUser);
         res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 3600000 });
-        req.session.userId = createdUser._id;
+        res.cookie('userId', createdUser._id, { httpOnly: true, secure: true, maxAge: 3600000 });
         res.redirect('/');
     } catch (error) {
         res.status(400).render('register', { user, error });
@@ -125,7 +139,7 @@ router.post('/entrar', async function(req, res, next) {
         const loggedUser = await UserService.loginUser(user);
         const token = UserService.generateToken(loggedUser);
         res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 3600000 });
-        req.session.userId = loggedUser._id;
+        res.cookie('userId', loggedUser._id, { httpOnly: true, secure: true, maxAge: 3600000 });
         res.redirect('/');
     } catch (error) {
         res.status(400).render('login', { user, error });
@@ -135,7 +149,7 @@ router.post('/entrar', async function(req, res, next) {
 /* Logout user */
 router.get('/sair', function(req, res, next) {
     res.clearCookie('authToken');
-    delete req.session.userId;
+    res.clearCookie('userId');
     res.redirect('/');
 });
 

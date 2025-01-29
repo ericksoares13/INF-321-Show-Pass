@@ -9,11 +9,9 @@ class EventService {
 
     async getEventById(eventId) {
         const event = await Event.findById(eventId);
-
         if (!event) {
             return;
         }
-
         return event;
     }
 
