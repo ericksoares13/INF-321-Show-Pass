@@ -106,8 +106,11 @@ router.post('/meu-perfil', authenticate, async function(req, res, next) {
         user = await getUserInfos(userId);
         res.redirect('/');
     } catch (error) {
-        console.log(error);
-        res.status(400).render('profile', error);
+        user = await getUserInfos(userId);
+        user.oldPassword = req.body.oldPassword;
+        user.password = req.body.password;
+        user.checkPassword = req.body.checkPassword;
+        res.status(400).render('profile', { user: user, error: error });
     }
 });
 

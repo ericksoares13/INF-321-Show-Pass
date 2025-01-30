@@ -220,18 +220,26 @@ let errorMessages = {};
 
 // SCRIPT PARA ALTERAÇÃO DA VISUALIZAÇÃO CONFORME A OPÇÃO DE CONTA ESCOLHIDA PELO USUÁRIO
 
-document.getElementById('info-tab').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('info-section').style.display = 'block';
-    document.getElementById('password-section').style.display = 'none';
-    this.classList.add('active');
-    document.getElementById('password-tab').classList.remove('active');
+document.addEventListener('DOMContentLoaded', function () {
+    const lastTab = localStorage.getItem('lastTab') || 'info-tab';
+    document.getElementById(lastTab).click();
 });
 
-document.getElementById('password-tab').addEventListener('click', function(e) {
+function switchTab(activeTab, inactiveTab, activeSection, inactiveSection) {
+    document.getElementById(activeTab).classList.add('active');
+    document.getElementById(inactiveTab).classList.remove('active');
+    document.getElementById(activeSection).style.display = 'block';
+    document.getElementById(inactiveSection).style.display = 'none';
+
+    localStorage.setItem('lastTab', activeTab);
+}
+
+document.getElementById('info-tab').addEventListener('click', function (e) {
     e.preventDefault();
-    document.getElementById('info-section').style.display = 'none';
-    document.getElementById('password-section').style.display = 'block';
-    this.classList.add('active');
-    document.getElementById('info-tab').classList.remove('active');
+    switchTab('info-tab', 'password-tab', 'info-section', 'password-section');
+});
+
+document.getElementById('password-tab').addEventListener('click', function (e) {
+    e.preventDefault();
+    switchTab('password-tab', 'info-tab', 'password-section', 'info-section');
 });

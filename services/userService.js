@@ -41,23 +41,29 @@ class UserService {
 
     async updateUser(userId, params) {
         const user = await this.getUserById(userId);
+        const error = {};
         
         if (params.name && Object.entries(params).every(([key, value]) => user[key] === value)) {
             return user;
         } else if (params.name) {
-            const error = {};
             this.#validateName((user.name = params.name), error);
             await this.#validateUserName((user.user = params.user), error);
             this.#validateCellphone((user.cellphone = params.cellphone), error);
-
-            if (Object.keys(error).length > 0) {
-                throw {
-                    user: user,
-                    error: error
-                };
-            }
         } else {
-            console.log(params);
+            const isMatch = await this.checkPassword(params.oldPassword, user.password);
+            if (!isMatch) {
+                error.oldPassword = 'Senha incorreta.';
+            }
+            this.#validatePassword(params.password, error);
+            this.#validateCheckPassword(params.password, params.checkPassword, error);
+        }
+            
+        if (Object.keys(error).length > 0) {
+            throw error;
+        }
+
+        if (params.password) {
+            user.password = await this.hashPassword(params.password);
         }
 
         await User.findOneAndUpdate({ _id: user._id }, { $set: user });
