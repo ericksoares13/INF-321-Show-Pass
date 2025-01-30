@@ -163,6 +163,28 @@ const validateBirthDate = (date) => {
         return false;
     }
 
+    const birthDate = new Date(date + 'T00:00:00');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+        
+    if (birthDate > today) {
+        errorMessages['birthDate'] = 'A data não pode ser no futuro.';
+        return false;
+    }
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+    }
+
+    if (age < 18) {
+        errorMessages['birthDate'] = 'Idade mínima de 18 anos.';
+        return false;
+    }
+
     return true;
 };
 
@@ -256,6 +278,10 @@ let errorMessages = {};
 
                 if (validators[id]) {
                     const isValid = validators[id](input.value);
+
+                    if (id == 'birthDate' && input.validity.badInput) {
+                        errorMessages[id] = 'Data inválida.'
+                    }
             
                     if (!isValid) {
                         valid = false;

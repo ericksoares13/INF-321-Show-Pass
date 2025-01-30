@@ -194,8 +194,23 @@ class UserService {
         }
 
         const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
         if (birthDate > today) {
-            error.birthDate = 'A data de nascimento não pode ser no futuro.';
+            error.birthDate = 'A data não pode ser no futuro.';
+            return;
+        }
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            age--;
+        }
+
+        if (age < 18) {
+            error.birthDate = 'Idade mínima de 18 anos.';
         }
     }
 
