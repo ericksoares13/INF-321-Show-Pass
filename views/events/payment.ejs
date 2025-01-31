@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/events/payment.css" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
+
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('../components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('../components/footer') %>
+        </footer>
+    </body>
+</html>

@@ -9,6 +9,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
         <script src="/javascripts/components/header.js" defer></script>
         <script src="/javascripts/icon.js" defer></script>
+        <script src="/javascripts/events/confirmation.js" defer></script>
 
         <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
         <title>ShowPass</title>
@@ -28,18 +29,10 @@
                     <p class="text-muted">Atenção: Seus ingressos ainda não estão reservados. Confirme sua seleção para garantir seu lugar.</p>
                     
                     <div id="ticket-details">
-                        <div class="event-title">Guts World Tour - Curitiba</div>
+                        <div class="event-title">Guts World Tour - Curitiba (26/03/25)</div>
                         <div class="ticket-info">
                             <span><strong>1x </strong>Pista - Inteira</span>
                             <span>R$ 900,00</span>
-                        </div>
-                        <div class="ticket-info">
-                            <span>Taxa de Serviço</span>
-                            <span>R$ 00,00</span>
-                        </div>
-                        <div class="ticket-info">
-                            <span>Ingresso Digital</span>
-                            <span>R$ 00,00</span>
                         </div>
                     </div>
                     
@@ -47,7 +40,7 @@
                     <h5 class="total-container">Total: <span id="total-price">R$ 900,00</span></h5>
                     
                     <div class="mt-3">
-                        <button class="btn btn-primary" onclick="confirmarReserva()">Confirmar a Reserva</button>
+                        <a href="/" class="btn btn-primary">Confirmar a Reserva</a>
                     </div>
                 </div>
             </div>
