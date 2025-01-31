@@ -93,6 +93,18 @@ class UserService {
         return token;
     }
 
+    async getUserInfos(userId) {
+        const user = await UserService.getUserById(userId);
+        return {
+            name: user.name,
+            user: user.user,
+            cpf: user.cpf,
+            birthDate: new Date(user.birthDate).toISOString().split('T')[0],
+            cellphone: user.cellphone,
+            email: user.email
+        };
+    }
+
     async #validateUser(user) {
         const error = {};
 

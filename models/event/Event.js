@@ -6,6 +6,11 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    link: {
+        type: String,
+        required: true,
+        unique: true
+    },
     image: {
         type: String,
         required: true
@@ -14,12 +19,28 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dates: {
-        type: [EventDateInfosSchema],
+    infos: {
+        type: String,
         required: true
     },
-    name: {
-        
+    classification: {
+        type: String,
+        required: true
+    },
+    ticketSell: {
+        type: String,
+        required: true
+    },
+    ticketPrice: {
+        type: String,
+        required: true
+    },
+    sectorImage: {
+        type: String,
+        required: true
+    },
+    dates: {
+        type: [EventDateInfosSchema]
     }
 });
 

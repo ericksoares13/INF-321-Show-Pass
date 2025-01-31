@@ -22,14 +22,6 @@ const EventDateInfosSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    classification: {
-        type: String,
-        required: true
-    },
-    infos: {
-        type: String,
-        required: true
-    },
     tickets: {
         type: [EventTicketSchema],
         required: true

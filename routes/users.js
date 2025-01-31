@@ -5,28 +5,6 @@ const jwt = require('jsonwebtoken');
 const UserService = require('../services/userService');
 const EventService = require('../services/eventService');
 
-async function getEventInfos(eventId) {
-    const event = await EventService.getEventById(eventId);
-    return {
-        name: event.name,
-        image: event.image,
-        description: event.description,
-        link: 'eventos/olivia-rodrigo'
-    };
-}
-
-async function getUserInfos(userId) {
-    const user = await UserService.getUserById(userId);
-    return {
-        name: user.name,
-        user: user.user,
-        cpf: user.cpf,
-        birthDate: new Date(user.birthDate).toISOString().split('T')[0],
-        cellphone: user.cellphone,
-        email: user.email
-    };
-}
-
 /* Authenticate user */
 const authenticate = function(req, res, next) {
     const authToken = req.cookies.authToken;
@@ -46,14 +24,14 @@ router.get('/', async function(req, res, next) {
     try {
         const carouselEventIds = await EventService.getCarousel();
         const carouselEvents = await Promise.all(
-            carouselEventIds.map(async eventId => await getEventInfos(eventId))
+            carouselEventIds.map(async eventId => await EventService.getIndexEventInfos(eventId))
         );
         
         const sections = await EventService.getSections();
         const sectionsEvents = await Promise.all(
             sections.map(async section => {
                 const eventInfos = await Promise.all(
-                    section.events.map(async eventId => await getEventInfos(eventId))
+                    section.events.map(async eventId => await EventService.getIndexEventInfos(eventId))
                 );
                 return {
                     section: section.name,
@@ -79,14 +57,14 @@ router.get('/meus-pedidos', authenticate, function(req, res, next) {
 /* GET profile page. */
 router.get('/meu-perfil', authenticate, async function(req, res, next) {
     const userId = req.cookies.userId;
-    const user = await getUserInfos(userId);
+    const user = await UserService.getUserInfos(userId);
     res.render('profile', { user, error: {} });
 });
 
 /* PATCH profile page. */
 router.post('/meu-perfil', authenticate, async function(req, res, next) {
     const userId = req.cookies.userId;
-    let user = await getUserInfos(userId);
+    let user = await UserService.getUserInfos(userId);
     let params = {};
 
     if (req.body.name) {
@@ -103,10 +81,10 @@ router.post('/meu-perfil', authenticate, async function(req, res, next) {
 
     try {
         await UserService.updateUser(userId, params);
-        user = await getUserInfos(userId);
+        user = await UserService.getUserInfos(userId);
         res.redirect('/');
     } catch (error) {
-        user = await getUserInfos(userId);
+        user = await UserService.getUserInfos(userId);
         user.oldPassword = req.body.oldPassword;
         user.password = req.body.password;
         user.checkPassword = req.body.checkPassword;

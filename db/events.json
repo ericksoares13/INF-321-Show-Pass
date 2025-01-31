@@ -4,8 +4,14 @@
             "$oid": "679987884fcf0fdfe9533e1e"
         },
         "name": "CAETANO VELOSO & MARIA BETHÂNIA",
+        "link": "caetano-veloso-e-maria-bethania",
         "image": "/images/caetano_bethania.gif",
         "description": "Múltiplas datas em 2025",
+        "infos": "Escrever no .json",
+        "classification": "Escrever no .json",
+        "ticketSell": "Escrever no .json",
+        "ticketPrice": "Escrever no .json",
+        "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
                 "state": "Bahia",
@@ -15,8 +21,6 @@
                 },
                 "locale": "Casa de Apostas Arena Fonte Nova",
                 "address": "Ladeira da Fonte das Pedras, s/n - Nazaré, Salvador - BA, 40050-565",
-                "classification": "Livre para todos os públicos.",
-                "infos": "Apresentando clássicos de suas carreiras em nova turnê. Show extra devido à alta demanda.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -151,8 +155,6 @@
                 },
                 "locale": "Farmasi Arena",
                 "address": "Av. Embaixador Abelardo Bueno, 3401 - Barra da Tijuca, Rio de Janeiro - RJ, 22775-040",
-                "classification": "Livre para todos os públicos.",
-                "infos": "Último show da turnê no Rio de Janeiro.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -287,8 +289,6 @@
                 },
                 "locale": "Arena do Grêmio",
                 "address": "Av. Padre Leopoldo Brentano, 110 - Humaitá, Porto Alegre - RS, 90250-590",
-                "classification": "Livre para todos os públicos.",
-                "infos": "Primeira apresentação da dupla na cidade em anos.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -423,8 +423,14 @@
             "$oid": "679987884fcf0fdfe9533e46"
         },
         "name": "NATIRUTS - LEVE COM VOCÊ",
+        "link": "natirus-leve-com-voce",
         "image": "/images/natiruts.png",
         "description": "02 de agosto de 2025, em Brasília",
+        "infos": "Escrever no .json",
+        "classification": "Escrever no .json",
+        "ticketSell": "Escrever no .json",
+        "ticketPrice": "Escrever no .json",
+        "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
                 "state": "Distrito Federal",
@@ -434,8 +440,6 @@
                 },
                 "locale": "ARENA BRB - MANÉ GARRINCHA",
                 "address": "SRPN Portão 1, SRPN - Asa Norte, Brasília - DF, 70070-701",
-                "classification": "Entrada e permanência de crianças/adolescentes de 05 a 15 anos de idade, acompanhados dos pais ou responsáveis, e de 16 a 17 anos, desacompanhados dos pais ou responsáveis legais.",
-                "infos": "Show de despedida da banda Natiruts em sua cidade natal.",
                 "tickets": [
                     {
                         "sector": "Cadeira Inferior",
@@ -510,8 +514,14 @@
             "$oid": "679987884fcf0fdfe9533e4e"
         },
         "name": "MENINAS MALVADAS - O MUSICAL",
+        "link": "meninas-malvadas-o-musical",
         "image": "/images/meninasMalvadas.jpeg",
         "description": "13 de março a 29 de junho de 2025",
+        "infos": "Escrever no .json",
+        "classification": "Escrever no .json",
+        "ticketSell": "Escrever no .json",
+        "ticketPrice": "Escrever no .json",
+        "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
                 "state": "São Paulo",
@@ -521,8 +531,6 @@
                 },
                 "locale": "Teatro Santander",
                 "address": "Av. Pres. Juscelino Kubitschek, 2041, Itaim Bibi, São Paulo, SP, 04543-011",
-                "classification": "Livre, menores de 12 anos acompanhados dos pais ou responsáveis legais.",
-                "infos": "Adaptação brasileira do sucesso da Broadway, dirigida por Mariano Detry.",
                 "tickets": [
                     {
                         "sector": "Plateia VIP",
@@ -617,8 +625,14 @@
             "$oid": "679987884fcf0fdfe9533e58"
         },
         "name": "GUTS WORLD TOUR",
+        "link": "olivia-rodrigo-guts-world-tour",
         "image": "/images/oliviaRodrigo.gif",
         "description": "26 de março, com St. Vincent",
+        "infos": "Prepare-se para uma experiência única e emocionante! A aguardada GUTS World Tour, de Olivia Rodrigo, finalmente marcará a estreia da artista no Brasil, trazendo apresentações imperdíveis em Curitiba, São Paulo e Rio de Janeiro. Reconhecida como uma das artistas mais talentosas e influentes da nova geração, Olivia promete encantar o público brasileiro com performances cheias de energia, emoção e, claro, seus sucessos icônicos.\n\nA GUTS World Tour celebra o segundo álbum de estúdio de Olivia Rodrigo, intitulado GUTS, que estreou no topo das paradas globais e consolidou ainda mais seu nome na música pop. Com letras sinceras, melodias cativantes e uma presença de palco arrebatadora, Olivia levará seus fãs em uma jornada musical inesquecível, apresentando desde hits como \"Vampire\" e \"Bad Idea Right?\" até faixas amadas de seu álbum de estreia, SOUR, incluindo \"Drivers License\" e \"Good 4 U\".",
+        "classification": "A classificação para os shows é de 16 anos. No entanto, fãs entre 5 e 15 anos poderão comparecer, desde que acompanhados por seus pais ou responsáveis legais. Essa é a oportunidade perfeita para famílias e amigos curtirem juntos uma noite cheia de música e emoção.",
+        "ticketSell": "A \"GUTS World Tour\" é a segunda turnê da cantora e compositora americana Olivia Rodrigo, promovendo seu segundo álbum de estúdio, \"Guts\" (2023). A turnê teve início em 23 de fevereiro de 2024, em Palm Desert, Estados Unidos, e está programada para concluir em 1º de julho de 2025, em Manchester, Inglaterra, totalizando 101 shows em diversas partes do mundo, incluindo América do Norte, Europa, Ásia, Oceania e Brasil. Em 26 de março de 2025, Olivia Rodrigo realizará seu primeiro show no Brasil, no Estádio Couto Pereira, em Curitiba, Paraná. A apresentação contará com a participação especial da artista St. Vincent. Os portões serão abertos às 16h, e o show está programado para começar às 21h30. A classificação etária é de 16 anos; menores de 5 a 15 anos devem estar acompanhados dos pais ou responsáveis legais.",
+        "ticketPrice": "* Pista:\n * Inteira: R$ 950\n * Meia-entrada: R$ 475\n * Meia-entrada idoso: R$ 475\n * Meia-entrada PCD: R$ 475\n\n* Cadeira Inferior:\n * Inteira: R$ 660\n * Meia-entrada: R$ 330\n * Meia-entrada idoso: R$ 330\n * Meia-entrada PCD: R$ 330\n\n* Cadeira Superior:\n * Inteira: R$ 550\n * Meia-entrada: R$ 275\n * Meia-entrada idoso: R$ 275\n * Meia-entrada PCD: R$ 275",
+        "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
                 "state": "Paraná",
@@ -628,8 +642,6 @@
                 },
                 "locale": "Estádio Couto Pereira",
                 "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
-                "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
-                "infos": "Primeiro show de Olivia Rodrigo no Brasil, com participação especial de St. Vincent.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -764,8 +776,14 @@
             "$oid": "679987884fcf0fdfe9533e66"
         },
         "name": "LOLLAPALOOZA BRASIL 2025",
+        "link": "lollapalooza-brasil-2025",
         "image": "/images/lollapalooza.gif",
         "description": "Datas em 28, 29 e 30 de março",
+        "infos": "Escrever no .json",
+        "classification": "Escrever no .json",
+        "ticketSell": "Escrever no .json",
+        "ticketPrice": "Escrever no .json",
+        "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
                 "state": "São Paulo",
@@ -775,8 +793,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
-                "infos": "Shows de Olivia Rodrigo, Tool e Alanis Morissette.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -811,8 +827,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
-                "infos": "Shows de Justin Timberlake, Shawn Mendes e Rüfüs.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -847,8 +861,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "15 anos. A entrada de menores entre 5 a 14 anos será permitida desde que estejam acompanhados dos pais ou responsáveis legais. Proibida entrada de menores de 5 anos.",
-                "infos": "Encerramento com grandes surpresas do lineup.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -883,36 +895,15 @@
             "$oid": "679987884fcf0fdfe9533e70"
         },
         "name": "COLDPLAY",
+        "link": "coldplay",
         "image": "/images/coldplay.jpg",
         "description": "Em breve mais informações",
-        "dates": [
-            {
-                "state": "Paraná",
-                "city": "Curitiba",
-                "date": {
-                    "$date": "2025-03-26T21:00:00.000Z"
-                },
-                "locale": "Estádio Couto Pereira",
-                "address": "R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR, 80060-195",
-                "classification": "16 anos. Menores de 05 a 15 anos, apenas acompanhados dos pais ou responsáveis legais.",
-                "infos": "Vai ter um textinho com mais informações aqui.",
-                "tickets": [
-                    {
-                        "sector": "Pista",
-                        "category": "Inteira",
-                        "value": 950,
-                        "totalAmount": 8000,
-                        "soldAmount": 0,
-                        "_id": {
-                            "$oid": "679987884fcf0fdfe9533e72"
-                        }
-                    }
-                ],
-                "_id": {
-                    "$oid": "679987884fcf0fdfe9533e71"
-                }
-            }
-        ],
+        "infos": "Escrever no .json",
+        "classification": "Escrever no .json",
+        "ticketSell": "Escrever no .json",
+        "ticketPrice": "Escrever no .json",
+        "sectorImage": "/images/setoresOlivia.png",
+        "dates": [],
         "__v": 0
     },
     {
@@ -920,8 +911,14 @@
             "$oid": "679987884fcf0fdfe9533e73"
         },
         "name": "THE TOWN 2025",
+        "link": "the-town-2025",
         "image": "/images/theTown.gif",
         "description": "Datas em 6, 7, 12, 13 e 14 de setembro",
+        "infos": "Escrever no .json",
+        "classification": "Escrever no .json",
+        "ticketSell": "Escrever no .json",
+        "ticketPrice": "Escrever no .json",
+        "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
                 "state": "São Paulo",
@@ -931,8 +928,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
-                "infos": "Shows de Katy Perry e outros artistas internacionais.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -987,8 +982,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
-                "infos": "Dia do Rock com Green Day, Bruce Dickinson e CPM 22.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -1043,8 +1036,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
-                "infos": "Shows de artistas brasileiros e internacionais.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -1099,8 +1090,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
-                "infos": "Apresentações focadas no pop e música eletrônica.",
                 "tickets": [
                     {
                         "sector": "Pista",
@@ -1155,8 +1144,6 @@
                 },
                 "locale": "Autódromo de Interlagos",
                 "address": "Av. Sen. Teotônio Vilela, 261 - Interlagos, São Paulo - SP, 04801-010",
-                "classification": "16 anos. No entanto, menores de 16 anos poderão participar, desde que acompanhados pelos pais ou responsáveis legais, que deverão preencher um termo de responsabilidade disponível no site de compras.",
-                "infos": "Encerramento com Katy Perry e outros grandes artistas.",
                 "tickets": [
                     {
                         "sector": "Pista",
