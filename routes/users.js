@@ -94,7 +94,12 @@ router.post('/meu-perfil', authenticate, async function(req, res, next) {
 
 /* GET support page. */
 router.get('/suporte', function(req, res, next) {
-    res.render('support');
+    res.render('support', { error: {} });
+});
+
+/* Support question */
+router.post('/suporte', function(req, res, next) {
+    res.render('support', { error: {} });
 });
 
 /* GET register page. */
