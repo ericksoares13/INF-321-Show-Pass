@@ -34,13 +34,20 @@
                 <div class="carousel-inner">
                     <% carouselEvents.forEach((event, index) => { %>
                         <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                            <a href="<%= event.link %>">
+                            <% if (event.active) { %>
+                                <a href="<%= event.link %>">
+                                    <img src="<%= event.image %>" class="d-block w-100" alt="<%= event.name %>">
+                                </a>
+                            <% } else { %>
                                 <img src="<%= event.image %>" class="d-block w-100" alt="<%= event.name %>">
-                            </a>
+                            <% } %>
+                            
                             <div class="carousel-caption">
                                 <h5><%= event.name %></h5>
                                 <p><%= event.description %></p>
-                                <a href="<%= event.link %>" class="btn btn-shop">Comprar</a>
+                                <% if (event.active) { %>
+                                    <a href="<%= event.link %>" class="btn btn-shop">Comprar</a>
+                                <% } %>
                             </div> 
                         </div>
                     <% }); %>
@@ -69,13 +76,19 @@
                         <div class="row">
                             <% section.events.forEach(event => { %>
                                 <div class="col-md-4 mb-4">
-                                    <a href="<%= event.link %>" class="event-card">
+                                    <% if (event.active) { %>
+                                        <a href="<%= event.link %>" class="event-card">
+                                    <% } else { %>
+                                        <a class="event-card">
+                                    <% } %>
                                         <div class="card h-80">
                                             <img src="<%= event.image %>" class="card-img-top" alt="<%= event.name %>">
                                             <div class="card-body">
                                                 <h5 class="card-title"><%= event.name %></h5>
                                                 <p class="card-text"><%= event.description %></p>
-                                                <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Comprar</a>
+                                                <% if (event.active) { %>
+                                                    <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Comprar</a>
+                                                <% } %>
                                             </div>
                                         </div>
                                     </a>

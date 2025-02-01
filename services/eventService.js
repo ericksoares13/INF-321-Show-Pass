@@ -40,7 +40,8 @@ class EventService {
             name: event.name,
             image: event.image,
             description: event.description,
-            link: `/eventos/${event.link}`
+            link: `/eventos/${event.link}`,
+            active: event.dates.length != 0
         };
     }
 
