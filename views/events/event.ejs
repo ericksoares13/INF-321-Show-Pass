@@ -34,18 +34,18 @@
             <!-- Seção de ingressos -->
             <section class="tickets" id="ticket-section" class="container mt-5">
                 <div class="row">
-                    <!-- Ingresso 1 -->
+                    <!-- Ingressos -->
                     <% event.dates.forEach(date => { %>
                         <div class="col-md-4 mb-4">
                             <div class="card">
-                                <a href="<%= date.link %>">
+                                <a href="<%= date.link %>/data-<%= date.index %>">
                                     <img src="<%= event.image %>" class="card-img-top" alt="Imagem do evento">
                                 </a>
                                 <div class="card-body">
                                     <h5 class="card-title"><%= date.city %> - <%= date.state %></h5>
                                     <p class="card-text"><%= date.locale %></p>
                                     <p class="card-text"><%= date.date %></p>
-                                    <a href="<%= date.link %>" class="btn btn-primary">Comprar Ingressos</a>
+                                    <a href="<%= date.link %>/data-<%= date.index %>" class="btn btn-primary">Comprar Ingressos</a>
                                 </div>
                             </div>
                         </div>

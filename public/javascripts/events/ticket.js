@@ -1,26 +1,5 @@
 // SETORES E VALORES DISPONÍVEIS PARA O EVENTO
 
-const sectorPrices = {
-    "Pista": {
-        "Inteira": 950,
-        "Meia-Entrada": 475,
-        "Meia-Entrada Idoso": 475,
-        "Meia-Entrada PCD": 475
-    },
-    "Cadeira Inferior": {
-        "Inteira": 660,
-        "Meia-Entrada": 330,
-        "Meia-Entrada Idoso": 330,
-        "Meia-Entrada PCD": 330
-    },
-    "Cadeira Superior": {
-        "Inteira": 550,
-        "Meia-Entrada": 275,
-        "Meia-Entrada Idoso": 275,
-        "Meia-Entrada PCD": 275
-    }
-};
-
 let selectedTickets = {};  
 let currentSector = "";
 
@@ -36,15 +15,27 @@ function showTickets(element) {
     }
 
     const prices = sectorPrices[sector];
-    const ticketList = document.querySelectorAll('#ticket-list .list-group-item');
+    const ticketListContainer = document.getElementById('ticket-items');
+    ticketListContainer.innerHTML = "";
 
-    ticketList.forEach((item, index) => {
-        const category = Object.keys(prices)[index];
-        if (category) {
-            item.querySelector('.info strong').textContent = category;
-            item.querySelector('.price').textContent = `R$ ${prices[category].toFixed(2)}`;
-            item.querySelector('.quantity-display').setAttribute('data-price', prices[category]);
-        }
+    Object.entries(prices).forEach(([category, ticket]) => {
+        const price = ticket.value;
+        const ticketItem = document.createElement('li');
+        ticketItem.classList.add('list-group-item');
+
+        ticketItem.innerHTML = `
+            <div class="info">
+                <strong>${category}</strong>
+                <span class="price">R$ ${price.toFixed(2)}</span>
+            </div>
+            <div class="quantity-selector">
+                <button class="btn btn-minus" onclick="changeQuantity(this, -1)">-</button>
+                <span class="quantity-display" data-price="${price}">0</span>
+                <button class="btn btn-plus" onclick="changeQuantity(this, 1)">+</button>
+            </div>
+        `;
+
+        ticketListContainer.appendChild(ticketItem);
     });
 
     restoreSelection(sector);
@@ -138,7 +129,7 @@ function updateTotal() {
     Object.keys(selectedTickets).forEach(sector => {
         Object.keys(selectedTickets[sector]).forEach(ticketType => {
             const quantity = selectedTickets[sector][ticketType];
-            const price = sectorPrices[sector][ticketType];
+            const price = sectorPrices[sector][ticketType].value;
             const subtotal = quantity * price;
             total += subtotal;
             hasSelection = true;

@@ -2,3 +2,5 @@ Corrigir mensagens de erro do navegador no suporte ao fã
 Gerar mapeamento dos eventos com links dinâmicos link: `/events/${event.name.toLowerCase().replace(/\s+/g, '')}`  // Exemplo de link baseado no nome
 Remover botão comprar de eventos futuros (criar flag de evento "ativo")
 Flag de adm no usuário, sempre colocar como 0, só tem como colocar como 1 cadastrando manualmente
+Colocar cookies nos ingressos antes da confirmação
+Mostrar se o ingresso está esgotado ou não

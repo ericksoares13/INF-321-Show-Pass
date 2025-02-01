@@ -47,6 +47,10 @@ class EventService {
     async getEventPage(eventLink) {
         const event = await this.getEventByField({link: eventLink});
 
+        if (!event) {
+            throw 'Evento não encontrado.';
+        }
+
         return {
             image: event.image,
             dates: event.dates.map(d => {
@@ -58,6 +62,7 @@ class EventService {
                 });
                 const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
                 return {
+                    index: d.index,
                     city: d.city,
                     state: d.state,
                     locale: d.locale,
@@ -71,6 +76,40 @@ class EventService {
             ticketPrice: this.#formatTickets(event.ticketPrice),
             sectorImage: event.sectorImage
         };
+    }
+
+    async getEventDate(eventLink, index) {
+        const event = await this.getEventByField({link: eventLink});
+        
+        if (!event) {
+            throw 'Evento não encontrado.';
+        }
+
+        const selectedDate = event.dates.find(date => date.index === index);
+
+        if (!selectedDate) {
+            throw 'Data não encontrada.';
+        }
+        
+        const sectors = {};
+        selectedDate.tickets.forEach(ticket => {
+            const sector = String(ticket.sector).trim();
+            if (!sectors[sector]) {
+                sectors[sector] = {};
+            }
+
+            const category = String(ticket.category).trim();
+            sectors[sector][category] = {
+                value: ticket.value,
+                totalAmount: ticket.totalAmount,
+                soldAmount: ticket.soldAmount,
+            }
+        });
+        
+        return {
+            sectorImage: event.sectorImage,
+            sectors: sectors
+        }
     }
     
     #formatTickets = (text) => {
