@@ -36,7 +36,6 @@ class EventService {
 
     async getIndexEventInfos(eventId) {
         const event = await this.getEventById(eventId);
-        console.log(event);
         return {
             name: event.name,
             image: event.image,

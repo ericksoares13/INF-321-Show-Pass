@@ -7,7 +7,6 @@ const EventService = require('../services/eventService');
 router.get('/:eventLink', async function(req, res) {
     const eventLink = req.params.eventLink;
     const event = await EventService.getEventPage(eventLink);
-    console.log(event);
     res.render('events/event', { event });
 });
 
