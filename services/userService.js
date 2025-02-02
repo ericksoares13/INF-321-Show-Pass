@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Order = require('../models/Order');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Fuse = require('fuse.js');
 
 class UserService {
     static SALT_ROUNDS = 10;
@@ -112,18 +113,62 @@ class UserService {
                                   .populate('dateId', 'locale')
                                   .exec();
                         
-        return orders.map((order) => {
+        const foundOrders = orders.map((order) => {
             return {
                 name: order.eventId.name,
                 image: order.eventId.image,
                 locale: order.dateId.locale,
-                date: order.orderDate.toLocaleDateString('pt-BR', {
+                date: order.orderDate,
+                num: order.orderNum
+            };
+        }).sort((a, b) => b.date - a.date);
+
+        return foundOrders.map(order => {
+            return {
+                ...order,
+                date: order.date.toLocaleDateString('pt-BR', {
                     timeZone: 'UTC',
                     day: '2-digit',
                     month: 'long',
                     year: 'numeric'
-                }),
+                })
+            };
+        });
+    }
+
+    async searchOrders(searchQuery, userId) {
+        const options = {
+            includeScore: true,
+            threshold: 0.3,
+            keys: ['eventId.name', 'eventId.link', 'eventId.description', 'eventId.infos', 'dateId.state', 'dateId.city', 'dateId.locale', 'dateId.address']
+        };
+        const orders = await Order.find({userId: userId})
+                                  .populate('eventId', 'name image link description infos') 
+                                  .populate('dateId', 'state city locale address')
+                                  .exec();
+
+        const fuseOrders = new Fuse(orders, options);
+        const ordersResults = fuseOrders.search(searchQuery);
+        const foundOrders = ordersResults.map((item) => {
+            const order = item.item;
+            return {
+                name: order.eventId.name,
+                image: order.eventId.image,
+                locale: order.dateId.locale,
+                date: order.orderDate,
                 num: order.orderNum
+            };
+        }).sort((a, b) => b.date - a.date);
+
+        return foundOrders.map(order => {
+            return {
+                ...order,
+                date: order.date.toLocaleDateString('pt-BR', {
+                    timeZone: 'UTC',
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                })
             };
         });
     }

@@ -2,5 +2,6 @@ Flag de adm no usuário, sempre colocar como 0, só tem como colocar como 1 cada
 Colocar cookies nos ingressos antes da confirmação
 Mostrar se o ingresso está esgotado ou não
 Ver se data do evento ainda não passou (para saber se mostra o botão de comprar)
-Barra de pesquisa de eventos
+Fazer css da pesquisa de eventos
 Só permitir comprar ingresso quando estiver logado
+Pop up de ações concluídas com sucesso

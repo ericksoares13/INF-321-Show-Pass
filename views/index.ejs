@@ -22,82 +22,127 @@
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
             <!-- Barra de pesquisa -->
-            <%- include('components/search-bar') %>
+            <%- include('components/search-bar', { actionUrl: '/' }) %>
 
             <!-- Banner SlideShow inicial -->
-            <div id="custom-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <% carouselEvents.forEach((event, index) => { %>
-                        <button type="button" data-bs-target="#custom-carousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>" aria-current="<%= index === 0 ? 'true' : '' %>" aria-label="Slide <%= index + 1 %>"></button>
-                    <% }); %>
-                </div>
-                <div class="carousel-inner">
-                    <% carouselEvents.forEach((event, index) => { %>
-                        <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                            <% if (event.active) { %>
-                                <a href="<%= event.link %>">
-                                    <img src="<%= event.image %>" class="d-block w-100" alt="<%= event.name %>">
-                                </a>
-                            <% } else { %>
-                                <img src="<%= event.image %>" class="d-block w-100" alt="<%= event.name %>">
-                            <% } %>
-                            
-                            <div class="carousel-caption">
-                                <h5><%= event.name %></h5>
-                                <p><%= event.description %></p>
+            <% if (carouselEvents) { %>
+                <div id="custom-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <% carouselEvents.forEach((event, index) => { %>
+                            <button type="button" data-bs-target="#custom-carousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>" aria-current="<%= index === 0 ? 'true' : '' %>" aria-label="Slide <%= index + 1 %>"></button>
+                        <% }); %>
+                    </div>
+                    <div class="carousel-inner">
+                        <% carouselEvents.forEach((event, index) => { %>
+                            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
                                 <% if (event.active) { %>
-                                    <a href="<%= event.link %>" class="btn btn-shop">Comprar</a>
+                                    <a href="<%= event.link %>">
+                                        <img src="<%= event.image %>" class="d-block w-100" alt="<%= event.name %>">
+                                    </a>
+                                <% } else { %>
+                                    <img src="<%= event.image %>" class="d-block w-100" alt="<%= event.name %>">
                                 <% } %>
-                            </div> 
-                        </div>
-                    <% }); %>
-                </div>
+                                
+                                <div class="carousel-caption">
+                                    <h5><%= event.name %></h5>
+                                    <p><%= event.description %></p>
+                                    <% if (event.active) { %>
+                                        <a href="<%= event.link %>" class="btn btn-shop">Comprar</a>
+                                    <% } %>
+                                </div> 
+                            </div>
+                        <% }); %>
+                    </div>
 
-                <!-- Controles -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#custom-carousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#custom-carousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Próximo</span>
-                </button>
-            </div>
+                    <!-- Controles -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#custom-carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#custom-carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                </div>
+            <% }; %>
 
             <!-- Seções de Eventos -->
-            <% eventsSections.forEach(section => { %>
-                <section class="event-section py-1">
+            <% if (eventsSections) { %>
+                <% eventsSections.forEach(section => { %>
+                    <section class="event-section py-1">
+                        <div class="container">
+                            <!-- Título da seção -->
+                            <div class="text-center mb-4">
+                                <h2 class="section-title"><%= section.section %></h2>
+                            </div>
+                            <!-- Cards de eventos -->
+                            <div class="row">
+                                <% section.events.forEach(event => { %>
+                                    <div class="col-md-4 mb-4">
+                                        <% if (event.active) { %>
+                                            <a href="<%= event.link %>" class="event-card">
+                                        <% } else { %>
+                                            <a class="event-card">
+                                        <% } %>
+                                                <div class="card h-80">
+                                                    <img src="<%= event.image %>" class="card-img-top" alt="<%= event.name %>">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><%= event.name %></h5>
+                                                        <p class="card-text"><%= event.description %></p>
+                                                        <% if (event.active) { %>
+                                                            <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Comprar</a>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </section>
+                <% }); %>
+            <% }; %>
+
+            <!-- Seções de resultado de pesquisa -->
+            <% if (eventsSearch) { %>
+                <section class="event-section search-section py-1">
                     <div class="container">
-                        <!-- Título da seção -->
-                        <div class="text-center mb-4">
-                            <h2 class="section-title"><%= section.section %></h2>
-                        </div>
-                        <!-- Cards de eventos -->
-                        <div class="row">
-                            <% section.events.forEach(event => { %>
-                                <div class="col-md-4 mb-4">
-                                    <% if (event.active) { %>
-                                        <a href="<%= event.link %>" class="event-card">
-                                    <% } else { %>
-                                        <a class="event-card">
-                                    <% } %>
-                                        <div class="card h-80">
-                                            <img src="<%= event.image %>" class="card-img-top" alt="<%= event.name %>">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%= event.name %></h5>
-                                                <p class="card-text"><%= event.description %></p>
-                                                <% if (event.active) { %>
-                                                    <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Comprar</a>
-                                                <% } %>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            <% }); %>
-                        </div>
+                        <% if (eventsSearch.length > 0) { %>
+                            <!-- Título da seção -->
+                            <div class="text-center mb-4">
+                                <h2 class="section-title">Resultado da busca</h2>
+                            </div>
+                            <!-- Cards de eventos -->
+                            <div class="row">
+                                <% eventsSearch.forEach(event => { %>
+                                    <div class="col-md-4 mb-4">
+                                        <% if (event.active) { %>
+                                            <a href="<%= event.link %>" class="event-card">
+                                        <% } else { %>
+                                            <a class="event-card">
+                                        <% } %>
+                                                <div class="card h-80">
+                                                    <img src="<%= event.image %>" class="card-img-top" alt="<%= event.name %>">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><%= event.name %></h5>
+                                                        <p class="card-text"><%= event.description %></p>
+                                                        <% if (event.active) { %>
+                                                            <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Comprar</a>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        <% } else { %>
+                            <div class="text-center mb-4">
+                                <h2 class="section-title">Não foram encontrados resultados.</h2>
+                            </div>
+                        <% } %>
                     </div>
                 </section>
-<% }); %>
+            <% } %>
 
         <!-- Rodapé  -->
         <footer id="footer">

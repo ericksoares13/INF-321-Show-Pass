@@ -42,10 +42,31 @@ router.get('/', async function(req, res, next) {
 
         res.render('index', {
             carouselEvents: carouselEvents,
-            eventsSections: sectionsEvents
+            eventsSections: sectionsEvents,
+            eventsSearch: null
         });
     } catch (e) {
         res.status(400).json({ message: 'Não foi possível carregar a tela inicial.' });
+    }
+});
+
+/* Search event HOME. */
+router.post('/', async function(req, res, next) {
+    const searchQuery = req.body.searchQuery.trim();
+
+    if (!searchQuery) {
+        return res.redirect('/');
+    }
+    
+    try {
+        const events = await EventService.searchEvents(searchQuery);
+        res.render('index', {
+            carouselEvents: null,
+            eventsSections: null,
+            eventsSearch: events
+        });
+    } catch (e) {
+        res.status(400).json({ message: 'Não foi possível realizar a busca.' });
     }
 });
 
@@ -54,6 +75,23 @@ router.get('/meus-pedidos', authenticate, async function(req, res, next) {
     const userId = req.cookies.userId;
     try {
         const orders = await UserService.getOrders(userId);
+        res.render('orders', { orders: orders });
+    } catch (e) {
+        res.status(400).json({ message: e });
+    }
+});
+
+/* Search event ORDERS. */
+router.post('/meus-pedidos', authenticate, async function(req, res, next) {
+    const searchQuery = req.body.searchQuery.trim();
+    const userId = req.cookies.userId;
+
+    if (!searchQuery) {
+        return res.redirect('/meus-pedidos');
+    }
+    
+    try {
+        const orders = await UserService.searchOrders(searchQuery, userId);
         res.render('orders', { orders: orders });
     } catch (e) {
         res.status(400).json({ message: e });
