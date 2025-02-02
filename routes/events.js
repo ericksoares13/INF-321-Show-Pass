@@ -31,7 +31,7 @@ router.get('/:eventLink/ingressos/data-:index/confirmacao', function(req, res, n
     res.render('events/confirmation');
 });
 
-/* GET confirmation page. */
+/* GET payment page. */
 router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', function(req, res, next) {
     res.render('events/payment');
 });
