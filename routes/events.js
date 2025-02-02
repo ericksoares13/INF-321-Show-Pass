@@ -36,4 +36,9 @@ router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', function(r
     res.render('events/payment');
 });
 
+/* GET conclusion page. */
+router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao', function(req, res, next) {
+    res.render('events/conclusion');
+});
+
 module.exports = router;

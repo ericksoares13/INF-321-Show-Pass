@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/events/conclusion.css" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
+
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('../components/header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <div class="confirmation-banner">
+                <h1>Pagamento aprovado!</h1>
+                <p>Seus ingressos serão enviados por e-mail em breve.</p>
+            </div>
+    
+            <div class="summary-container">
+                <!-- Resumo do pedido -->
+                <div class="summary-section">
+                    <h3>Detalhes do pedido: #18298973</h3>
+                    <p class="mb-3 mt-3">Guts World Tour - Curitiba - 26/03/25</p>
+                    <div class="ticket-row">
+                        <span><strong>1x</strong> Pista - Inteira</span>
+                        <span>R$ 950,00</span>
+                    </div>
+                    <div class="ticket-row">
+                        <span><strong>1x</strong> Cadeira inferior - Meia entrada</span>
+                        <span>R$ 660,00</span>
+                    </div>
+                    <hr>
+                    <div class="ticket-row">
+                        <h4>Total</h4>
+                        <h4><strong>R$ 1.610,00</strong></h4>
+                    </div>
+                </div>
+    
+                <!-- Método de pagamento -->
+                <div class="summary-section">
+                    <h3>Detalhes do pagamento</h3>
+                    <div class="payment-row">
+                        <span>Número do cartão:</span>
+                        <span>425850XXXXXX4704</span>
+                    </div>
+                    <div class="payment-row">
+                        <span>Nome do titular:</span>
+                        <span>João da Silva</span>
+                    </div>
+                    <div class="payment-row">
+                        <span>Status:</span>
+                        <span>Aprovado</span>
+                    </div>
+                    <div class="payment-row">
+                        <span>Tipo:</span>
+                        <span>Crédito</span>
+                    </div>
+                    <div class="payment-row">
+                        <span>Parcelamento:</span>
+                        <span>3x de R$ 564,00</span>
+                    </div>
+                </div>
+            </div>                
+        </div>
+        
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('../components/footer') %>
+        </footer>
+    </body>
+</html>
