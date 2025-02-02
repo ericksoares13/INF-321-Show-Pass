@@ -25,21 +25,23 @@
                 <h1>Olá, como podemos te ajudar?</h1>
             
                 <!-- Formulário de dúvidas -->
-                <form class="form-input row g-4">
+                <form action="suporte" method="POST" class="form-input row g-4 needs-validation" novalidate>
                     <!-- Caixa de seleção de categoria -->
-                    <select class="form-select" required>
+                    <select class="form-select" id="category" name="category" required>
                         <option value="" disabled selected>Selecione uma categoria</option>
                         <option value="1">Processo de compra</option>
                         <option value="2">Cancelamento e Troca</option>
                         <option value="3">Perfis/Cadastros</option>
                         <option value="4">Meia-entrada e crianças</option>
                     </select>
+                    <div class="invalid-feedback"></div>
             
                     <!-- Campo de entrada de texto -->
-                    <textarea class="form-control" required placeholder="Digite aqui suas dúvidas e o que procura"></textarea>
+                    <textarea class="form-control" id="message" name="message" required placeholder="Digite aqui suas dúvidas e o que procura"></textarea>
+                    <div class="invalid-feedback"></div>
                     
                     <!-- Botão de envio -->
-                    <button class="btn btn-primary mt-4" type="submit">Enviar</button>
+                    <button type="submit" class="btn btn-primary mt-4" type="submit">Enviar</button>
                 </form>
             </section>
         </div>

@@ -40,12 +40,17 @@ class EventService {
             name: event.name,
             image: event.image,
             description: event.description,
-            link: `/eventos/${event.link}`
+            link: `/eventos/${event.link}`,
+            active: event.dates.length != 0
         };
     }
 
     async getEventPage(eventLink) {
-        const event = await this.getEventByField({link: eventLink});
+        const event = await Event.findOne({link: eventLink}).populate('dates').exec();
+
+        if (!event) {
+            throw 'Evento não encontrado.';
+        }
 
         return {
             image: event.image,
@@ -58,6 +63,7 @@ class EventService {
                 });
                 const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
                 return {
+                    index: d.index,
                     city: d.city,
                     state: d.state,
                     locale: d.locale,
@@ -71,6 +77,48 @@ class EventService {
             ticketPrice: this.#formatTickets(event.ticketPrice),
             sectorImage: event.sectorImage
         };
+    }
+
+    async getEventDate(eventLink, index) {
+        const event = await Event.findOne({ link: eventLink })
+        .populate({
+            path: 'dates',
+            match: { index: index },
+            populate: {
+                path: 'tickets'
+            }
+        })
+        .exec()
+        
+        if (!event) {
+            throw 'Evento não encontrado.';
+        }
+
+        const selectedDate = event.dates.find(date => date.index === index);
+
+        if (!selectedDate) {
+            throw 'Data não encontrada.';
+        }
+        
+        const sectors = {};
+        selectedDate.tickets.forEach(ticket => {
+            const sector = String(ticket.sector).trim();
+            if (!sectors[sector]) {
+                sectors[sector] = {};
+            }
+
+            const category = String(ticket.category).trim();
+            sectors[sector][category] = {
+                value: ticket.value,
+                totalAmount: ticket.totalAmount,
+                soldAmount: ticket.soldAmount,
+            }
+        });
+        
+        return {
+            sectorImage: event.sectorImage,
+            sectors: sectors
+        }
     }
     
     #formatTickets = (text) => {

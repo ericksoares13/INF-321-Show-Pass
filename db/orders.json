@@ -1,0 +1,110 @@
+[
+    {
+        "_id": {
+            "$oid": "679ed3d9242237f0a4e24f9c"
+        },
+        "userId": {
+            "$oid": "679984765e3635f5728e7898"
+        },
+        "eventId": {
+            "$oid": "679987884fcf0fdfe9533e58"
+        },
+        "dateId": {
+            "$oid": "679987884fcf0fdfe9533e59"
+        },
+        "tickets": [
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e5a"
+                },
+                "quantity": 2,
+                "_id": {
+                    "$oid": "679ed3d9242237f0a4e24f9d"
+                }
+            },
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e5d"
+                },
+                "quantity": 1,
+                "_id": {
+                    "$oid": "679ed3d9242237f0a4e24f9e"
+                }
+            }
+        ],
+        "orderDate": {
+            "$date": "2025-02-01T00:00:00.000Z"
+        },
+        "orderNum": "00003",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "679ed3d9242237f0a4e24f9f"
+        },
+        "userId": {
+            "$oid": "679984765e3635f5728e7898"
+        },
+        "eventId": {
+            "$oid": "679987884fcf0fdfe9533e4e"
+        },
+        "dateId": {
+            "$oid": "679987884fcf0fdfe9533e4f"
+        },
+        "tickets": [
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e50"
+                },
+                "quantity": 1,
+                "_id": {
+                    "$oid": "679ed3d9242237f0a4e24fa0"
+                }
+            }
+        ],
+        "orderDate": {
+            "$date": "2024-11-17T00:00:00.000Z"
+        },
+        "orderNum": "00002",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "679ed3d9242237f0a4e24fa1"
+        },
+        "userId": {
+            "$oid": "679984765e3635f5728e7898"
+        },
+        "eventId": {
+            "$oid": "679987884fcf0fdfe9533e1e"
+        },
+        "dateId": {
+            "$oid": "679987884fcf0fdfe9533e2c"
+        },
+        "tickets": [
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e2d"
+                },
+                "quantity": 1,
+                "_id": {
+                    "$oid": "679ed3d9242237f0a4e24fa2"
+                }
+            },
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e35"
+                },
+                "quantity": 1,
+                "_id": {
+                    "$oid": "679ed3d9242237f0a4e24fa3"
+                }
+            }
+        ],
+        "orderDate": {
+            "$date": "2024-08-01T00:00:00.000Z"
+        },
+        "orderNum": "00001",
+        "__v": 0
+    }
+]

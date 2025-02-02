@@ -23,4 +23,4 @@ const EventTicketSchema = new mongoose.Schema({
     }
 });
 
-module.exports = EventTicketSchema;
+module.exports = mongoose.model('EventTicket', EventTicketSchema);

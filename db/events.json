@@ -14,6 +14,7 @@
         "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
+                "index": 0,
                 "state": "Bahia",
                 "city": "Salvador",
                 "date": {
@@ -148,6 +149,7 @@
                 }
             },
             {
+                "index": 1,
                 "state": "Rio de Janeiro",
                 "city": "Rio de Janeiro",
                 "date": {
@@ -282,6 +284,7 @@
                 }
             },
             {
+                "index": 2,
                 "state": "Rio Grande do Sul",
                 "city": "Porto Alegre",
                 "date": {
@@ -433,6 +436,7 @@
         "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
+                "index": 0,
                 "state": "Distrito Federal",
                 "city": "Brasília",
                 "date": {
@@ -524,6 +528,7 @@
         "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
+                "index": 0,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -635,6 +640,7 @@
         "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
+                "index": 0,
                 "state": "Paraná",
                 "city": "Curitiba",
                 "date": {
@@ -786,6 +792,7 @@
         "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
+                "index": 0,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -820,6 +827,7 @@
                 }
             },
             {
+                "index": 1,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -854,6 +862,7 @@
                 }
             },
             {
+                "index": 2,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -921,6 +930,7 @@
         "sectorImage": "/images/setoresOlivia.png",
         "dates": [
             {
+                "index": 0,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -975,6 +985,7 @@
                 }
             },
             {
+                "index": 1,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -1029,6 +1040,7 @@
                 }
             },
             {
+                "index": 2,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -1083,6 +1095,7 @@
                 }
             },
             {
+                "index": 3,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {
@@ -1137,6 +1150,7 @@
                 }
             },
             {
+                "index": 4,
                 "state": "São Paulo",
                 "city": "São Paulo",
                 "date": {

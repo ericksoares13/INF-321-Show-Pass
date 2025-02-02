@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Order = require('../models/Order');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -94,7 +95,7 @@ class UserService {
     }
 
     async getUserInfos(userId) {
-        const user = await UserService.getUserById(userId);
+        const user = await this.getUserById(userId);
         return {
             name: user.name,
             user: user.user,
@@ -103,6 +104,28 @@ class UserService {
             cellphone: user.cellphone,
             email: user.email
         };
+    }
+
+    async getOrders(userId) {
+        const orders = await Order.find({userId: userId})
+                                  .populate('eventId', 'name image') 
+                                  .populate('dateId', 'locale')
+                                  .exec();
+                        
+        return orders.map((order) => {
+            return {
+                name: order.eventId.name,
+                image: order.eventId.image,
+                locale: order.dateId.locale,
+                date: order.orderDate.toLocaleDateString('pt-BR', {
+                    timeZone: 'UTC',
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                }),
+                num: order.orderNum
+            };
+        });
     }
 
     async #validateUser(user) {

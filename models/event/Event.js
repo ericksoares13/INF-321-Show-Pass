@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const EventDateInfosSchema = require('./EventDateInfos');
 
 const EventSchema = new mongoose.Schema({
     name: {
@@ -40,7 +39,8 @@ const EventSchema = new mongoose.Schema({
         required: true
     },
     dates: {
-        type: [EventDateInfosSchema]
+        type: [mongoose.ObjectId],
+        ref: 'EventDateInfos'
     }
 });
 
