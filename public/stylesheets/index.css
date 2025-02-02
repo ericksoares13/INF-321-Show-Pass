@@ -196,3 +196,12 @@
     background-color: #78258d !important;
     color: white;
 }
+
+/*------------------------------------*/
+/* Estilização da pesquisa de eventos */
+/*------------------------------------*/
+
+.search-section {
+    margin-top: 20px;
+    min-height: 60vh;
+}
