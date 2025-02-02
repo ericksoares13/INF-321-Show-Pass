@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-const EventTicketSchema = require('./EventTicket');
 
 const EventDateInfosSchema = new mongoose.Schema({
     index: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
     },
     state: {
         type: String,
@@ -28,9 +26,10 @@ const EventDateInfosSchema = new mongoose.Schema({
         required: true
     },
     tickets: {
-        type: [EventTicketSchema],
+        type: [mongoose.ObjectId],
+        ref: 'EventTicket',
         required: true
     }
 });
 
-module.exports = EventDateInfosSchema;
+module.exports = mongoose.model('EventDateInfos', EventDateInfosSchema);

@@ -20,7 +20,6 @@ router.get('/:eventLink/ingressos/data-:index', async function(req, res, next) {
         const eventLink = req.params.eventLink;
         const index = parseInt(req.params.index);
         const date = await EventService.getEventDate(eventLink, index);
-        console.log(date);
         res.render('events/ticket', { date, index });
     } catch (e) {
         res.status(400).json(e);

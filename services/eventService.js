@@ -46,7 +46,7 @@ class EventService {
     }
 
     async getEventPage(eventLink) {
-        const event = await this.getEventByField({link: eventLink});
+        const event = await Event.findOne({link: eventLink}).populate('dates').exec();
 
         if (!event) {
             throw 'Evento não encontrado.';
@@ -80,7 +80,15 @@ class EventService {
     }
 
     async getEventDate(eventLink, index) {
-        const event = await this.getEventByField({link: eventLink});
+        const event = await Event.findOne({ link: eventLink })
+        .populate({
+            path: 'dates',
+            match: { index: index },
+            populate: {
+                path: 'tickets'
+            }
+        })
+        .exec()
         
         if (!event) {
             throw 'Evento não encontrado.';

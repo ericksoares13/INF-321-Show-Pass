@@ -94,7 +94,7 @@ class UserService {
     }
 
     async getUserInfos(userId) {
-        const user = await UserService.getUserById(userId);
+        const user = await this.getUserById(userId);
         return {
             name: user.name,
             user: user.user,
