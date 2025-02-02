@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const UserService = require('../services/userService');
 const EventService = require('../services/eventService');
+const Event = require('../models/event/Event');
 
 /* Authenticate user */
 const authenticate = async function(req, res, next) {
@@ -29,7 +30,7 @@ const authenticate = async function(req, res, next) {
 };
 
 /* GET admin page. */
-router.get('/', authenticate, async function(req, res) {
+router.get('/', authenticate, async function(req, res, next) {
     try {
         const carouselEventIds = await EventService.getCarousel();
         const carouselEvents = await Promise.all(
@@ -59,10 +60,9 @@ router.get('/', authenticate, async function(req, res) {
 });
 
 /* GET admin-events page. */
-router.get('/eventos', authenticate, async function(req, res) {
+router.get('/eventos', authenticate, async function(req, res, next) {
     try {
         const events = await EventService.getAllEventsAdmin();
-        console.log(events);
         res.render('admin/events', { events: events });
     } catch (e) {
         es.status(200).json({ message: 'Erro ao listar eventos' });
@@ -70,7 +70,7 @@ router.get('/eventos', authenticate, async function(req, res) {
 });
 
 /* GET admin-events page. */
-router.post('/eventos', authenticate, async function(req, res) {
+router.post('/eventos', authenticate, async function(req, res, next) {
     const searchQuery = req.body.searchQuery.trim();
 
     if (!searchQuery) {
@@ -79,7 +79,6 @@ router.post('/eventos', authenticate, async function(req, res) {
     
     try {
         const events = (await EventService.searchEvents(searchQuery)).map(event => {
-            console.log(event.link);
             return {
                 ...event,
                 link: event.link.replace("eventos/", "admin/eventos/editar/")
@@ -89,6 +88,27 @@ router.post('/eventos', authenticate, async function(req, res) {
     } catch (e) {
         res.status(400).json({ message: 'Não foi possível realizar a busca.' });
     }
+});
+
+/* GET admin-events page. */
+router.get('/eventos/criar', authenticate, async function(req, res, next) {
+    const events = await Event.findOne({link: 'caetano-veloso-e-maria-bethania'}).populate({
+        path: 'dates',
+        populate: {
+            path: 'tickets'
+        }
+    })
+    .exec();
+    console.log(events);
+    res.render('admin/create-event', { event: events, error: {} });
+
+});
+
+/* GET admin-events page. */
+router.post('/eventos/criar', authenticate, async function(req, res, next) {
+    console.log(req.body);
+    res.render('admin/create-event', { event: {}, error: {} });
+
 });
 
 /* GET admin-carousel page. */
