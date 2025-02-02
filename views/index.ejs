@@ -22,7 +22,7 @@
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
             <!-- Barra de pesquisa -->
-            <%- include('components/search-bar') %>
+            <%- include('components/search-bar', { actionUrl: '/' }) %>
 
             <!-- Banner SlideShow inicial -->
             <% if (carouselEvents) { %>

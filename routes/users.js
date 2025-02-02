@@ -50,6 +50,7 @@ router.get('/', async function(req, res, next) {
     }
 });
 
+/* Search event HOME. */
 router.post('/', async function(req, res, next) {
     const searchQuery = req.body.searchQuery.trim();
 
@@ -74,6 +75,23 @@ router.get('/meus-pedidos', authenticate, async function(req, res, next) {
     const userId = req.cookies.userId;
     try {
         const orders = await UserService.getOrders(userId);
+        res.render('orders', { orders: orders });
+    } catch (e) {
+        res.status(400).json({ message: e });
+    }
+});
+
+/* Search event ORDERS. */
+router.post('/meus-pedidos', authenticate, async function(req, res, next) {
+    const searchQuery = req.body.searchQuery.trim();
+    const userId = req.cookies.userId;
+
+    if (!searchQuery) {
+        return res.redirect('/meus-pedidos');
+    }
+    
+    try {
+        const orders = await UserService.searchOrders(searchQuery, userId);
         res.render('orders', { orders: orders });
     } catch (e) {
         res.status(400).json({ message: e });
