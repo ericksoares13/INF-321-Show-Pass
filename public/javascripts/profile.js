@@ -221,17 +221,23 @@ let errorMessages = {};
 // SCRIPT PARA ALTERAÇÃO DA VISUALIZAÇÃO CONFORME A OPÇÃO DE CONTA ESCOLHIDA PELO USUÁRIO
 
 document.addEventListener('DOMContentLoaded', function () {
-    const lastTab = localStorage.getItem('lastTab') || 'info-tab';
-    document.getElementById(lastTab).click();
+    const lastTab = getCookie('lastTab') || 'info-tab';
+    if (document.getElementById(lastTab)) {
+        switchTab(lastTab, lastTab === 'info-tab' ? 'password-tab' : 'info-tab', 
+                  lastTab === 'info-tab' ? 'info-section' : 'password-section', 
+                  lastTab === 'info-tab' ? 'password-section' : 'info-section', false);
+    }
 });
 
-function switchTab(activeTab, inactiveTab, activeSection, inactiveSection) {
+function switchTab(activeTab, inactiveTab, activeSection, inactiveSection, updateCookie = true) {
     document.getElementById(activeTab).classList.add('active');
     document.getElementById(inactiveTab).classList.remove('active');
     document.getElementById(activeSection).style.display = 'block';
     document.getElementById(inactiveSection).style.display = 'none';
 
-    localStorage.setItem('lastTab', activeTab);
+    if (updateCookie) {
+        setCookie('lastTab', activeTab, 1);
+    }
 }
 
 document.getElementById('info-tab').addEventListener('click', function (e) {
@@ -243,3 +249,36 @@ document.getElementById('password-tab').addEventListener('click', function (e) {
     e.preventDefault();
     switchTab('password-tab', 'info-tab', 'password-section', 'info-section');
 });
+
+function setCookie(name, value, hours) {
+    const d = new Date();
+    d.setTime(d.getTime() + hours * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/meu-perfil`;
+}
+
+function getCookie(name) {
+    const cookies = document.cookie.split('; ');
+    for (let i = 0; i < cookies.length; i++) {
+        const [key, value] = cookies[i].split('=');
+        if (key === name) return value;
+    }
+    return null;
+}
+
+let isSubmitting = false;
+
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function () {
+        isSubmitting = true;
+    });
+});
+
+window.addEventListener('beforeunload', function () {
+    if (!isSubmitting) {
+        deleteCookie('lastTab');
+    }
+});
+
+function deleteCookie(name) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/meu-perfil;`;
+}
