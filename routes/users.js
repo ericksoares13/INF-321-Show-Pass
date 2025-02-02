@@ -42,10 +42,30 @@ router.get('/', async function(req, res, next) {
 
         res.render('index', {
             carouselEvents: carouselEvents,
-            eventsSections: sectionsEvents
+            eventsSections: sectionsEvents,
+            eventsSearch: null
         });
     } catch (e) {
         res.status(400).json({ message: 'Não foi possível carregar a tela inicial.' });
+    }
+});
+
+router.post('/', async function(req, res, next) {
+    const searchQuery = req.body.searchQuery.trim();
+
+    if (!searchQuery) {
+        return res.redirect('/');
+    }
+    
+    try {
+        const events = await EventService.searchEvents(searchQuery);
+        res.render('index', {
+            carouselEvents: null,
+            eventsSections: null,
+            eventsSearch: events
+        });
+    } catch (e) {
+        res.status(400).json({ message: 'Não foi possível realizar a busca.' });
     }
 });
 

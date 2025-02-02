@@ -1,6 +1,7 @@
 const Event = require('../models/event/Event');
 const Carousel = require('../models/event/sections/Carousel');
 const Section = require('../models/event/sections/Section');
+const Fuse = require('fuse.js');
 
 class EventService {
     async getAllEvents() {
@@ -14,7 +15,7 @@ class EventService {
         }
         return event;
     }
-    
+
     async getEventByField(fieldAndValue) {
         const event = await Event.findOne(fieldAndValue);
         return event;
@@ -34,6 +35,20 @@ class EventService {
         return sections;
     }
 
+    async searchEvents(searchQuery) {
+        const options = {
+            includeScore: true,
+            threshold: 0.3,
+            keys: ['name', 'link', 'description', 'infos', 'dates.state', 'dates.city', 'dates.locale', 'dates.address']
+        };
+        const events = await Event.find().populate('dates').exec();
+        const fuseEvents = new Fuse(events, options);
+        const eventResults = fuseEvents.search(searchQuery);
+        const foundEvents = await Promise.all(eventResults.map(async result => await this.getIndexEventInfos(result.item._id)));
+
+        return foundEvents;
+    }
+
     async getIndexEventInfos(eventId) {
         const event = await this.getEventById(eventId);
         return {
@@ -46,7 +61,7 @@ class EventService {
     }
 
     async getEventPage(eventLink) {
-        const event = await Event.findOne({link: eventLink}).populate('dates').exec();
+        const event = await Event.findOne({ link: eventLink }).populate('dates').exec();
 
         if (!event) {
             throw 'Evento não encontrado.';
@@ -81,15 +96,15 @@ class EventService {
 
     async getEventDate(eventLink, index) {
         const event = await Event.findOne({ link: eventLink })
-        .populate({
-            path: 'dates',
-            match: { index: index },
-            populate: {
-                path: 'tickets'
-            }
-        })
-        .exec()
-        
+            .populate({
+                path: 'dates',
+                match: { index: index },
+                populate: {
+                    path: 'tickets'
+                }
+            })
+            .exec()
+
         if (!event) {
             throw 'Evento não encontrado.';
         }
@@ -99,7 +114,7 @@ class EventService {
         if (!selectedDate) {
             throw 'Data não encontrada.';
         }
-        
+
         const sectors = {};
         selectedDate.tickets.forEach(ticket => {
             const sector = String(ticket.sector).trim();
@@ -114,13 +129,13 @@ class EventService {
                 soldAmount: ticket.soldAmount,
             }
         });
-        
+
         return {
             sectorImage: event.sectorImage,
             sectors: sectors
         }
     }
-    
+
     #formatTickets = (text) => {
         const lines = text.trim().split('\n');
         let html = '<ul>';
