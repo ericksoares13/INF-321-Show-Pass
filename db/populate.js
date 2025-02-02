@@ -5,6 +5,7 @@ const Event = require('../models/event/Event');
 const Carousel = require('../models/event/sections/Carousel');
 const Section = require('../models/event/sections/Section');
 const User = require('../models/User');
+const Order = require('../models/Order');
 const mongoose = require('mongoose');
 
 async function createTickets(tickets) {
@@ -112,11 +113,37 @@ async function populateUsers() {
     }
 }
 
+async function populateOrders() {
+    const data = await fs.readFile('./db/orders.json', 'utf-8');
+    const orders = JSON.parse(data).map(order => ({
+        ...order,
+        _id: new mongoose.Types.ObjectId(order._id.$oid),
+        userId: new mongoose.Types.ObjectId(order.userId.$oid),
+        eventId: new mongoose.Types.ObjectId(order.eventId.$oid),
+        dateId: new mongoose.Types.ObjectId(order.dateId.$oid),
+        orderDate: new Date(order.orderDate.$date),
+        tickets: order.tickets.map(ticket => ({
+            ...ticket,
+            ticketId: new mongoose.Types.ObjectId(ticket.ticketId.$oid),
+            _id: new mongoose.Types.ObjectId(ticket._id.$oid)
+        }))
+    }));
+
+    for (const order of orders) {
+        const existingOrder = await Order.findOne({ _id: order._id });
+
+        if (!existingOrder) {
+            await Order.create(order);
+        }
+    }
+}
+
 async function populateFromJSON() {
     await populateEvents();
     await populateCarousel();
     await populateSections();
     await populateUsers();
+    await populateOrders();
 }
 
 module.exports = populateFromJSON;

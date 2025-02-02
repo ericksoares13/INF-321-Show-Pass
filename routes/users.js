@@ -50,8 +50,14 @@ router.get('/', async function(req, res, next) {
 });
 
 /* GET orders page. */
-router.get('/meus-pedidos', authenticate, function(req, res, next) {
-    res.render('orders');
+router.get('/meus-pedidos', authenticate, async function(req, res, next) {
+    const userId = req.cookies.userId;
+    try {
+        const orders = await UserService.getOrders(userId);
+        res.render('orders', { orders: orders });
+    } catch (e) {
+        res.status(400).json({ message: e });
+    }
 });
 
 /* GET profile page. */

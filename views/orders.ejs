@@ -40,26 +40,14 @@
             
                 <!-- Cards -->
                 <div class="cards-container">
-                    <div class="card" onclick="redirectToPage('/')">
-                        <img src="/images/lollapalooza.gif" alt="Lollapalooza Brasil 2025">
-                        <h3>Lollapalooza Brasil 2025</h3>
-                        <p>Autódromo de Interlagos</p>
-                        <small>Pedido #24549417 - 10 de setembro de 2024</small>
-                    </div>
-            
-                    <div class="card" onclick="redirectToPage('/')">
-                        <img src="/images/brunoMars.avif" alt="Bruno Mars">
-                        <h3>Bruno Mars - Belo Horizonte</h3>
-                        <p>Estádio Mineirão</p>
-                        <small>Pedido #20296078 - 21 de maio de 2024</small>
-                    </div>
-            
-                    <div class="card" onclick="redirectToPage('/')">
-                        <img src="/images/brunoMars.avif" alt="Bruno Mars">
-                        <h3>Bruno Mars - São Paulo</h3>
-                        <p>MorumBis</p>
-                        <small>Pedido #18298973 - 6 de maio de 2024</small>
-                    </div>
+                    <% orders.forEach(order => { %>
+                        <div class="card" onclick="redirectToPage('/')">
+                            <img src="<%= order.image %>" alt="order.name">
+                            <h3><%= order.name %></h3>
+                            <p><%= order.locale %></p>
+                            <small>Pedido #<%= order.num %> - <%= order.date %></small>
+                        </div>
+                    <% }) %>
                 </div>
 
                 <div class="no-results-message">
