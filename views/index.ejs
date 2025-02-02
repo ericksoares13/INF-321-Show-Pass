@@ -107,11 +107,11 @@
             <% if (eventsSearch) { %>
                 <section class="event-section search-section py-1">
                     <div class="container">
+                        <!-- Título da seção -->
+                        <div class="text-center mb-4">
+                            <h2 class="section-title">Eventos</h2>
+                        </div>
                         <% if (eventsSearch.length > 0) { %>
-                            <!-- Título da seção -->
-                            <div class="text-center mb-4">
-                                <h2 class="section-title">Resultado da busca</h2>
-                            </div>
                             <!-- Cards de eventos -->
                             <div class="row">
                                 <% eventsSearch.forEach(event => { %>
@@ -136,8 +136,8 @@
                                 <% }); %>
                             </div>
                         <% } else { %>
-                            <div class="text-center mb-4">
-                                <h2 class="section-title">Não foram encontrados resultados.</h2>
+                            <div class="no-results-message">
+                                Nenhum evento encontrado.
                             </div>
                         <% } %>
                     </div>
