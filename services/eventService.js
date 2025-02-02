@@ -8,6 +8,18 @@ class EventService {
         return await Event.find({});
     }
 
+    async getAllEventsAdmin() {
+        const events = await this.getAllEvents();
+        return events.map(event => {
+            return {
+                name: event.name,
+                image: event.image,
+                description: event.description,
+                link: `/admin/eventos/editar/${event.link}`
+            };
+        });
+    }
+
     async getEventById(eventId) {
         const event = await Event.findById(eventId);
         if (!event) {

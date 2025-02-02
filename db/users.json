@@ -3,6 +3,7 @@
         "_id": {
             "$oid": "679984765e3635f5728e7898"
         },
+        "admin": false,
         "name": "Joãozinho Fulano de Tal",
         "user": "jzinho13",
         "cpf": "090.637.110-42",
@@ -13,5 +14,21 @@
         "email": "joaozinho@email.com",
         "password": "$2b$10$pUexUr46PHp2jd4Fd2p9w.iyO5acH0fKZRY0urRIQRy5zkYfuPWXu",
         "__v": 0
-    }
+    },
+    {
+        "_id": {
+          "$oid": "679fc3064c1cd203c50af509"
+        },
+        "admin": true,
+        "name": "Administrador",
+        "user": "admin",
+        "cpf": "000.000.000-00",
+        "birthDate": {
+          "$date": "2000-01-01T00:00:00.000Z"
+        },
+        "cellphone": "(00) 00000-0000",
+        "email": "admin@admin.com",
+        "password": "$2b$10$Lb/NyhD8MlHcpzvCDNMGF.bGw4j5zI4s91608zuYsTBsybNh2KPui",
+        "__v": 0
+      }
 ]

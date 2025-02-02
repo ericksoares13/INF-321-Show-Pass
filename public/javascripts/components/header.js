@@ -42,6 +42,34 @@ async function displayLinks() {
     }
 }
 
+async function checkAdminAuth() {
+    try {
+        const response = await fetch('/admin/authenticate', {
+            method: 'GET',
+            credentials: 'include'
+        });
+  
+        if (response.ok) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        return false;
+    }
+}
+
+async function displayAdminLink() {
+    const authenticate = await checkAdminAuth();
+
+    if (authenticate) {
+        document.getElementById('admin').style.display = 'block';
+    } else {
+        document.getElementById('admin').style.display = 'none';
+    }
+}
+
 window.addEventListener('load', resizeMargin);
 window.addEventListener('resize', resizeMargin);
 window.addEventListener('load', displayLinks);
+window.addEventListener('load', displayAdminLink);
