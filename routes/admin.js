@@ -227,11 +227,48 @@ router.get('/carrossel', authenticate, async function(req, res, next) {
     }
 });
 
+/* GET admin-carousel page. */
+router.post('/carrossel', authenticate, async function(req, res, next) {
+    const searchQuery = req.body.searchQuery.trim();
+
+    if (!searchQuery) {
+        return res.redirect('carrossel');
+    }
+    
+    try {
+        const events = (await EventService.searchEvents(searchQuery)).map(event => {
+            return {
+                ...event,
+                isCarouselItem: false,
+                link: event.link.replace("eventos/", "admin/carrossel/adicionar/")
+            };
+        });
+        res.render('admin/carousel', { events: events });
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível realizar a busca.'
+        }});
+    }
+});
+
 /* DELETE carousel item. */
 router.post('/carrossel/deletar/:eventLink', authenticate, async function(req, res, next) {
     try {
         const eventLink = req.params.eventLink;
         await EventService.deleteCarouselItem(eventLink);
+        res.redirect('/admin/carrossel');
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao deletar item.'
+        }});
+    }
+});
+
+/* ADD carousel item. */
+router.post('/carrossel/adicionar/:eventLink', authenticate, async function(req, res, next) {
+    try {
+        const eventLink = req.params.eventLink;
+        await EventService.addCarouselItem(eventLink);
         res.redirect('/admin/carrossel');
     } catch (e) {
         res.status(400).render('error', { error: {

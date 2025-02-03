@@ -71,6 +71,7 @@ class EventService {
         const carouselFlated = carousel.flatMap(carouselItem => carouselItem.events);
         return carouselFlated.map(event => {
             return {
+                isCarouselItem: true,
                 link: event.link,
                 name: event.name,
                 image: event.image,
@@ -84,6 +85,14 @@ class EventService {
         await Carousel.updateOne(
             {},
             { $pull: { events: event._id } }
+        );
+    }
+
+    async addCarouselItem(eventLink) {
+        const event = await this.getEventByField({ link: eventLink });
+        await Carousel.updateOne(
+            {},
+            { $addToSet: { events: event._id } }
         );
     }
 
