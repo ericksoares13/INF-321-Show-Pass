@@ -140,7 +140,12 @@ class UserService {
                 date: order.orderDate,
                 num: order.orderNum
             };
-        }).sort((a, b) => b.date - a.date);
+        }).sort((a, b) => {
+            if (b.date.getTime() != a.date.getTime()) {
+                return b.date - a.date;
+            }
+            return b.num - a.num;
+        });
 
         return foundOrders.map(order => {
             return {
@@ -222,7 +227,12 @@ class UserService {
                 date: order.orderDate,
                 num: order.orderNum
             };
-        }).sort((a, b) => b.date - a.date);
+        }).sort((a, b) => {
+            if (b.date.getTime() != a.date.getTime()) {
+                return b.date - a.date;
+            }
+            return b.num - a.num;
+        });
 
         return foundOrders.map(order => {
             return {
