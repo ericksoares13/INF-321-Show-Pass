@@ -145,50 +145,56 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentic
 
 /* GET conclusion page. */
 router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao', authenticate, async (req, res) => {
-    const eventLink = req.params.eventLink;
-    const index = parseInt(req.params.index);
-    const userId = req.cookies.userId;
+    try {
+        const eventLink = req.params.eventLink;
+        const index = parseInt(req.params.index);
+        const userId = req.cookies.userId;
 
-    const reservation = await TicketReservation.findOne({ eventLink, index, userId });
-    
-    if (!reservation) {
+        const reservation = await TicketReservation.findOne({ eventLink, index, userId });
+        
+        if (!reservation) {
+            res.status(400).render('error', { error: {
+                message: 'Reserva expirada ou não encontrada.'
+            }});
+        }
+
+        const lastSelection = req.cookies[`lastSelection_${eventLink}_${index}`];
+        res.clearCookie(`lastSelection_${eventLink}_${index}`);
+        res.clearCookie(`totalPrice_${eventLink}_${index}`);
+
+        const event = await EventService.getEventDateComplete(eventLink, index);
+        const result = lastSelection.map(ticket => {
+            const matches = event.dates[0].tickets.filter(item => item.sector === ticket.sector && item.category === ticket.ticketType);
+            
+            if (matches.length > 0) {
+                return matches.map(match => ({
+                    quantity: ticket.quantity,
+                    ticketId: match._id,
+                }));
+            }
+            return [];
+        }).flat();
+
+        const user = await UserService.getUserById(userId);
+        const order = await UserService.createOrder({
+            userId: userId,
+            eventId: event._id,
+            dateId: event.dates[0]._id,
+            tickets: result,
+            type: req.body.paymentType,
+            cardNumber: req.body.cardNumber || '--',
+            name: req.body.cardHolder || user.name,
+            installment: (req.body.paymentType == 'Crédito' ? req.body.installments : '--')
+        });
+
+        await reservation.deleteOne();
+
+        res.render('events/conclusion', (await UserService.getOrder(order._id)));
+    } catch (e) {
         res.status(400).render('error', { error: {
-            message: 'Reserva expirada ou não encontrada.'
+            message: 'Erro durante conclusão.'
         }});
     }
-
-    const lastSelection = req.cookies[`lastSelection_${eventLink}_${index}`];
-    res.clearCookie(`lastSelection_${eventLink}_${index}`);
-    res.clearCookie(`totalPrice_${eventLink}_${index}`);
-
-    const event = await EventService.getEventDateComplete(eventLink, index);
-    const result = lastSelection.map(ticket => {
-        const matches = event.dates[0].tickets.filter(item => item.sector === ticket.sector && item.category === ticket.ticketType);
-        
-        if (matches.length > 0) {
-            return matches.map(match => ({
-                quantity: ticket.quantity,
-                ticketId: match._id,
-            }));
-        }
-        return [];
-    }).flat();
-
-    const user = await UserService.getUserById(userId);
-    const order = await UserService.createOrder({
-        userId: userId,
-        eventId: event._id,
-        dateId: event.dates[0]._id,
-        tickets: result,
-        type: req.body.paymentType,
-        cardNumber: req.body.cardNumber || '--',
-        name: req.body.cardHolder || user.name,
-        installment: (req.body.paymentType == 'Crédito' ? req.body.installments : '--')
-    });
-
-    await reservation.deleteOne();
-
-    res.render('events/conclusion', (await UserService.getOrder(order._id)));
 });
 
 // Remove expires tickets

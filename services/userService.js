@@ -173,12 +173,12 @@ class UserService {
 
         let totalPrice = 0;
         const tickets = order.tickets.map(ticket => {
-            totalPrice += ticket.ticketId.value;
+            totalPrice += (ticket.quantity * ticket.ticketId.value);
             return {
                 quantity: ticket.quantity,
                 sector: ticket.ticketId.sector,
                 category: ticket.ticketId.category,
-                value: 'R$ ' + ticket.ticketId.value.toFixed(2).replace('.', ',')
+                value: 'R$ ' + (ticket.quantity * ticket.ticketId.value).toFixed(2).replace('.', ',')
             };
         })
 
