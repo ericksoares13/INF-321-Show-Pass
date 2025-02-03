@@ -49,4 +49,6 @@ const TicketReservationSchema = new mongoose.Schema({
     }
 });
 
+TicketReservationSchema.index({ eventLink: 1, index: 1, userId: 1 }, { unique: true });
+
 module.exports = mongoose.model('TicketReservation', TicketReservationSchema);

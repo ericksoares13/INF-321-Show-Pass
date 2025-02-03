@@ -99,9 +99,9 @@ router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentica
 
 /* Payment page. */
 router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authenticate, async function(req, res, next) {
+    const eventLink = req.params.eventLink;
+    const index = parseInt(req.params.index);
     try {
-        const eventLink = req.params.eventLink;
-        const index = parseInt(req.params.index);
         const userId = req.cookies.userId;
 
         let { selectedTickets, totalPrice } = req.body;
@@ -128,6 +128,9 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentic
 
         res.render('events/payment');
     } catch (e) {
+        if (e?.errorResponse?.errmsg && e.errorResponse.errmsg.includes('duplicate key error collection')) {
+            return res.redirect(`/eventos/${eventLink}/ingressos/data-${index}/confirmacao/pagamento`);
+        }
         res.status(400).json(e);
     }
 });
@@ -145,7 +148,6 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao',
     }
 
     const lastSelection = req.cookies[`lastSelection_${eventLink}_${index}`];
-    const totalPrice = req.cookies[`totalPrice_${eventLink}_${index}`];
     res.clearCookie(`lastSelection_${eventLink}_${index}`);
     res.clearCookie(`totalPrice_${eventLink}_${index}`);
 
