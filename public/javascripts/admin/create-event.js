@@ -9,26 +9,33 @@ document.getElementById('addEventDate').addEventListener('click', function () {
             <h4>Data ${dateIndex + 1}</h4>
             <button type="button" class="btn btn-danger btn-sm" onclick="removeEventDate(this)">Remover Data</button>
         </div>
+        <div class="invalid-feedback"></div>
+        <br>
         <div class="row g-3">
             <div class="col-md-4">
                 <label for="state${dateIndex}" class="form-label">Estado</label>
                 <input type="text" class="form-control" id="state${dateIndex}" name="dates[${dateIndex}][state]" required>
+                <div class="invalid-feedback"></div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <label for="city${dateIndex}" class="form-label">Cidade</label>
                 <input type="text" class="form-control" id="city${dateIndex}" name="dates[${dateIndex}][city]" required>
+                <div class="invalid-feedback"></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="date${dateIndex}" class="form-label">Data</label>
                 <input type="date" class="form-control" id="date${dateIndex}" name="dates[${dateIndex}][date]" min="${new Date().toISOString().split('T')[0]}" required>
+                <div class="invalid-feedback"></div>
             </div>
             <div class="col-12">
                 <label for="locale${dateIndex}" class="form-label">Local</label>
                 <input type="text" class="form-control" id="locale${dateIndex}" name="dates[${dateIndex}][locale]" required>
+                <div class="invalid-feedback"></div>
             </div>
             <div class="col-12">
                 <label for="address${dateIndex}" class="form-label">Endereço</label>
                 <input type="text" class="form-control" id="address${dateIndex}" name="dates[${dateIndex}][address]" required>
+                <div class="invalid-feedback"></div>
             </div>
             <div class="col-12">
                 <h5>Ingressos</h5>
@@ -109,18 +116,22 @@ function addEventTicket(dateIndex) {
             <div class="col-md-6">
                 <label for="sector${dateIndex}_${ticketIndex}" class="form-label">Setor</label>
                 <input type="text" class="form-control" id="sector${dateIndex}_${ticketIndex}" name="dates[${dateIndex}][tickets][${ticketIndex}][sector]" required>
+                <div class="invalid-feedback"></div>
             </div>
             <div class="col-md-6">
                 <label for="category${dateIndex}_${ticketIndex}" class="form-label">Categoria</label>
                 <input type="text" class="form-control" id="category${dateIndex}_${ticketIndex}" name="dates[${dateIndex}][tickets][${ticketIndex}][category]" required>
+                <div class="invalid-feedback"></div>
             </div>
             <div class="col-md-6">
                 <label for="value${dateIndex}_${ticketIndex}" class="form-label">Valor</label>
                 <input type="number" class="form-control" id="value${dateIndex}_${ticketIndex}" name="dates[${dateIndex}][tickets][${ticketIndex}][value]" required>
+                <div class="invalid-feedback"></div>
             </div>
             <div class="col-md-6">
                 <label for="totalAmount${dateIndex}_${ticketIndex}" class="form-label">Quantidade Total</label>
                 <input type="number" class="form-control" id="totalAmount${dateIndex}_${ticketIndex}" name="dates[${dateIndex}][tickets][${ticketIndex}][totalAmount]" required>
+                <div class="invalid-feedback"></div>
             </div>
         </div>
     `;
@@ -159,3 +170,52 @@ function updateTicketIndices(ticketsContainer) {
         });
     });
 }
+
+// FUNÇÕES DE VALIDAÇÃO DE DADOS
+
+function validateEventDates() {
+    let isValid = true;
+
+    const fields = document.querySelectorAll('input[required], textarea[required]');
+
+    fields.forEach(field => {
+        const feedbackElement = field.nextElementSibling;
+
+        if (!field.value) {
+            field.classList.add('is-invalid');
+            feedbackElement.textContent = 'Campo obrigatório.';
+            feedbackElement.style.display = 'block';
+            isValid = false;
+        } else {
+            field.classList.remove('is-invalid');
+            feedbackElement.textContent = '';
+            feedbackElement.style.display = 'none';
+        }
+    });
+
+    const eventDates = document.querySelectorAll('.event-date');
+
+    eventDates.forEach(dateDiv => {
+        const ticketFields = dateDiv.querySelectorAll('[name*="tickets"]');
+        const hasTicket = Array.from(ticketFields).length > 0;
+        
+        const invalidFeedbackElement = dateDiv.querySelector('.invalid-feedback');
+
+        if (!hasTicket) {
+            invalidFeedbackElement.textContent = 'Ingresso é obrigatório.';
+            invalidFeedbackElement.style.display = 'block';
+            isValid = false;
+        } else {
+            invalidFeedbackElement.textContent = '';
+            invalidFeedbackElement.style.display = 'none';
+        }
+    });
+
+    return isValid;
+}
+
+document.querySelector('form').addEventListener('submit', function(event) {
+    if (!validateEventDates()) {
+        event.preventDefault();
+    }
+});

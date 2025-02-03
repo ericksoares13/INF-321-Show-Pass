@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const upload = require('../db/multerConfig');
 
 const UserService = require('../services/userService');
 const EventService = require('../services/eventService');
@@ -104,22 +106,60 @@ router.post('/eventos', authenticate, async function(req, res, next) {
 
 /* GET admin-events page. */
 router.get('/eventos/criar', authenticate, async function(req, res, next) {
-    const events = await Event.findOne({link: 'caetano-veloso-e-maria-bethania'}).populate({
-        path: 'dates',
-        populate: {
-            path: 'tickets'
-        }
-    })
-    .exec();
-    console.log(events);
-    res.render('admin/create-event', { event: events, error: {} });
+    res.render('admin/create-event', { event: {}, error: {} });
 });
 
 /* GET admin-events page. */
-router.post('/eventos/criar', authenticate, async function(req, res, next) {
-    console.log(req.body);
-    res.render('admin/create-event', { event: {}, error: {} });
+router.post('/eventos/criar', upload.fields([
+    { name: 'image', maxCount: 1 },
+    { name: 'sectorImage', maxCount: 1 }
+]), async (req, res) => {
+    try {
+        if (!req.files.image || !req.files.sectorImage) {
+            return res.status(400).render('error', {
+                error: {
+                    message: 'Necessário duas imagens.'
+                }
+            });
+        }
 
+        const imageUrl = `/images/${req.files.image[0].filename}`;
+        const sectorImageUrl = `/images/${req.files.sectorImage[0].filename}`;
+
+        await EventService.createEvent({
+            ...req.body,
+            image: imageUrl,
+            sectorImage: sectorImageUrl,
+            dates: req.body.dates && req.body.dates.length > 0
+                ? await Promise.all(req.body.dates.map(async (date, index) => {
+                    const createdDate = (await EventService.createDate({
+                        ...date,
+                        index: index,
+                        tickets: await Promise.all(date.tickets.map(async ticket => {
+                            return (await EventService.createTicket({
+                                ...ticket,
+                                soldAmount: 0
+                            }))._id;
+                        }))
+                    }))._id;
+                    return createdDate;
+                }))
+                : []
+        });
+
+        res.redirect('/admin/eventos');
+    } catch (e) {
+        res.status(400).render('error', {
+            error: {
+                message: 'Erro ao criar evento. ' + e
+            }
+        });
+    }
+});
+
+router.get('/eventos/editar/:eventLink', async function(req, res, next) {
+    const eventLink = req.params.eventLink;
+    res.redirect('/admin');
 });
 
 /* GET admin-carousel page. */

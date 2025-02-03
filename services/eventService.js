@@ -1,4 +1,6 @@
 const Event = require('../models/event/Event');
+const EventDateInfos = require('../models/event/EventDateInfos');
+const EventTicket = require('../models/event/EventTicket');
 const TicketReservation = require('../models/event/TicketReservation');
 const Carousel = require('../models/event/sections/Carousel');
 const Section = require('../models/event/sections/Section');
@@ -43,6 +45,15 @@ class EventService {
     }
 
     async createEvent(event) {
+        return await Event.create(event);
+    }
+
+    async createDate(date) {
+        return await EventDateInfos.create(date);
+    }
+
+    async createTicket(ticket) {
+        return await EventTicket.create(ticket);
     }
 
     async getCarousel() {

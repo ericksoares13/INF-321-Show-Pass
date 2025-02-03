@@ -1,7 +1,19 @@
 const mongoose = require('mongoose');
 
-const connectDB = (url) => {
-    return mongoose.connect(url);
+let gfs;
+
+const connectDB = async (url) => {
+    const conn = await mongoose.connect(url);
+
+    gfs = new mongoose.mongo.GridFSBucket(conn.connection.db, {
+        bucketName: "uploads",
+    });
+
+    return conn;
 };
 
-module.exports = connectDB;
+const getGFS = () => {
+    return gfs;
+  };
+
+module.exports = { connectDB, getGFS };
