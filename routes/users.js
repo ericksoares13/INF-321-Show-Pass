@@ -10,14 +10,18 @@ const authenticate = function(req, res, next) {
     const authToken = req.cookies.authToken;
   
     if (!authToken) {
-        return res.status(401).json({ message: 'Acesso negado.' });
+        return res.status(401).render('error', { error: {
+            message: 'Acesso negado.'
+        }});
     }
   
     try {
         jwt.verify(authToken, process.env.JWT_SECRET);
         next();
     } catch (error) {
-        res.status(400).json({ message: 'Acesso negado.' });
+        res.status(400).render('error', { error: {
+            message: 'Acesso negado.'
+        }});
     }
 };
 
@@ -48,7 +52,9 @@ router.get('/', async function(req, res, next) {
             eventsSearch: null
         });
     } catch (e) {
-        res.status(400).json({ message: 'Não foi possível carregar a tela inicial.' });
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível carregar a tela inicial.'
+        }});
     }
 });
 
@@ -68,7 +74,9 @@ router.post('/', async function(req, res, next) {
             eventsSearch: events
         });
     } catch (e) {
-        res.status(400).json({ message: 'Não foi possível realizar a busca.' });
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível realizar a busca.'
+        }});
     }
 });
 
@@ -79,7 +87,9 @@ router.get('/meus-pedidos', authenticate, async function(req, res, next) {
         const orders = await UserService.getOrders(userId);
         res.render('orders', { orders: orders });
     } catch (e) {
-        res.status(400).json({ message: e });
+        res.status(400).render('error', { error: {
+            message: 'Falha ao carregar pedidos.'
+        }});
     }
 });
 
@@ -96,7 +106,9 @@ router.post('/meus-pedidos', authenticate, async function(req, res, next) {
         const orders = await UserService.searchOrders(searchQuery, userId);
         res.render('orders', { orders: orders });
     } catch (e) {
-        res.status(400).json({ message: e });
+        res.status(400).render('error', { error: {
+            message: 'Falha ao carregar pedidos.'
+        }});
     }
 });
 
@@ -108,7 +120,9 @@ router.get('/meus-pedidos/:orderNum', authenticate, async function(req, res, nex
         const orderId = await UserService.getOrderId(userId, orderNum);
         res.render('events/conclusion', (await UserService.getOrder(orderId)));
     } catch (e) {
-        res.status(400).json({ message: e });
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível localizar o pedido.'
+        }});
     }
 });
 

@@ -12,20 +12,26 @@ const authenticate = async function(req, res, next) {
     const userId = req.cookies.userId;
   
     if (!authToken) {
-        return res.status(401).json({ message: 'Acesso negado.' });
+        return res.status(401).render('error', { error: {
+            message: 'Acesso negado.'
+        }});
     }
   
     const user = await UserService.getUserById(userId);
 
     if (!user || !user.admin) {
-        return res.status(401).json({ message: 'Usuário precisa ser administrador.' });
+        return res.status(401).render('error', { error: {
+            message: 'Usuário precisa ser administrador.'
+        }});
     }
 
     try {
         jwt.verify(authToken, process.env.JWT_SECRET);
         next();
     } catch (error) {
-        res.status(400).json({ message: 'Acesso negado.' });
+        res.status(400).render('error', { error: {
+            message: 'Acesso negado.'
+        }});
     }
 };
 
@@ -55,7 +61,9 @@ router.get('/', authenticate, async function(req, res, next) {
             eventsSections: sectionsEvents
         });
     } catch (e) {
-        res.status(400).json({ message: 'Não foi possível carregar a tela inicial.' });
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível carregar a tela inicial.'
+        }});
     }
 });
 
@@ -65,7 +73,9 @@ router.get('/eventos', authenticate, async function(req, res, next) {
         const events = await EventService.getAllEventsAdmin();
         res.render('admin/events', { events: events });
     } catch (e) {
-        es.status(200).json({ message: 'Erro ao listar eventos' });
+        res.status(400).render('error', { error: {
+            message: 'Erro ao listar eventos'
+        }});
     }
 });
 
@@ -86,7 +96,9 @@ router.post('/eventos', authenticate, async function(req, res, next) {
         });
         res.render('admin/events', { events: events });
     } catch (e) {
-        res.status(400).json({ message: 'Não foi possível realizar a busca.' });
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível realizar a busca.'
+        }});
     }
 });
 
@@ -101,7 +113,6 @@ router.get('/eventos/criar', authenticate, async function(req, res, next) {
     .exec();
     console.log(events);
     res.render('admin/create-event', { event: events, error: {} });
-
 });
 
 /* GET admin-events page. */

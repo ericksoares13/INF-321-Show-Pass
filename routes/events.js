@@ -30,7 +30,9 @@ router.get('/:eventLink', async function(req, res) {
         const event = await EventService.getEventPage(eventLink);
         res.render('events/event', { event });
     } catch (e) {
-        res.status(400).json(e);
+        res.status(400).render('error', { error: {
+            message: 'Erro ao carregar evento.'
+        }});
     }
 });
 
@@ -74,7 +76,9 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao', authenticate, async
             })
         }});
     } catch (e) {
-        res.status(400).json(e);
+        res.status(400).render('error', { error: {
+            message: 'Erro ao selecionar ingresso.'
+        }});
     }
 });
 
@@ -93,7 +97,9 @@ router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentica
 
         res.render('events/payment');
     } catch (e) {
-        res.status(400).json(e);
+        res.status(400).render('error', { error: {
+            message: 'Erro durante pagamento.'
+        }});
     }
 });
 
@@ -131,7 +137,9 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentic
         if (e?.errorResponse?.errmsg && e.errorResponse.errmsg.includes('duplicate key error collection')) {
             return res.redirect(`/eventos/${eventLink}/ingressos/data-${index}/confirmacao/pagamento`);
         }
-        res.status(400).json(e);
+        res.status(400).render('error', { error: {
+            message: 'Erro durante pagamento.'
+        }});
     }
 });
 
@@ -144,7 +152,9 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao',
     const reservation = await TicketReservation.findOne({ eventLink, index, userId });
     
     if (!reservation) {
-        return res.status(400).send("Reserva expirada ou não encontrada.");
+        res.status(400).render('error', { error: {
+            message: 'Reserva expirada ou não encontrada.'
+        }});
     }
 
     const lastSelection = req.cookies[`lastSelection_${eventLink}_${index}`];
