@@ -8,13 +8,13 @@ const TicketReservation = require('../models/event/TicketReservation');
 const UserService = require('../services/userService');
 
 /* Authenticate user */
-const authenticate = function(req, res, next) {
+const authenticate = function (req, res, next) {
     const authToken = req.cookies.authToken;
-  
+
     if (!authToken) {
         return res.redirect('/entrar');
     }
-  
+
     try {
         jwt.verify(authToken, process.env.JWT_SECRET);
         next();
@@ -24,20 +24,22 @@ const authenticate = function(req, res, next) {
 };
 
 /* GET event page. */
-router.get('/:eventLink', async function(req, res) {
+router.get('/:eventLink', async function (req, res) {
     try {
         const eventLink = req.params.eventLink;
         const event = await EventService.getEventPage(eventLink);
         res.render('events/event', { event });
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Erro ao carregar evento.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Erro ao carregar evento.'
+            }
+        });
     }
 });
 
 /* GET ticket page. */
-router.get('/:eventLink/ingressos/data-:index', authenticate, async function(req, res, next) {
+router.get('/:eventLink/ingressos/data-:index', authenticate, async function (req, res, next) {
     try {
         const eventLink = req.params.eventLink;
         const index = parseInt(req.params.index);
@@ -57,7 +59,7 @@ router.get('/:eventLink/ingressos/data-:index', authenticate, async function(req
 });
 
 /* Confirmation page. */
-router.post('/:eventLink/ingressos/data-:index/confirmacao', authenticate, async function(req, res, next) {
+router.post('/:eventLink/ingressos/data-:index/confirmacao', authenticate, async function (req, res, next) {
     try {
         const eventLink = req.params.eventLink;
         const index = parseInt(req.params.index);
@@ -65,25 +67,29 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao', authenticate, async
 
         const { selectedTickets, totalPrice } = req.body;
         const tickets = JSON.parse(selectedTickets);
-        
-        res.render('events/confirmation', { tickets, totalPrice, event: {
-            name: event.name,
-            city: event.dates[0].city,
-            date: event.dates[0].date.toLocaleDateString("pt-BR", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric"
-            })
-        }});
+
+        res.render('events/confirmation', {
+            tickets, totalPrice, event: {
+                name: event.name,
+                city: event.dates[0].city,
+                date: event.dates[0].date.toLocaleDateString("pt-BR", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                })
+            }
+        });
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Erro ao selecionar ingresso.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Erro ao selecionar ingresso.'
+            }
+        });
     }
 });
 
 /* GET payment page. */
-router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authenticate, async function(req, res, next) {
+router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authenticate, async function (req, res, next) {
     try {
         const eventLink = req.params.eventLink;
         const index = parseInt(req.params.index);
@@ -97,14 +103,16 @@ router.get('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentica
 
         res.render('events/payment');
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Erro durante pagamento.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Erro durante pagamento.'
+            }
+        });
     }
 });
 
 /* Payment page. */
-router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authenticate, async function(req, res, next) {
+router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authenticate, async function (req, res, next) {
     const eventLink = req.params.eventLink;
     const index = parseInt(req.params.index);
     try {
@@ -113,16 +121,16 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentic
         let { selectedTickets, totalPrice } = req.body;
         const tickets = JSON.parse(selectedTickets);
         totalPrice = Number(totalPrice.replace(',', '.'))
-        
-        res.cookie(`lastSelection_${eventLink}_${index}`, tickets, { 
+
+        res.cookie(`lastSelection_${eventLink}_${index}`, tickets, {
             maxAge: 600000,
-            httpOnly: true 
+            httpOnly: true
         });
-        res.cookie(`totalPrice_${eventLink}_${index}`, totalPrice, { 
+        res.cookie(`totalPrice_${eventLink}_${index}`, totalPrice, {
             maxAge: 600000,
-            httpOnly: true 
+            httpOnly: true
         });
-        
+
         await TicketReservation.create({
             eventLink,
             index,
@@ -137,9 +145,11 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento', authentic
         if (e?.errorResponse?.errmsg && e.errorResponse.errmsg.includes('duplicate key error collection')) {
             return res.redirect(`/eventos/${eventLink}/ingressos/data-${index}/confirmacao/pagamento`);
         }
-        res.status(400).render('error', { error: {
-            message: 'Erro durante pagamento.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Erro durante pagamento.'
+            }
+        });
     }
 });
 
@@ -151,11 +161,13 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao',
         const userId = req.cookies.userId;
 
         const reservation = await TicketReservation.findOne({ eventLink, index, userId });
-        
+
         if (!reservation) {
-            res.status(400).render('error', { error: {
-                message: 'Reserva expirada ou não encontrada.'
-            }});
+            res.status(400).render('error', {
+                error: {
+                    message: 'Reserva expirada ou não encontrada.'
+                }
+            });
         }
 
         const lastSelection = req.cookies[`lastSelection_${eventLink}_${index}`];
@@ -165,7 +177,7 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao',
         const event = await EventService.getEventDateComplete(eventLink, index);
         const result = lastSelection.map(ticket => {
             const matches = event.dates[0].tickets.filter(item => item.sector === ticket.sector && item.category === ticket.ticketType);
-            
+
             if (matches.length > 0) {
                 return matches.map(match => ({
                     quantity: ticket.quantity,
@@ -191,9 +203,11 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao',
 
         res.render('events/conclusion', (await UserService.getOrder(order._id)));
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Erro durante conclusão.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Erro durante conclusão.'
+            }
+        });
     }
 });
 

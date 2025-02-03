@@ -7,11 +7,11 @@ const Fuse = require('fuse.js');
 
 class UserService {
     static SALT_ROUNDS = 10;
-    
+
     async getAllUsers() {
         return await User.find({});
     }
-    
+
     async getUserById(userId) {
         const user = await User.findById(userId);
         if (!user) {
@@ -38,14 +38,14 @@ class UserService {
     async createUser(user) {
         await this.#validateUser(user);
         user.password = await this.hashPassword(user.password);
-        const createdUser = await User.create({...user, admin: false});
+        const createdUser = await User.create({ ...user, admin: false });
         return createdUser;
     }
 
     async updateUser(userId, params) {
         const user = await this.getUserById(userId);
         const error = {};
-        
+
         if (params.name && Object.entries(params).every(([key, value]) => user[key] === value)) {
             return user;
         } else if (params.name) {
@@ -60,7 +60,7 @@ class UserService {
             this.#validatePassword(params.password, error);
             this.#validateCheckPassword(params.password, params.checkPassword, error);
         }
-            
+
         if (Object.keys(error).length > 0) {
             throw error;
         }
@@ -73,13 +73,14 @@ class UserService {
     }
 
     async loginUser(user) {
-        const loggedUser = await this.getUserByField({ $or: [
-            { email: user.email },
-            { user: user.email }]
+        const loggedUser = await this.getUserByField({
+            $or: [
+                { email: user.email },
+                { user: user.email }]
         });
 
         if (!loggedUser) {
-            throw { email : 'Usuário/Email não encontrado.' };
+            throw { email: 'Usuário/Email não encontrado.' };
         }
 
         const isMatch = await bcrypt.compare(user.password, loggedUser.password);
@@ -119,19 +120,20 @@ class UserService {
         order.tickets.forEach(async ticket => {
             await EventTicket.findOneAndUpdate(
                 { _id: ticket.ticketId },
-                { $inc: { soldAmount: ticket.quantity }
-            });
+                {
+                    $inc: { soldAmount: ticket.quantity }
+                });
         });
 
         return createdOrder;
     }
 
     async getOrders(userId) {
-        const orders = await Order.find({userId: userId})
-                                  .populate('eventId', 'name image') 
-                                  .populate('dateId', 'locale')
-                                  .exec();
-                        
+        const orders = await Order.find({ userId: userId })
+            .populate('eventId', 'name image')
+            .populate('dateId', 'locale')
+            .exec();
+
         const foundOrders = orders.map((order) => {
             return {
                 name: order.eventId.name,
@@ -162,19 +164,19 @@ class UserService {
     }
 
     async getOrderId(userId, orderNum) {
-        const order = await Order.find({userId: userId, orderNum: orderNum})
+        const order = await Order.find({ userId: userId, orderNum: orderNum })
         return order[0]._id;
     }
 
     async getOrder(orderId) {
         const order = await Order.findById(orderId)
-                                  .populate('eventId', 'name') 
-                                  .populate('dateId', 'city date')
-                                  .populate({
-                                        path: 'tickets.ticketId',
-                                        select: 'sector category value'
-                                  })
-                                  .exec();
+            .populate('eventId', 'name')
+            .populate('dateId', 'city date')
+            .populate({
+                path: 'tickets.ticketId',
+                select: 'sector category value'
+            })
+            .exec();
 
         let totalPrice = 0;
         const tickets = order.tickets.map(ticket => {
@@ -211,10 +213,10 @@ class UserService {
             threshold: 0.3,
             keys: ['eventId.name', 'eventId.link', 'eventId.description', 'eventId.infos', 'dateId.state', 'dateId.city', 'dateId.locale', 'dateId.address']
         };
-        const orders = await Order.find({userId: userId})
-                                  .populate('eventId', 'name image link description infos') 
-                                  .populate('dateId', 'state city locale address')
-                                  .exec();
+        const orders = await Order.find({ userId: userId })
+            .populate('eventId', 'name image link description infos')
+            .populate('dateId', 'state city locale address')
+            .exec();
 
         const fuseOrders = new Fuse(orders, options);
         const ordersResults = fuseOrders.search(searchQuery);
@@ -276,19 +278,19 @@ class UserService {
             error.user = 'O campo \"Usuário\" é obrigatório.';
             return;
         }
-    
+
         if (userName.length < 3 || userName.length > 20) {
             error.user = 'O nome de usuário deve ter entre 3 e 20 caracteres.';
             return;
         }
-    
+
         const usernamePattern = /^[a-zA-Z0-9_-]+$/;
         if (!usernamePattern.test(userName) || userName.includes(" ")) {
             error.user = 'O nome de usuário só pode conter letras, números, underlines (_) e hífens (-).';
             return;
         }
 
-        const user = await this.getUserByField({user: userName});
+        const user = await this.getUserByField({ user: userName });
         if (user) {
             error.user = 'O nome de usuário escolhido já está em uso.';
         }
@@ -299,31 +301,31 @@ class UserService {
             error.cpf = 'O campo \"CPF\" é obrigatório.';
             return;
         }
-    
+
         const copiedCpf = cpf.replace(/[^\d]/g, '');
         if (copiedCpf.length !== 11 || /^(\d)\1+$/.test(copiedCpf)) {
             error.cpf = 'CPF inválido.';
             return;
         }
-    
+
         let sum = 0;
         for (let i = 0; i < 9; i++) {
             sum += parseInt(copiedCpf.charAt(i)) * (10 - i);
         }
-    
+
         let dig1 = (sum * 10) % 11;
         if (dig1 === 10) dig1 = 0;
-    
+
         sum = 0;
         for (let i = 0; i < 10; i++) {
             sum += parseInt(copiedCpf.charAt(i)) * (11 - i);
         }
-    
+
         let dig2 = (sum * 10) % 11;
         if (dig2 === 10) dig2 = 0;
-    
+
         if (dig1 === parseInt(copiedCpf.charAt(9)) && dig2 === parseInt(copiedCpf.charAt(10))) {
-            const user = await this.getUserByField({cpf: cpf});
+            const user = await this.getUserByField({ cpf: cpf });
             if (user) {
                 error.cpf = 'O CPF informado já está em uso.';
                 return;
@@ -331,7 +333,7 @@ class UserService {
 
             return;
         }
-    
+
         error.cpf = 'CPF inválido.'
     }
 
@@ -350,7 +352,7 @@ class UserService {
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-        
+
         if (birthDate > today) {
             error.birthDate = 'A data não pode ser no futuro.';
             return;
@@ -374,14 +376,14 @@ class UserService {
             error.cellphone = 'O campo \"Celular\" é obrigatório.';
             return;
         }
-    
+
         number = number.replace(/[^\d]/g, '');
         const regex = /^[1-9][0-9]{10}$/;
-    
+
         if (regex.test(number)) {
             return;
         }
-    
+
         error.cellphone = 'Celular inválido.';
     }
 
@@ -390,11 +392,11 @@ class UserService {
             error.email = 'O campo \"Email\" é obrigatório.';
             return;
         }
-    
+
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    
+
         if (regex.test(email)) {
-            const user = await this.getUserByField({email: email});
+            const user = await this.getUserByField({ email: email });
             if (user) {
                 error.email = 'O email informado já está em uso.';
                 return;
@@ -402,7 +404,7 @@ class UserService {
 
             return;
         }
-    
+
         error.email = 'Email inválido.';
     }
 
@@ -411,7 +413,7 @@ class UserService {
             error.password = 'O campo \"Senha\" é obrigatório.';
             return;
         }
-    
+
         this.#passwordStrength(password, error);
     }
 
@@ -436,11 +438,11 @@ class UserService {
             error.checkPassword = 'O campo \"Confirme sua senha\" é obrigatório.';
             return;
         }
-    
+
         if (password == checkPassword) {
             return;
         }
-    
+
         error.checkPassword = 'As senhas não coincidem.';
     }
 }

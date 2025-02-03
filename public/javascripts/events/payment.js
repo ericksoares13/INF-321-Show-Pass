@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateQrExpiry() {
     const qrExpiryTime = document.getElementById("qr-expiry-time");
     const now = new Date();
-    const expiry = new Date(now.getTime() + 5 * 60000); 
+    const expiry = new Date(now.getTime() + 5 * 60000);
 
     const hours = expiry.getHours().toString().padStart(2, "0");
     const minutes = expiry.getMinutes().toString().padStart(2, "0");
@@ -157,7 +157,7 @@ let errorMessages = {};
     };
 
     const forms = document.querySelectorAll('.needs-validation');
-  
+
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             Array.from(form.elements).forEach(input => {
@@ -168,7 +168,7 @@ let errorMessages = {};
 
                 if (validators[id]) {
                     const isValid = validators[id](input.value);
-            
+
                     if (!isValid) {
                         valid = false;
                         input.classList.add('is-invalid');

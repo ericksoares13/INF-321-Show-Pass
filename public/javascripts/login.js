@@ -1,7 +1,7 @@
 // LIDA COM A OPÇÃO DE EXIBIR A SENHA
 
-$(document).ready(function() {
-    $('#toggle-password').click(function() {
+$(document).ready(function () {
+    $('#toggle-password').click(function () {
         const passwordField = $('#password');
         const passwordType = passwordField.attr('type') === 'password' ? 'text' : 'password';
         const icon = passwordField.attr('type') === 'password' ? 'eye' : 'eye-off';
@@ -26,7 +26,7 @@ let errorMessages = {};
 
 (() => {
     const forms = document.querySelectorAll('.needs-validation');
-  
+
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             Array.from(form.elements).forEach(input => {
@@ -36,7 +36,7 @@ let errorMessages = {};
                 const id = input.id;
 
                 const isValid = validateField(id, input.value);
-        
+
                 if (!isValid) {
                     valid = false;
                     input.classList.add('is-invalid');

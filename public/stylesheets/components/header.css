@@ -20,7 +20,8 @@
     margin-top: 12px;
 }
 
-.nav-link, .navbar-brand {
+.nav-link,
+.navbar-brand {
     color: white;
 }
 
@@ -28,7 +29,9 @@
     color: #e6e6e6;
 }
 
-.navbar-brand:hover, .navbar-brand:visited, .nav-link:focus {
+.navbar-brand:hover,
+.navbar-brand:visited,
+.nav-link:focus {
     color: white !important;
 }
 

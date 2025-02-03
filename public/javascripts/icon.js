@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const favicon = document.querySelector('link[rel="icon"]');
 

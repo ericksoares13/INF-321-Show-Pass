@@ -12,7 +12,7 @@ h5 {
 }
 
 input[type="file"]::-webkit-file-upload-button {
-    background-color: #5f1571; 
+    background-color: #5f1571;
     color: white;
     border: none;
     height: 40px;
@@ -27,7 +27,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 input[type="file"]::-moz-file-upload-button {
-    background-color: #5f1571; 
+    background-color: #5f1571;
     color: white;
     border: none;
     height: 40px;
@@ -45,15 +45,19 @@ input[type="file"]::-moz-file-upload-button:hover {
     border-radius: 5px;
 }
 
-.btn-secondary, .btn-additional {
-    background-color: #5f1571; 
+.btn-secondary,
+.btn-additional {
+    background-color: #5f1571;
     border: none;
     color: white;
     border-radius: 5px;
     height: 30px;
 }
 
-.btn-secondary:hover, .btn-secondary:active, .btn-additional:hover, .btn-additional:active {
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-additional:hover,
+.btn-additional:active {
     background-color: #6a1a7d !important;
     color: white;
 }

@@ -15,7 +15,7 @@ function applyDateFilter() {
         const dateText = card.querySelector("small").textContent;
         const dateParts = dateText.split(" - ")[1].split(" de ");
         const eventDate = new Date(`${dateParts[2]}-${monthToNumber(dateParts[1])}-${dateParts[0]}`);
-    
+
         const now = new Date();
         let showCard = true;
 
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", applyDateFilter);
 document.getElementById("date-filter").addEventListener("change", applyDateFilter);
 
 // FUNÇÃO AUXILIAR QUE RETORNA O NUMERO DO MÊS EM FUNÇÃO DO NOME
-  
+
 function monthToNumber(month) {
     const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
     return months.indexOf(month.toLowerCase()) + 1;

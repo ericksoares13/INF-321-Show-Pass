@@ -29,7 +29,7 @@ a {
     margin-top: 40px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .payment-card:hover {
@@ -43,9 +43,10 @@ a {
     margin-left: 20px;
 }
 
-.form-control, .form-select {
-    height: 50px; 
-    font-size: 16px; 
+.form-control,
+.form-select {
+    height: 50px;
+    font-size: 16px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -68,10 +69,10 @@ a {
 }
 
 .btn-success {
-    background-color: #5f1571; 
+    background-color: #5f1571;
     border: none;
     color: white;
-    padding: 10px 20px; 
+    padding: 10px 20px;
     font-size: 1.2rem;
     font-weight: 500;
     border-radius: 5px;
@@ -88,7 +89,8 @@ a {
     margin-right: auto;
 }
 
-.btn-success:hover, .btn-success:active {
+.btn-success:hover,
+.btn-success:active {
     background-color: #6a1a7d !important;
 }
 

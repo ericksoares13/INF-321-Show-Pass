@@ -2,7 +2,7 @@
 
 // APLICAÇÃO DA MÁSCARA
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#cellphone').mask('(00) 00000-0000');
 });
 
@@ -38,12 +38,12 @@ $(document).ready(function () {
     const strengthMeter = $('#password-strength-meter');
     const strengthMessage = $('#password-strength-msg');
     const progressContainer = $('.progress-container');
-    
+
     passwordField.on('input', function () {
         const password = passwordField.val();
 
         progressContainer.css('display', 'flex');
-        
+
         const strength = calculatePasswordStrength(password);
 
         strengthMeter.css('width', strength.percent + '%').attr('aria-valuenow', strength.percent);
@@ -63,18 +63,18 @@ $(document).ready(function () {
 
 // LIDA COM A OPÇÃO DE EXIBIR A SENHA
 
-$(document).ready(function() {
+$(document).ready(function () {
     [['#toggle-password-1', '#oldPassword'], ['#toggle-password-2', '#password'], ['#toggle-password-3', '#checkPassword']]
-    .forEach(button => {
-        $(button[0]).click(function() {
-            const passwordField = $(button[1]);
-            const passwordType = passwordField.attr('type') === 'password' ? 'text' : 'password';
-            const icon = passwordField.attr('type') === 'password' ? 'eye' : 'eye-off';
-    
-            passwordField.attr('type', passwordType);
-            $(this).find('ion-icon').attr('name', icon);
+        .forEach(button => {
+            $(button[0]).click(function () {
+                const passwordField = $(button[1]);
+                const passwordType = passwordField.attr('type') === 'password' ? 'text' : 'password';
+                const icon = passwordField.attr('type') === 'password' ? 'eye' : 'eye-off';
+
+                passwordField.attr('type', passwordType);
+                $(this).find('ion-icon').attr('name', icon);
+            });
         });
-    });
 });
 
 // EXIBE INFORMAÇÕES SOBRE A SENHA
@@ -113,7 +113,7 @@ const validateUser = (userName) => {
         errorMessages['user'] = 'O nome de usuário só pode conter letras, números, underlines (_) e hífens (-).';
         return false
     }
-    
+
     return true;
 };
 
@@ -187,7 +187,7 @@ let errorMessages = {};
     };
 
     const forms = document.querySelectorAll('.needs-validation');
-  
+
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             Array.from(form.elements).forEach(input => {
@@ -198,7 +198,7 @@ let errorMessages = {};
 
                 if (validators[id]) {
                     const isValid = validators[id](input.value);
-            
+
                     if (!isValid) {
                         valid = false;
                         input.classList.add('is-invalid');
@@ -223,9 +223,9 @@ let errorMessages = {};
 document.addEventListener('DOMContentLoaded', function () {
     const lastTab = getCookie('lastTab') || 'info-tab';
     if (document.getElementById(lastTab)) {
-        switchTab(lastTab, lastTab === 'info-tab' ? 'password-tab' : 'info-tab', 
-                  lastTab === 'info-tab' ? 'info-section' : 'password-section', 
-                  lastTab === 'info-tab' ? 'password-section' : 'info-section', false);
+        switchTab(lastTab, lastTab === 'info-tab' ? 'password-tab' : 'info-tab',
+            lastTab === 'info-tab' ? 'info-section' : 'password-section',
+            lastTab === 'info-tab' ? 'password-section' : 'info-section', false);
     }
 });
 

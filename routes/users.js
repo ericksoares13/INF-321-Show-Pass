@@ -6,33 +6,37 @@ const UserService = require('../services/userService');
 const EventService = require('../services/eventService');
 
 /* Authenticate user */
-const authenticate = function(req, res, next) {
+const authenticate = function (req, res, next) {
     const authToken = req.cookies.authToken;
-  
+
     if (!authToken) {
-        return res.status(401).render('error', { error: {
-            message: 'Acesso negado.'
-        }});
+        return res.status(401).render('error', {
+            error: {
+                message: 'Acesso negado.'
+            }
+        });
     }
-  
+
     try {
         jwt.verify(authToken, process.env.JWT_SECRET);
         next();
     } catch (error) {
-        res.status(400).render('error', { error: {
-            message: 'Acesso negado.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Acesso negado.'
+            }
+        });
     }
 };
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
     try {
         const carouselEventIds = await EventService.getCarousel();
         const carouselEvents = await Promise.all(
             carouselEventIds.map(async eventId => await EventService.getIndexEventInfos(eventId))
         );
-        
+
         const sections = await EventService.getSections();
         const sectionsEvents = await Promise.all(
             sections.map(async section => {
@@ -52,20 +56,22 @@ router.get('/', async function(req, res, next) {
             eventsSearch: null
         });
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Não foi possível carregar a tela inicial.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Não foi possível carregar a tela inicial.'
+            }
+        });
     }
 });
 
 /* Search event HOME. */
-router.post('/', async function(req, res, next) {
+router.post('/', async function (req, res, next) {
     const searchQuery = req.body.searchQuery.trim();
 
     if (!searchQuery) {
         return res.redirect('/');
     }
-    
+
     try {
         const events = await EventService.searchEvents(searchQuery);
         res.render('index', {
@@ -74,67 +80,75 @@ router.post('/', async function(req, res, next) {
             eventsSearch: events
         });
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Não foi possível realizar a busca.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Não foi possível realizar a busca.'
+            }
+        });
     }
 });
 
 /* GET orders page. */
-router.get('/meus-pedidos', authenticate, async function(req, res, next) {
+router.get('/meus-pedidos', authenticate, async function (req, res, next) {
     const userId = req.cookies.userId;
     try {
         const orders = await UserService.getOrders(userId);
         res.render('orders', { orders: orders });
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Falha ao carregar pedidos.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Falha ao carregar pedidos.'
+            }
+        });
     }
 });
 
 /* Search event ORDERS. */
-router.post('/meus-pedidos', authenticate, async function(req, res, next) {
+router.post('/meus-pedidos', authenticate, async function (req, res, next) {
     const searchQuery = req.body.searchQuery.trim();
     const userId = req.cookies.userId;
 
     if (!searchQuery) {
         return res.redirect('/meus-pedidos');
     }
-    
+
     try {
         const orders = await UserService.searchOrders(searchQuery, userId);
         res.render('orders', { orders: orders });
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Falha ao carregar pedidos.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Falha ao carregar pedidos.'
+            }
+        });
     }
 });
 
 /* GET profile page. */
-router.get('/meus-pedidos/:orderNum', authenticate, async function(req, res, next) {
+router.get('/meus-pedidos/:orderNum', authenticate, async function (req, res, next) {
     try {
         const orderNum = req.params.orderNum;
         const userId = req.cookies.userId;
         const orderId = await UserService.getOrderId(userId, orderNum);
         res.render('events/conclusion', (await UserService.getOrder(orderId)));
     } catch (e) {
-        res.status(400).render('error', { error: {
-            message: 'Não foi possível localizar o pedido.'
-        }});
+        res.status(400).render('error', {
+            error: {
+                message: 'Não foi possível localizar o pedido.'
+            }
+        });
     }
 });
 
 /* GET profile page. */
-router.get('/meu-perfil', authenticate, async function(req, res, next) {
+router.get('/meu-perfil', authenticate, async function (req, res, next) {
     const userId = req.cookies.userId;
     const user = await UserService.getUserInfos(userId);
     res.render('profile', { user, error: {} });
 });
 
 /* PATCH profile page. */
-router.post('/meu-perfil', authenticate, async function(req, res, next) {
+router.post('/meu-perfil', authenticate, async function (req, res, next) {
     const userId = req.cookies.userId;
     let user = await UserService.getUserInfos(userId);
     let params = {};
@@ -165,17 +179,17 @@ router.post('/meu-perfil', authenticate, async function(req, res, next) {
 });
 
 /* GET support page. */
-router.get('/suporte', function(req, res, next) {
+router.get('/suporte', function (req, res, next) {
     res.render('support', { error: {} });
 });
 
 /* Support question */
-router.post('/suporte', function(req, res, next) {
+router.post('/suporte', function (req, res, next) {
     res.render('support', { error: {} });
 });
 
 /* GET register page. */
-router.get('/cadastrar', function(req, res, next) {
+router.get('/cadastrar', function (req, res, next) {
     res.render('register', {
         user: {},
         error: {}
@@ -183,7 +197,7 @@ router.get('/cadastrar', function(req, res, next) {
 });
 
 /* Register user */
-router.post('/cadastrar', async function(req, res, next) {
+router.post('/cadastrar', async function (req, res, next) {
     const user = {
         name: req.body.name,
         user: req.body.user,
@@ -207,7 +221,7 @@ router.post('/cadastrar', async function(req, res, next) {
 });
 
 /* GET login page. */
-router.get('/entrar', function(req, res, next) {
+router.get('/entrar', function (req, res, next) {
     res.render('login', {
         user: {},
         error: {}
@@ -215,7 +229,7 @@ router.get('/entrar', function(req, res, next) {
 });
 
 /* Login user */
-router.post('/entrar', async function(req, res, next) {
+router.post('/entrar', async function (req, res, next) {
     const user = {
         email: req.body.email,
         password: req.body.password
@@ -226,7 +240,7 @@ router.post('/entrar', async function(req, res, next) {
         const token = UserService.generateToken(loggedUser);
         res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 86400000 });
         res.cookie('userId', loggedUser._id, { httpOnly: true, secure: true, maxAge: 86400000 });
-        
+
         if (loggedUser.admin) {
             res.redirect('/admin');
         } else {
@@ -238,14 +252,14 @@ router.post('/entrar', async function(req, res, next) {
 });
 
 /* Logout user */
-router.get('/sair', function(req, res, next) {
+router.get('/sair', function (req, res, next) {
     res.clearCookie('authToken');
     res.clearCookie('userId');
     res.redirect('/');
 });
 
 /* Authenticate user */
-router.get('/authenticate', authenticate, function(req, res, next) {
+router.get('/authenticate', authenticate, function (req, res, next) {
     res.status(200).json({ message: 'Acesso permitido.' });
 });
 

@@ -8,7 +8,7 @@
 .content {
     margin: 0 auto;
     padding: 30px;
-    display: flex; 
+    display: flex;
     justify-content: center;
 }
 
@@ -25,8 +25,8 @@ form {
 }
 
 .form-control {
-    height: 50px; 
-    font-size: 18px; 
+    height: 50px;
+    font-size: 18px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -60,7 +60,7 @@ input:disabled {
     font-size: 1.4rem;
     font-weight: bold;
     color: black;
-    display: flex; 
+    display: flex;
     align-items: center;
     margin-bottom: 12px;
     margin-left: 15px;
@@ -74,8 +74,8 @@ input:disabled {
 }
 
 .sidebar .nav-link {
-    font-size: 1.3rem; 
-    color: black; 
+    font-size: 1.3rem;
+    color: black;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -83,7 +83,7 @@ input:disabled {
 
 .sidebar .nav-link i {
     margin-right: 8px;
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
     color: #333;
 }
 
@@ -113,7 +113,7 @@ input:disabled {
 
 .btn-primary {
     background-color: #5f1571;
-    border-color: #3e0f60; 
+    border-color: #3e0f60;
     font-size: 18px;
     font-weight: bold;
     height: 50px;
@@ -124,13 +124,14 @@ input:disabled {
     margin: 15px auto 5px auto;
 }
 
-.btn-primary:hover, .btn-primary:active {
+.btn-primary:hover,
+.btn-primary:active {
     background-color: #721e86 !important;
 }
 
 form h2 {
     font-weight: bold;
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
 }
 
 /*---------------------------------*/
@@ -191,7 +192,9 @@ form h2 {
     display: block;
 }
 
-#toggle-password-1, #toggle-password-2, #toggle-password-3 {
+#toggle-password-1,
+#toggle-password-2,
+#toggle-password-3 {
     position: absolute;
     right: 3px;
     top: 29px;
@@ -210,15 +213,15 @@ form h2 {
     color: #555;
 }
 
-.form-control.is-invalid ~ #toggle-password-1 {
+.form-control.is-invalid~#toggle-password-1 {
     right: 25px;
 }
 
-.form-control.is-invalid ~ #toggle-password-2 {
+.form-control.is-invalid~#toggle-password-2 {
     right: 25px;
 }
 
-.form-control.is-invalid ~ #toggle-password-3 {
+.form-control.is-invalid~#toggle-password-3 {
     right: 25px;
 }
 

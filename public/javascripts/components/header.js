@@ -11,7 +11,7 @@ async function checkAuth() {
             method: 'GET',
             credentials: 'include'
         });
-  
+
         if (response.ok) {
             return true;
         } else {
@@ -48,7 +48,7 @@ async function checkAdminAuth() {
             method: 'GET',
             credentials: 'include'
         });
-  
+
         if (response.ok) {
             return true;
         } else {

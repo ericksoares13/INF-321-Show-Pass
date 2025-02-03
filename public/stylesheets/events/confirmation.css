@@ -41,10 +41,10 @@ h2 {
 }
 
 .btn-primary {
-    background-color: #5f1571; 
+    background-color: #5f1571;
     border: none;
     color: white;
-    padding: 10px 20px; 
+    padding: 10px 20px;
     font-size: 1.2rem;
     font-weight: 500;
     border-radius: 5px;
@@ -61,7 +61,8 @@ h2 {
     margin-right: auto;
 }
 
-.btn-primary:hover, .btn-primary:active {
+.btn-primary:hover,
+.btn-primary:active {
     background-color: #6a1a7d !important;
 }
 

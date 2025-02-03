@@ -6,7 +6,9 @@
     align-items: center;
 }
 
-.form-inline button:hover, .form-inline button:active, .form-inline button:focus {
+.form-inline button:hover,
+.form-inline button:active,
+.form-inline button:focus {
     background-color: #82229a !important;
 }
 
@@ -20,7 +22,8 @@
     width: 100%;
 }
 
-.form-inline button, .form-inline input::placeholder {
+.form-inline button,
+.form-inline input::placeholder {
     font-size: 14px;
 }
 

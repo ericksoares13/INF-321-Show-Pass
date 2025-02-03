@@ -7,7 +7,8 @@
     margin-top: 10px;
 }
 
-.btn-create-event:hover, .btn-create-event:active {
+.btn-create-event:hover,
+.btn-create-event:active {
     background-color: #78258d !important;
     color: white;
 }

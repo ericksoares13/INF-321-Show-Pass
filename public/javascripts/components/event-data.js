@@ -66,12 +66,12 @@ function updateDateTitles() {
 function updateDateIndices() {
     const dates = document.getElementById('dates');
     const dateDivs = dates.querySelectorAll('.event-date');
-    
+
     dateDivs.forEach((div, newDateIndex) => {
         div.querySelectorAll('input, textarea, select').forEach(input => {
             const name = input.name.replace(/\[\d+\]/g, `[${newDateIndex}]`);
             input.name = name;
-            
+
             const id = input.id.replace(/\d+/, newDateIndex);
             input.id = id;
         });
@@ -84,14 +84,14 @@ function updateDateIndices() {
         const ticketsContainer = div.querySelector(`div[id^="tickets"]`);
         if (ticketsContainer) {
             ticketsContainer.id = `tickets${newDateIndex}`;
-            
+
             const tickets = ticketsContainer.querySelectorAll('.event-ticket');
             tickets.forEach((ticket, newTicketIndex) => {
                 ticket.querySelectorAll('input').forEach(input => {
                     input.name = input.name
                         .replace(/dates\[\d+\]/g, `dates[${newDateIndex}]`)
                         .replace(/tickets\]\[\d+\]/g, `tickets][${newTicketIndex}]`);
-                    
+
                     input.id = input.id
                         .replace(/_(\d+)_/, `_${newDateIndex}_`)
                         .replace(/\d+$/, newTicketIndex);
@@ -198,7 +198,7 @@ function validateEventDates() {
     eventDates.forEach(dateDiv => {
         const ticketFields = dateDiv.querySelectorAll('[name*="tickets"]');
         const hasTicket = Array.from(ticketFields).length > 0;
-        
+
         const invalidFeedbackElement = dateDiv.querySelector('.invalid-feedback');
 
         if (!hasTicket) {
@@ -214,7 +214,7 @@ function validateEventDates() {
     return isValid;
 }
 
-document.querySelector('form').addEventListener('submit', function(event) {
+document.querySelector('form').addEventListener('submit', function (event) {
     if (!validateEventDates()) {
         event.preventDefault();
     }

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SETORES E VALORES DISPONÍVEIS PARA O EVENTO
 
-let selectedTickets = {};  
+let selectedTickets = {};
 let currentSector = "";
 
 // FUNÇÃO PARA EXIBIR OS TIPOS DE INGRESSOS DO SETOR SELECIONADO
@@ -44,10 +44,10 @@ function showTickets(element) {
         const totalAmount = ticket.totalAmount;
         const soldAmount = ticket.soldAmount;
         const available = totalAmount - soldAmount;
-    
+
         const ticketItem = document.createElement('li');
         ticketItem.classList.add('list-group-item');
-    
+
         ticketItem.innerHTML = `
             <div class="info">
                 <strong>${category}</strong>
@@ -69,7 +69,7 @@ function showTickets(element) {
             ticketItem.querySelector('.text-muted').textContent = '(ESGOTADO)';
             ticketItem.querySelector('.text-muted').classList.add('sold-out');
         }
-    
+
         ticketListContainer.appendChild(ticketItem);
     });
 
@@ -84,7 +84,7 @@ function showTickets(element) {
 function saveCurrentSelection() {
     if (!currentSector) return;
 
-    let sectorSelection = {}; 
+    let sectorSelection = {};
 
     document.querySelectorAll('.quantity-display').forEach(display => {
         const quantity = parseInt(display.textContent, 10);

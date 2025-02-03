@@ -14,6 +14,6 @@ const connectDB = async (url) => {
 
 const getGFS = () => {
     return gfs;
-  };
+};
 
 module.exports = { connectDB, getGFS };

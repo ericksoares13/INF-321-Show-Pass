@@ -2,7 +2,7 @@
 @import url(./style.css);
 
 .content {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 30px;
@@ -15,8 +15,8 @@
 }
 
 .form-control {
-    height: 50px; 
-    font-size: 16px; 
+    height: 50px;
+    font-size: 16px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -36,7 +36,7 @@
 
 .btn-primary {
     background-color: #5f1571;
-    border-color: #3e0f60; 
+    border-color: #3e0f60;
     font-size: 22px;
     font-weight: bold;
     height: 50px;
@@ -47,7 +47,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.537);
 }
 
-.btn-primary:hover, .btn-primary:active {
+.btn-primary:hover,
+.btn-primary:active {
     background-color: #721e86 !important;
 }
 
@@ -84,6 +85,6 @@
     color: #555;
 }
 
-.form-control.is-invalid ~ #toggle-password {
+.form-control.is-invalid~#toggle-password {
     right: 25px;
 }

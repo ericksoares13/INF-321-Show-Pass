@@ -2,7 +2,8 @@
 @import url(../style.css);
 
 
-.sector-list, .ticket-list {
+.sector-list,
+.ticket-list {
     max-height: 70vh;
     overflow-y: auto;
 }
@@ -70,7 +71,7 @@ img {
 }
 
 .btn-back {
-    background-color: none; 
+    background-color: none;
     border: none;
     color: black;
     font-size: 2.3rem;
@@ -85,11 +86,12 @@ img {
     margin-bottom: 35px;
 }
 
-.btn-back:hover, .btn-back:active {
+.btn-back:hover,
+.btn-back:active {
     color: black;
 }
 
-.btn-back h4{
+.btn-back h4 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,7 +112,8 @@ img {
     font-weight: bold;
 }
 
-.btn-minus, .btn-plus {
+.btn-minus,
+.btn-plus {
     background-color: #ddd;
     border: none;
     border-radius: 5px;
@@ -124,7 +127,8 @@ img {
     justify-content: center;
 }
 
-.btn-minus:hover, .btn-plus:hover {
+.btn-minus:hover,
+.btn-plus:hover {
     background-color: #bbb;
 }
 
@@ -149,10 +153,10 @@ img {
 }
 
 .checkout-btn {
-    background-color: #5f1571; 
+    background-color: #5f1571;
     border: none;
     color: white;
-    padding: 10px 20px; 
+    padding: 10px 20px;
     font-size: 1.2rem;
     font-weight: 500;
     border-radius: 5px;
@@ -169,7 +173,8 @@ img {
     margin-right: auto;
 }
 
-.checkout-btn:hover, .checkout-btn:active {
+.checkout-btn:hover,
+.checkout-btn:active {
     background-color: #6a1a7d !important;
 }
 
