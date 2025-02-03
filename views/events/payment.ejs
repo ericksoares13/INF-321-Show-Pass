@@ -56,42 +56,51 @@
                             <span class="rotate-icon" id="arrow">&#x25BC;</span>
                         </div>
                         <div class="form-input">
-                            <form action="pagamento/conclusao" method="POST">
-                                <input type="hidden" name="paymentMethod" value="cartao">
+                            <form action="pagamento/conclusao" method="POST" class="forms row g-3 needs-validation" novalidate>
                                 <div class="mb-4">
-                                    <label for="card-number" class="form-label">Número do cartão</label>
-                                    <input type="text" class="form-control" id="card-number" name="cardNumber" placeholder="0000 0000 0000 0000">
+                                    <input type="hidden" name="paymentMethod" id="paymentMethod" value="cartao">
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="card-holder" class="form-label">Nome do titular</label>
-                                    <input type="text" class="form-control" id="card-holder" name="cardHolder" placeholder="Nome como está no cartão">
+                                    <label for="cardNumber" class="form-label">Número do cartão</label>
+                                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="cardHolder" class="form-label">Nome do titular</label>
+                                    <input type="text" class="form-control" id="cardHolder" name="cardHolder" placeholder="Nome como está no cartão" required>
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="expiry-date" class="form-label">Validade</label>
-                                        <input type="text" class="form-control" id="expiry-date" name="expiryDate" placeholder="MM/AA">
+                                        <label for="expiryDate" class="form-label">Validade</label>
+                                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/AA" required>
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cvv" class="form-label">CVV</label>
-                                        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123">
+                                        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" required>
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="mb-4 mt-4">
-                                    <label for="payment-type" class="form-label">Tipo de pagamento</label>
-                                    <select class="form-select" id="payment-type" name="paymentType" required>
+                                    <label for="paymentType" class="form-label">Tipo de pagamento</label>
+                                    <select class="form-select" id="paymentType" name="paymentType" required>
                                         <option value="Débito">Débito</option>
                                         <option value="Crédito">Crédito</option>
                                     </select>
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="mb-4" id="installments" style="display: none;">
-                                    <label for="installment-options" class="form-label">Parcelamento</label>
-                                    <select class="form-select" id="installment-options" name="installments" required>
+                                    <label for="installmentOptions" class="form-label">Parcelamento</label>
+                                    <select class="form-select" id="installmentOptions" name="installments" required>
                                         <option value="1x sem juros">1x sem juros</option>
                                         <option value="2x sem juros">2x sem juros</option>
                                         <option value="3x sem juros">3x sem juros</option>
                                         <option value="4x sem juros">4x sem juros</option>
                                         <option value="5x sem juros">5x sem juros</option>
                                     </select>
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <button type="submit" class="btn btn-success mt-3">Realizar pagamento</button>
                             </form>
