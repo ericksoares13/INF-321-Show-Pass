@@ -158,8 +158,34 @@ router.post('/eventos/criar', upload.fields([
 });
 
 router.get('/eventos/editar/:eventLink', async function(req, res, next) {
-    const eventLink = req.params.eventLink;
-    res.redirect('/admin');
+    try {
+        const eventLink = req.params.eventLink;
+        const event = await Event.findOne({link: eventLink}).populate({
+            path: 'dates',
+            populate: {
+                path: 'tickets'
+            }
+        })
+        .lean()
+        .exec();
+
+        editedEvent = {
+            ...event,
+            dates: event.dates.map(d => {
+                const formattedDate = new Date(d.date).toISOString().split('T')[0];
+                return {
+                    ...d,
+                    date: formattedDate,
+                };
+            })
+        };
+
+        res.render('admin/edit-event', { event : editedEvent, error: {} });
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao editar evento.'
+        }});
+    }
 });
 
 /* GET admin-carousel page. */
