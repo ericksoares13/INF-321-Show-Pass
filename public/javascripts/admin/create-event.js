@@ -33,7 +33,6 @@ document.getElementById('addEventDate').addEventListener('click', function () {
             <div class="col-12">
                 <h5>Ingressos</h5>
                 <div id="tickets${dateIndex}">
-                    <!-- Aqui serão adicionados os campos para cada ingresso dinamicamente -->
                 </div>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="addEventTicket(${dateIndex})">Adicionar Ingresso</button>
             </div>
