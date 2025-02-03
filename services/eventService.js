@@ -1,4 +1,5 @@
 const Event = require('../models/event/Event');
+const TicketReservation = require('../models/event/TicketReservation');
 const Carousel = require('../models/event/sections/Carousel');
 const Section = require('../models/event/sections/Section');
 const Fuse = require('fuse.js');
@@ -30,6 +31,14 @@ class EventService {
 
     async getEventByField(fieldAndValue) {
         const event = await Event.findOne(fieldAndValue);
+        return event;
+    }
+
+    async getEventAndDatesByField(fieldAndValueEvent, fieldAndValueDate) {
+        const event = await Event.findOne(fieldAndValueEvent).populate({
+            path: 'dates',
+            match: fieldAndValueDate
+        }).exec();
         return event;
     }
 
@@ -106,6 +115,20 @@ class EventService {
         };
     }
 
+    async getEventDateComplete(eventLink, index) {
+        const event = await Event.findOne({ link: eventLink })
+            .populate({
+                path: 'dates',
+                match: { index: index },
+                populate: {
+                    path: 'tickets'
+                }
+            })
+            .exec();
+
+        return event;
+    }
+
     async getEventDate(eventLink, index) {
         const event = await Event.findOne({ link: eventLink })
             .populate({
@@ -115,7 +138,7 @@ class EventService {
                     path: 'tickets'
                 }
             })
-            .exec()
+            .exec();
 
         if (!event) {
             throw 'Evento não encontrado.';
@@ -127,25 +150,52 @@ class EventService {
             throw 'Data não encontrada.';
         }
 
+        const reservedTickets = await TicketReservation.find({
+            eventLink,
+            index
+        });
+
+        const reservedCount = {};
+        reservedTickets.forEach(reservation => {
+            reservation.tickets.forEach(ticket => {
+                const sector = String(ticket.sector).trim();
+                const category = String(ticket.ticketType).trim();
+
+                if (!reservedCount[sector]) {
+                    reservedCount[sector] = {};
+                }
+
+                if (!reservedCount[sector][category]) {
+                    reservedCount[sector][category] = 0;
+                }
+
+                reservedCount[sector][category] += ticket.quantity;
+            });
+        });
+
         const sectors = {};
         selectedDate.tickets.forEach(ticket => {
             const sector = String(ticket.sector).trim();
+            const category = String(ticket.category).trim();
+
             if (!sectors[sector]) {
                 sectors[sector] = {};
             }
 
-            const category = String(ticket.category).trim();
+            const reservedAmount = reservedCount[sector]?.[category] || 0;
+            const availableAmount = ticket.totalAmount - ticket.soldAmount - reservedAmount;
+
             sectors[sector][category] = {
                 value: ticket.value,
                 totalAmount: ticket.totalAmount,
-                soldAmount: ticket.soldAmount,
-            }
+                soldAmount: ticket.soldAmount + reservedAmount
+            };
         });
 
         return {
             sectorImage: event.sectorImage,
             sectors: sectors
-        }
+        };
     }
 
     #formatTickets = (text) => {

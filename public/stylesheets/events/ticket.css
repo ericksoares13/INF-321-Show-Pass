@@ -172,3 +172,13 @@ img {
 .checkout-btn:hover, .checkout-btn:active {
     background-color: #6a1a7d !important;
 }
+
+.text-muted.sold-out {
+    color: #dc3545 !important;
+    font-weight: bold;
+}
+
+.btn-plus:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

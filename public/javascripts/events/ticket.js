@@ -1,3 +1,24 @@
+// CARREGAR DADOS DOS COOKIES
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTickets = getEventCookie('selectedTickets');
+    const savedTotal = getEventCookie('totalPrice');
+
+    if (savedTickets) {
+        const parsedTickets = JSON.parse(savedTickets);
+        parsedTickets.forEach(ticket => {
+            if (!selectedTickets[ticket.sector]) {
+                selectedTickets[ticket.sector] = {};
+            }
+            selectedTickets[ticket.sector][ticket.ticketType] = ticket.quantity;
+        });
+    }
+
+    if (savedTotal) {
+        document.getElementById('total-price').textContent = `Total: R$ ${parseFloat(savedTotal).toFixed(2).replace('.', ',')}`;
+    }
+});
+
 // SETORES E VALORES DISPONÍVEIS PARA O EVENTO
 
 let selectedTickets = {};  
@@ -20,21 +41,35 @@ function showTickets(element) {
 
     Object.entries(prices).forEach(([category, ticket]) => {
         const price = ticket.value;
+        const totalAmount = ticket.totalAmount;
+        const soldAmount = ticket.soldAmount;
+        const available = totalAmount - soldAmount;
+    
         const ticketItem = document.createElement('li');
         ticketItem.classList.add('list-group-item');
-
+    
         ticketItem.innerHTML = `
             <div class="info">
                 <strong>${category}</strong>
-                <span class="price">R$ ${price.toFixed(2)}</span>
+                <span class="price">R$ ${price.toFixed(2).replace('.', ',')}</span>
+                <span class="text-muted small">(${available} disponíveis)</span>
             </div>
             <div class="quantity-selector">
                 <button class="btn btn-minus" onclick="changeQuantity(this, -1)">-</button>
-                <span class="quantity-display" data-price="${price}">0</span>
+                <span class="quantity-display" 
+                      data-price="${price}" 
+                      data-max="${available}">0</span>
                 <button class="btn btn-plus" onclick="changeQuantity(this, 1)">+</button>
             </div>
         `;
 
+        if (available <= 0) {
+            ticketItem.classList.add('disabled');
+            ticketItem.querySelector('.btn-plus').disabled = true;
+            ticketItem.querySelector('.text-muted').textContent = '(ESGOTADO)';
+            ticketItem.querySelector('.text-muted').classList.add('sold-out');
+        }
+    
         ticketListContainer.appendChild(ticketItem);
     });
 
@@ -91,6 +126,9 @@ function goBack() {
 function changeQuantity(button, delta) {
     const quantityDisplay = button.parentElement.querySelector('.quantity-display');
     let currentQuantity = parseInt(quantityDisplay.textContent, 10);
+    const maxAvailable = parseInt(quantityDisplay.dataset.max, 10);
+
+    if (delta > 0 && currentQuantity + delta > maxAvailable) return;
 
     if (currentQuantity + delta < 0) return;
 
@@ -145,11 +183,9 @@ function updateTotal() {
         });
     });
 
-    // Salva os ingressos selecionados no localStorage
-    localStorage.setItem('selectedTickets', JSON.stringify(selectedSummary));
-    localStorage.setItem('totalPrice', total.toFixed(2));
+    document.getElementById('selectedTicketsInput').value = JSON.stringify(selectedSummary);
+    document.getElementById('totalPriceInput').value = total.toFixed(2).replace('.', ',');
 
-    // Atualiza a exibição do total
     const checkoutSection = document.getElementById('checkout-section');
     const totalPriceElement = document.getElementById('total-price');
 
@@ -163,4 +199,22 @@ function updateTotal() {
 
 function saveSelectionToStorage() {
     localStorage.setItem('selectedTickets', JSON.stringify(selectedTickets));
+}
+
+// FUNÇÃO PARA SALVAR OS COOKIES
+
+function getEventCookie(name) {
+    return getCookie(`${name}_${eventLink}_${eventDate}`);
+}
+
+function getCookie(name) {
+    const nameEQ = `${name}=`;
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(nameEQ)) {
+            return decodeURIComponent(cookie.substring(nameEQ.length));
+        }
+    }
+    return null;
 }

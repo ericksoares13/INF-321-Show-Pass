@@ -10,7 +10,11 @@
         <script src="/javascripts/components/header.js" defer></script>
         <script src="/javascripts/icon.js" defer></script>
         <script src="/javascripts/events/ticket.js" defer></script>
-        <script>const sectorPrices = <%- JSON.stringify(date.sectors) %>;</script>
+        <script>
+            const sectorPrices = <%- JSON.stringify(date.sectors) %>;
+            const eventLink = '<%= eventLink %>';
+            const eventDate = <%= index %>;
+        </script>
 
         <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
         <title>ShowPass</title>
@@ -47,7 +51,7 @@
                                     <li class="list-group-item" onclick="showTickets(this)">
                                         <div class="info">
                                             <strong><%= sector %></strong><br>
-                                            <span>A partir de R$ <%= minPrice.toFixed(2) %></span>
+                                            <span>A partir de R$ <%= minPrice.toFixed(2).replace('.', ',') %></span>
                                         </div>
                                         <span class="arrow">></span>
                                     </li>
@@ -69,7 +73,11 @@
                                 <div class="total-display">
                                     <p id="total-price" class="fw-bold">Total: R$ 0,00</p>
                                 </div>
-                                <a href="data-<%= index %>/confirmacao" class="btn btn-primary checkout-btn">Continuar</a>
+                                <form id="checkout-form" method="post" action="data-<%= index %>/confirmacao">
+                                    <input type="hidden" name="selectedTickets" id="selectedTicketsInput">
+                                    <input type="hidden" name="totalPrice" id="totalPriceInput">
+                                    <button type="submit" class="btn btn-primary checkout-btn">Continuar</button>
+                                </form>
                             </div>
                         </div>
                     </div>

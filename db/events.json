@@ -653,7 +653,7 @@
                         "sector": "Pista",
                         "category": "Inteira",
                         "value": 950,
-                        "totalAmount": 8000,
+                        "totalAmount": 2,
                         "soldAmount": 0,
                         "_id": {
                             "$oid": "679987884fcf0fdfe9533e5a"
@@ -664,7 +664,7 @@
                         "category": "Meia-entrada",
                         "value": 475,
                         "totalAmount": 3200,
-                        "soldAmount": 0,
+                        "soldAmount": 3200,
                         "_id": {
                             "$oid": "679987884fcf0fdfe9533e5b"
                         }

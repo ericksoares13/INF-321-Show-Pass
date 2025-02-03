@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Order = require('../models/Order');
+const EventTicket = require('../models/event/EventTicket');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Fuse = require('fuse.js');
@@ -91,7 +92,7 @@ class UserService {
     }
 
     generateToken(user) {
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
         return token;
     }
 
@@ -105,6 +106,23 @@ class UserService {
             cellphone: user.cellphone,
             email: user.email
         };
+    }
+
+    async createOrder(order) {
+        console.log(order);
+        const orderNum = (await Order.find({})).length + 1;
+        await Order.create({
+            ...order,
+            orderNum: String(orderNum).padStart(5, '0'),
+            orderDate: new Date().setHours(0, 0, 0, 0)
+        });
+
+        order.tickets.forEach(async ticket => {
+            await EventTicket.findOneAndUpdate(
+                { _id: ticket.ticketId },
+                { $inc: { soldAmount: ticket.quantity }
+            });
+        });
     }
 
     async getOrders(userId) {

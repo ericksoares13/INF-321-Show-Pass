@@ -36,13 +36,16 @@
                             <div class="qr-code-container">
                                 <img id="qr-code" alt="QR Code" src="/images/qrCode.png">
                                 <p class="qr-expiry text-center">
-                                    Válido até 
+                                    Válido até
                                     <span id="qr-expiry-time">--:--</span>
                                     <strong><br><br>1. Abra o aplicativo do seu banco no celular</strong>
                                     <strong><br>2. Clique na área Pix e escaneie o Qr-Code acima</strong>
                                     <strong><br>3. Realize o pagamento e, em seguida, clique no botão abaixo</strong>
                                 </p>
-                                <a href="pagamento/conclusao" class="btn btn-success mt-2">Já paguei</a>
+                                <form action="pagamento/conclusao" method="POST">
+                                    <input type="hidden" name="paymentMethod" value="pix">
+                                    <button type="submit" class="btn btn-success mt-2">Já paguei</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -53,35 +56,36 @@
                             <span class="rotate-icon" id="arrow">&#x25BC;</span>
                         </div>
                         <div class="form-input">
-                            <form>
+                            <form action="pagamento/conclusao" method="POST">
+                                <input type="hidden" name="paymentMethod" value="cartao">
                                 <div class="mb-4">
                                     <label for="card-number" class="form-label">Número do cartão</label>
-                                    <input type="text" class="form-control" id="card-number" placeholder="0000 0000 0000 0000">
+                                    <input type="text" class="form-control" id="card-number" name="cardNumber" placeholder="0000 0000 0000 0000">
                                 </div>
                                 <div class="mb-4">
                                     <label for="card-holder" class="form-label">Nome do titular</label>
-                                    <input type="text" class="form-control" id="card-holder" placeholder="Nome como está no cartão">
+                                    <input type="text" class="form-control" id="card-holder" name="cardHolder" placeholder="Nome como está no cartão">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="expiry-date" class="form-label">Validade</label>
-                                        <input type="text" class="form-control" id="expiry-date" placeholder="MM/AA">
+                                        <input type="text" class="form-control" id="expiry-date" name="expiryDate" placeholder="MM/AA">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cvv" class="form-label">CVV</label>
-                                        <input type="text" class="form-control" id="cvv" placeholder="123">
+                                        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123">
                                     </div>
                                 </div>
                                 <div class="mb-4 mt-4">
                                     <label for="payment-type" class="form-label">Tipo de pagamento</label>
-                                    <select class="form-select" id="payment-type" required>
+                                    <select class="form-select" id="payment-type" name="paymentType" required>
                                         <option value="debito">Débito</option>
                                         <option value="credito">Crédito</option>
                                     </select>
                                 </div>
                                 <div class="mb-4" id="installments" style="display: none;">
                                     <label for="installment-options" class="form-label">Parcelamento</label>
-                                    <select class="form-select" id="installment-options" required>
+                                    <select class="form-select" id="installment-options" name="installments" required>
                                         <option value="1">1x sem juros</option>
                                         <option value="2">2x sem juros</option>
                                         <option value="3">3x sem juros</option>
@@ -89,7 +93,7 @@
                                         <option value="5">5x sem juros</option>
                                     </select>
                                 </div>
-                                <a href="pagamento/conclusao" class="btn btn-success mt-3">Realizar pagamento</a>
+                                <button type="submit" class="btn btn-success mt-3">Realizar pagamento</button>
                             </form>
                         </div>
                     </div>
