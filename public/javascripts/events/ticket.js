@@ -109,7 +109,6 @@ function changeQuantity(button, delta) {
 function getTotalTickets() {
     let total = 0;
 
-    // Soma os ingressos de todos os setores
     Object.values(selectedTickets).forEach(sector => {
         Object.values(sector).forEach(quantity => {
             total += quantity;
@@ -145,11 +144,9 @@ function updateTotal() {
         });
     });
 
-    // Salva os ingressos selecionados no localStorage
     localStorage.setItem('selectedTickets', JSON.stringify(selectedSummary));
     localStorage.setItem('totalPrice', total.toFixed(2));
 
-    // Atualiza a exibição do total
     const checkoutSection = document.getElementById('checkout-section');
     const totalPriceElement = document.getElementById('total-price');
 
