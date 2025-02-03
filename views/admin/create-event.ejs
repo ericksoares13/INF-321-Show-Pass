@@ -13,7 +13,7 @@
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="/javascripts/components/header.js" defer></script>
-        <script src="/javascripts/admin/create-event.js" defer></script>
+        <script src="/javascripts/components/event-data.js" defer></script>
         <script src="/javascripts/icon.js" defer></script>
 
         <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
@@ -27,144 +27,7 @@
 
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
-            <form action="criar" method="POST" enctype="multipart/form-data" class="forms row g-3 needs-validation" novalidate>
-                <!-- Informações do Evento -->
-                <div class="col-12">
-                    <label for="name" class="form-label">Nome do Evento</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<%= event?.name || '' %>" placeholder="Nome do Evento" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="link" class="form-label">Identificador do Evento</label>
-                    <input type="text" class="form-control" id="link" name="link" value="<%= event?.link || '' %>" placeholder="nome-do-evento" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="image" class="form-label">Imagem do Evento</label>
-                    <input type="file" class="form-control" id="image" name="image" value="<%= event?.image || '' %>" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="description" class="form-label">Descrição do Evento</label>
-                    <input type="text" class="form-control" id="description" name="description" value="<%= event?.description || '' %>" placeholder="Participação especial de X" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="infos" class="form-label">Informações gerais</label>
-                    <textarea class="form-control" id="infos" name="infos" style="height: 200px;" placeholder="Informações adicionais sobre o evento" required><%= event?.infos || '' %></textarea>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="classification" class="form-label">Classificação indicativa</label>
-                    <textarea class="form-control" id="classification" name="classification" style="height: 200px;" placeholder="Livre, 18 anos" required><%= event?.classification || '' %></textarea>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="ticketSell" class="form-label">Venda de ingressos</label>
-                    <textarea class="form-control" id="ticketSell" name="ticketSell" style="height: 200px;" placeholder="Sobre a venda de ingressos" required><%= event?.ticketSell || '' %></textarea>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="ticketPrice" class="form-label">Setores e valores</label>
-                    <textarea class="form-control" id="ticketPrice" name="ticketPrice" style="height: 200px;" placeholder="* Pista:
- * Inteira: R$ 15.00
- * Meia: R$10.00" required><%= event?.ticketPrice || '' %></textarea>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-12">
-                    <label for="sectorImage" class="form-label">Imagem do Setor</label>
-                    <input type="file" class="form-control" id="sectorImage" name="sectorImage" value="<%= event?.sectorImage || '' %>" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Datas do Evento -->
-                <div class="col-12">
-                    <h3>Datas do Evento</h3>
-                    <div id="dates">
-                        <% if (event?.dates) { %>
-                            <% event.dates.forEach((date, dateIndex) => { %>
-                                <div class="event-date mb-3 border p-3">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4>Data <%= dateIndex + 1 %></h4>
-                                        <button type="button" class="btn btn-danger btn-sm" onclick="removeEventDate(this)">Remover Data</button>
-                                    </div>
-                                    <div class="invalid-feedback"></div>
-                                    <br>
-                                    <div class="row g-3">
-                                        <div class="col-md-4">
-                                            <label for="state<%= dateIndex %>" class="form-label">Estado</label>
-                                            <input type="text" class="form-control" id="state<%= dateIndex %>" name="dates[<%= dateIndex %>][state]" value="<%= date.state || '' %>" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="city<%= dateIndex %>" class="form-label">Cidade</label>
-                                            <input type="text" class="form-control" id="city<%= dateIndex %>" name="dates[<%= dateIndex %>][city]" value="<%= date.city || '' %>" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="date<%= dateIndex %>" class="form-label">Data</label>
-                                            <input type="date" class="form-control" id="date<%= dateIndex %>" name="dates[<%= dateIndex %>][date]" value="<%= date.date || '' %>" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="locale<%= dateIndex %>" class="form-label">Local</label>
-                                            <input type="text" class="form-control" id="locale<%= dateIndex %>" name="dates[<%= dateIndex %>][locale]" value="<%= date.locale || '' %>" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="address<%= dateIndex %>" class="form-label">Endereço</label>
-                                            <input type="text" class="form-control" id="address<%= dateIndex %>" name="dates[<%= dateIndex %>][address]" value="<%= date.address || '' %>" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-12">
-                                            <h5>Ingressos</h5>
-                                            <div id="tickets<%= dateIndex %>">
-                                                <% if (date.tickets) { %>
-                                                    <% date.tickets.forEach((ticket, ticketIndex) => { %>
-                                                        <div class="event-ticket mb-3 border p-3">
-                                                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                                                <h6>Ingresso <%= ticketIndex + 1 %></h6>
-                                                                <button type="button" class="btn btn-danger btn-sm" onclick="removeEventTicket(this)">Remover Ingresso</button>
-                                                            </div>
-                                                            <div class="row g-3">
-                                                                <div class="col-md-6">
-                                                                    <label for="sector<%= dateIndex %>_<%= ticketIndex %>" class="form-label">Setor</label>
-                                                                    <input type="text" class="form-control" id="sector<%= dateIndex %>_<%= ticketIndex %>" name="dates[<%= dateIndex %>][tickets][<%= ticketIndex %>][sector]" value="<%= ticket.sector || '' %>" required>
-                                                                    <div class="invalid-feedback"></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="category<%= dateIndex %>_<%= ticketIndex %>" class="form-label">Categoria</label>
-                                                                    <input type="text" class="form-control" id="category<%= dateIndex %>_<%= ticketIndex %>" name="dates[<%= dateIndex %>][tickets][<%= ticketIndex %>][category]" value="<%= ticket.category || '' %>" required>
-                                                                    <div class="invalid-feedback"></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="value<%= dateIndex %>_<%= ticketIndex %>" class="form-label">Valor</label>
-                                                                    <input type="number" class="form-control" id="value<%= dateIndex %>_<%= ticketIndex %>" name="dates[<%= dateIndex %>][tickets][<%= ticketIndex %>][value]" value="<%= ticket.value || '' %>" required>
-                                                                    <div class="invalid-feedback"></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="totalAmount<%= dateIndex %>_<%= ticketIndex %>" class="form-label">Quantidade Total</label>
-                                                                    <input type="number" class="form-control" id="totalAmount<%= dateIndex %>_<%= ticketIndex %>" name="dates[<%= dateIndex %>][tickets][<%= ticketIndex %>][totalAmount]" value="<%= ticket.totalAmount || '' %>" required>
-                                                                    <div class="invalid-feedback"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    <% }); %>
-                                                <% } %>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary btn-sm" onclick="addEventTicket(dateIndex)">Adicionar Ingresso</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            <% }); %>
-                        <% } %>
-                    </div>
-                    <button type="button" class="btn btn-additional" id="addEventDate">Adicionar Data</button>
-                </div>
-
-                <!-- Botão de Submissão -->
-                <button type="submit" class="btn btn-primary">Criar Evento</button>
-            </form>
+            <%- include('../components/event-data', { actionUrl: 'criar' , actionName: 'Criar Evento' }) %>
         </div>
 
         <!-- Rodapé  -->
