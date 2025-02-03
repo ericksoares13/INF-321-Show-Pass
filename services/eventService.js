@@ -48,6 +48,10 @@ class EventService {
         return await Event.create(event);
     }
 
+    async updateEvent(eventLink, event) {
+        await Event.findOneAndUpdate({ link: eventLink }, { $set: event });
+    }
+
     async createDate(date) {
         return await EventDateInfos.create(date);
     }

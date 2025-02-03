@@ -180,10 +180,37 @@ router.get('/eventos/editar/:eventLink', async function(req, res, next) {
             })
         };
 
-        res.render('admin/edit-event', { event : editedEvent, error: {} });
+        res.render('admin/edit-event', { event : editedEvent, error: {}, link: eventLink });
     } catch (e) {
         res.status(400).render('error', { error: {
             message: 'Erro ao editar evento.'
+        }});
+    }
+});
+
+router.post('/eventos/editar/:eventLink', upload.fields([
+    { name: 'image', maxCount: 1 },
+    { name: 'sectorImage', maxCount: 1 }
+]), async function(req, res, next) {
+    try {
+        const eventLink = req.params.eventLink;
+        const event = req.body;
+
+        if (req.files.image) {
+            event.image = `/images/${req.files.image[0].filename}`;
+        }
+
+        if (req.files.sectorImage) {
+            event.sectorImage = `/images/${req.files.sectorImage[0].filename}`;
+        }
+
+        console.log(eventLink);
+        await EventService.updateEvent(eventLink, event);
+
+        res.redirect('/admin/eventos');
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao editar evento.' + e
         }});
     }
 });
