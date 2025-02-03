@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const installmentsSection = document.getElementById("installments");
 
     paymentTypeSelect.addEventListener("change", function () {
-        if (this.value === "credito") {
+        if (this.value === "Crédito") {
             installmentsSection.style.display = "block";
         } else {
             installmentsSection.style.display = "none";

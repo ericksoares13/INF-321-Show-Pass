@@ -34,6 +34,19 @@ const OrderSchema = new mongoose.Schema({
     orderNum: {
         type: String,
         required: true
+    },
+    cardNumber: {
+        type: String
+    },
+    name: {
+        type: String
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    installment: {
+        type: String
     }
 });
 

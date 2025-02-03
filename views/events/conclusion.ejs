@@ -29,20 +29,18 @@
             <div class="summary-container">
                 <!-- Resumo do pedido -->
                 <div class="summary-section">
-                    <h3>Detalhes do pedido: #18298973</h3>
-                    <p class="mb-3 mt-3">Guts World Tour - Curitiba - 26/03/25</p>
-                    <div class="ticket-row">
-                        <span><strong>1x</strong> Pista - Inteira</span>
-                        <span>R$ 950,00</span>
-                    </div>
-                    <div class="ticket-row">
-                        <span><strong>1x</strong> Cadeira inferior - Meia entrada</span>
-                        <span>R$ 660,00</span>
-                    </div>
+                    <h3>Detalhes do pedido: #<%- orderNum %></h3>
+                    <p class="mb-3 mt-3"><%- eventName %> - <%- city %> - <%- date %></p>
+                    <% tickets.forEach(ticket => { %>
+                        <div class="ticket-row">
+                            <span><strong><%- ticket.quantity %>x</strong> <%- ticket.sector %> - <%- ticket.category %></span>
+                            <span><%- ticket.value %></span>
+                        </div>
+                    <% }); %>
                     <hr>
                     <div class="ticket-row">
                         <h4>Total</h4>
-                        <h4><strong>R$ 1.610,00</strong></h4>
+                        <h4><strong><%- totalPrice %></strong></h4>
                     </div>
                 </div>
     
@@ -51,11 +49,11 @@
                     <h3>Detalhes do pagamento</h3>
                     <div class="payment-row">
                         <span>Número do cartão:</span>
-                        <span>425850XXXXXX4704</span>
+                        <span><%- cardNumber %></span>
                     </div>
                     <div class="payment-row">
                         <span>Nome do titular:</span>
-                        <span>João da Silva</span>
+                        <span><%- ownerName %></span>
                     </div>
                     <div class="payment-row">
                         <span>Status:</span>
@@ -63,11 +61,11 @@
                     </div>
                     <div class="payment-row">
                         <span>Tipo:</span>
-                        <span>Crédito</span>
+                        <span><%- type %></span>
                     </div>
                     <div class="payment-row">
                         <span>Parcelamento:</span>
-                        <span>3x de R$ 564,00</span>
+                        <span><%- installment %></span>
                     </div>
                 </div>
             </div>                

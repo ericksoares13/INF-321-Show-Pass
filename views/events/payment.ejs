@@ -43,7 +43,7 @@
                                     <strong><br>3. Realize o pagamento e, em seguida, clique no botão abaixo</strong>
                                 </p>
                                 <form action="pagamento/conclusao" method="POST">
-                                    <input type="hidden" name="paymentMethod" value="pix">
+                                    <input type="hidden" name="paymentType" value="Pagamento via pix">
                                     <button type="submit" class="btn btn-success mt-2">Já paguei</button>
                                 </form>
                             </div>
@@ -79,18 +79,18 @@
                                 <div class="mb-4 mt-4">
                                     <label for="payment-type" class="form-label">Tipo de pagamento</label>
                                     <select class="form-select" id="payment-type" name="paymentType" required>
-                                        <option value="debito">Débito</option>
-                                        <option value="credito">Crédito</option>
+                                        <option value="Débito">Débito</option>
+                                        <option value="Crédito">Crédito</option>
                                     </select>
                                 </div>
                                 <div class="mb-4" id="installments" style="display: none;">
                                     <label for="installment-options" class="form-label">Parcelamento</label>
                                     <select class="form-select" id="installment-options" name="installments" required>
-                                        <option value="1">1x sem juros</option>
-                                        <option value="2">2x sem juros</option>
-                                        <option value="3">3x sem juros</option>
-                                        <option value="4">4x sem juros</option>
-                                        <option value="5">5x sem juros</option>
+                                        <option value="1x sem juros">1x sem juros</option>
+                                        <option value="2x sem juros">2x sem juros</option>
+                                        <option value="3x sem juros">3x sem juros</option>
+                                        <option value="4x sem juros">4x sem juros</option>
+                                        <option value="5x sem juros">5x sem juros</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-success mt-3">Realizar pagamento</button>

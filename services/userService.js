@@ -109,9 +109,8 @@ class UserService {
     }
 
     async createOrder(order) {
-        console.log(order);
         const orderNum = (await Order.find({})).length + 1;
-        await Order.create({
+        const createdOrder = await Order.create({
             ...order,
             orderNum: String(orderNum).padStart(5, '0'),
             orderDate: new Date().setHours(0, 0, 0, 0)
@@ -123,6 +122,8 @@ class UserService {
                 { $inc: { soldAmount: ticket.quantity }
             });
         });
+
+        return createdOrder;
     }
 
     async getOrders(userId) {
@@ -152,6 +153,45 @@ class UserService {
                 })
             };
         });
+    }
+
+    async getOrder(orderId) {
+        const order = await Order.findById(orderId)
+                                  .populate('eventId', 'name') 
+                                  .populate('dateId', 'city date')
+                                  .populate({
+                                        path: 'tickets.ticketId',
+                                        select: 'sector category value'
+                                  })
+                                  .exec();
+
+        let totalPrice = 0;
+        const tickets = order.tickets.map(ticket => {
+            totalPrice += ticket.ticketId.value;
+            return {
+                quantity: ticket.quantity,
+                sector: ticket.ticketId.sector,
+                category: ticket.ticketId.category,
+                value: 'R$ ' + ticket.ticketId.value.toFixed(2).replace('.', ',')
+            };
+        })
+
+        return {
+            orderNum: order.orderNum,
+            eventName: order.eventId.name,
+            city: order.dateId.city,
+            date: order.dateId.date.toLocaleDateString("pt-BR", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "2-digit"
+            }),
+            tickets: tickets,
+            totalPrice: 'R$ ' + totalPrice.toFixed(2).replace('.', ','),
+            cardNumber: order.cardNumber.replace(/(\d{4}) \d{4} \d{4} (\d{4})/, '$1 XXXX XXXX $2'),
+            ownerName: order.name,
+            type: order.type,
+            installment: order.installment,
+        };
     }
 
     async searchOrders(searchQuery, userId) {

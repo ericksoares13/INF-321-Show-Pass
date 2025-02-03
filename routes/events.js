@@ -5,7 +5,7 @@ const cron = require('node-cron');
 
 const EventService = require('../services/eventService');
 const TicketReservation = require('../models/event/TicketReservation');
-const userService = require('../services/userService');
+const UserService = require('../services/userService');
 
 /* Authenticate user */
 const authenticate = function(req, res, next) {
@@ -162,16 +162,21 @@ router.post('/:eventLink/ingressos/data-:index/confirmacao/pagamento/conclusao',
         return [];
     }).flat();
 
-    await userService.createOrder({
+    const user = await UserService.getUserById(userId);
+    const order = await UserService.createOrder({
         userId: userId,
         eventId: event._id,
         dateId: event.dates[0]._id,
-        tickets: result
+        tickets: result,
+        type: req.body.paymentType,
+        cardNumber: req.body.cardNumber || '--',
+        name: req.body.cardHolder || user.name,
+        installment: (req.body.paymentType == 'Crédito' ? req.body.installments : '--')
     });
 
     await reservation.deleteOne();
 
-    res.render('events/conclusion');
+    res.render('events/conclusion', (await UserService.getOrder(order._id)));
 });
 
 // Remove expires tickets
