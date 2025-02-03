@@ -101,6 +101,18 @@ router.post('/meus-pedidos', authenticate, async function(req, res, next) {
 });
 
 /* GET profile page. */
+router.get('/meus-pedidos/:orderNum', authenticate, async function(req, res, next) {
+    try {
+        const orderNum = req.params.orderNum;
+        const userId = req.cookies.userId;
+        const orderId = await UserService.getOrderId(userId, orderNum);
+        res.render('events/conclusion', (await UserService.getOrder(orderId)));
+    } catch (e) {
+        res.status(400).json({ message: e });
+    }
+});
+
+/* GET profile page. */
 router.get('/meu-perfil', authenticate, async function(req, res, next) {
     const userId = req.cookies.userId;
     const user = await UserService.getUserInfos(userId);

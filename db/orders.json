@@ -1,7 +1,7 @@
 [
     {
         "_id": {
-            "$oid": "679ed3d9242237f0a4e24f9c"
+            "$oid": "67a0556d831db33e793667e1"
         },
         "userId": {
             "$oid": "679984765e3635f5728e7898"
@@ -15,32 +15,79 @@
         "tickets": [
             {
                 "ticketId": {
-                    "$oid": "679987884fcf0fdfe9533e5a"
+                    "$oid": "679987884fcf0fdfe9533e5e"
                 },
-                "quantity": 2,
+                "quantity": 1,
                 "_id": {
-                    "$oid": "679ed3d9242237f0a4e24f9d"
+                    "$oid": "67a0556d831db33e793667e2"
                 }
             },
             {
                 "ticketId": {
-                    "$oid": "679987884fcf0fdfe9533e5d"
+                    "$oid": "679987884fcf0fdfe9533e5f"
                 },
                 "quantity": 1,
                 "_id": {
-                    "$oid": "679ed3d9242237f0a4e24f9e"
+                    "$oid": "67a0556d831db33e793667e3"
                 }
             }
         ],
         "orderDate": {
-            "$date": "2025-02-01T00:00:00.000Z"
+            "$date": "2025-02-03T03:00:00.000Z"
         },
         "orderNum": "00003",
+        "cardNumber": "--",
+        "name": "Joãozinho Fulano de Tal",
+        "type": "Pagamento via pix",
+        "installment": "--",
         "__v": 0
     },
     {
         "_id": {
-            "$oid": "679ed3d9242237f0a4e24f9f"
+            "$oid": "67a0559b831db33e79366846"
+        },
+        "userId": {
+            "$oid": "679984765e3635f5728e7898"
+        },
+        "eventId": {
+            "$oid": "679987884fcf0fdfe9533e1e"
+        },
+        "dateId": {
+            "$oid": "679987884fcf0fdfe9533e1f"
+        },
+        "tickets": [
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e20"
+                },
+                "quantity": 1,
+                "_id": {
+                    "$oid": "67a0559b831db33e79366847"
+                }
+            },
+            {
+                "ticketId": {
+                    "$oid": "679987884fcf0fdfe9533e21"
+                },
+                "quantity": 1,
+                "_id": {
+                    "$oid": "67a0559b831db33e79366848"
+                }
+            }
+        ],
+        "orderDate": {
+            "$date": "2025-01-15T03:00:00.000Z"
+        },
+        "orderNum": "00002",
+        "cardNumber": "1231 5461 8915 1231",
+        "name": "Joãozinho Fulano de Tal",
+        "type": "Débito",
+        "installment": "--",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "67a055b6831db33e79366884"
         },
         "userId": {
             "$oid": "679984765e3635f5728e7898"
@@ -58,53 +105,18 @@
                 },
                 "quantity": 1,
                 "_id": {
-                    "$oid": "679ed3d9242237f0a4e24fa0"
+                    "$oid": "67a055b6831db33e79366885"
                 }
             }
         ],
         "orderDate": {
-            "$date": "2024-11-17T00:00:00.000Z"
-        },
-        "orderNum": "00002",
-        "__v": 0
-    },
-    {
-        "_id": {
-            "$oid": "679ed3d9242237f0a4e24fa1"
-        },
-        "userId": {
-            "$oid": "679984765e3635f5728e7898"
-        },
-        "eventId": {
-            "$oid": "679987884fcf0fdfe9533e1e"
-        },
-        "dateId": {
-            "$oid": "679987884fcf0fdfe9533e2c"
-        },
-        "tickets": [
-            {
-                "ticketId": {
-                    "$oid": "679987884fcf0fdfe9533e2d"
-                },
-                "quantity": 1,
-                "_id": {
-                    "$oid": "679ed3d9242237f0a4e24fa2"
-                }
-            },
-            {
-                "ticketId": {
-                    "$oid": "679987884fcf0fdfe9533e35"
-                },
-                "quantity": 1,
-                "_id": {
-                    "$oid": "679ed3d9242237f0a4e24fa3"
-                }
-            }
-        ],
-        "orderDate": {
-            "$date": "2024-08-01T00:00:00.000Z"
+            "$date": "2024-10-06T03:00:00.000Z"
         },
         "orderNum": "00001",
+        "cardNumber": "1316 4189 4156 1231",
+        "name": "Joãozinho Fulano de Tal",
+        "type": "Crédito",
+        "installment": "3x sem juros",
         "__v": 0
     }
 ]

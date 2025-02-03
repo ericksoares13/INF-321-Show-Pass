@@ -1,8 +1,4 @@
-Colocar cookies nos ingressos antes da confirmação
-Mostrar se o ingresso está esgotado ou não
 Ver se data do evento ainda não passou (para saber se mostra o botão de comprar)
-Fazer css da pesquisa de eventos
-Só permitir comprar ingresso quando estiver logado
 Pop up de ações concluídas com sucesso
 Validar dados de pagamento
 Fazer iduser idevent iddate ser um id unico

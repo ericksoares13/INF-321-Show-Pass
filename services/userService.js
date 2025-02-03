@@ -145,6 +145,7 @@ class UserService {
         return foundOrders.map(order => {
             return {
                 ...order,
+                link: order.num,
                 date: order.date.toLocaleDateString('pt-BR', {
                     timeZone: 'UTC',
                     day: '2-digit',
@@ -153,6 +154,11 @@ class UserService {
                 })
             };
         });
+    }
+
+    async getOrderId(userId, orderNum) {
+        const order = await Order.find({userId: userId, orderNum: orderNum})
+        return order[0]._id;
     }
 
     async getOrder(orderId) {
@@ -221,6 +227,7 @@ class UserService {
         return foundOrders.map(order => {
             return {
                 ...order,
+                link: order.num,
                 date: order.date.toLocaleDateString('pt-BR', {
                     timeZone: 'UTC',
                     day: '2-digit',
