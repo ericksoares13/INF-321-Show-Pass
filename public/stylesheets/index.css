@@ -203,5 +203,13 @@
 
 .search-section {
     margin-top: 20px;
-    min-height: 60vh;
+}
+
+.no-results-message {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888;
+    padding: 20px;
+    border-radius: 10px;
 }

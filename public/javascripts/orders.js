@@ -6,11 +6,11 @@ function redirectToPage(url) {
 
 // FUNÇÃO DE FILTRO POR DATA E ANÁLISE DO RETORNO FILTRADO
 
-document.getElementById("date-filter").addEventListener("change", function () {
-    const filter = this.value;
+function applyDateFilter() {
+    const filter = document.getElementById("date-filter").value;
     const cards = document.querySelectorAll(".card");
     const noResultsMessage = document.querySelector(".no-results-message");
-  
+
     cards.forEach(card => {
         const dateText = card.querySelector("small").textContent;
         const dateParts = dateText.split(" - ")[1].split(" de ");
@@ -18,7 +18,7 @@ document.getElementById("date-filter").addEventListener("change", function () {
     
         const now = new Date();
         let showCard = true;
-    
+
         switch (filter) {
             case "this-month":
                 showCard = eventDate.getMonth() === now.getMonth() && eventDate.getFullYear() === now.getFullYear();
@@ -35,18 +35,17 @@ document.getElementById("date-filter").addEventListener("change", function () {
             default:
                 showCard = true;
         }
-    
+
         card.style.display = showCard ? "block" : "none";
     });
 
     const visibleCards = Array.from(cards).filter(card => card.style.display !== "none");
 
-    if (visibleCards.length === 0) {
-        noResultsMessage.style.display = "block";
-    } else {
-        noResultsMessage.style.display = "none";
-    }
-});
+    noResultsMessage.style.display = visibleCards.length === 0 ? "block" : "none";
+}
+
+document.addEventListener("DOMContentLoaded", applyDateFilter);
+document.getElementById("date-filter").addEventListener("change", applyDateFilter);
 
 // FUNÇÃO AUXILIAR QUE RETORNA O NUMERO DO MÊS EM FUNÇÃO DO NOME
   

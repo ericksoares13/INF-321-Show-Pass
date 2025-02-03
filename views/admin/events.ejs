@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/stylesheets/index.css" rel="stylesheet"> 
+        <link href="/stylesheets/admin/events.css" rel="stylesheet"> 
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        <script src="/javascripts/components/header.js" defer></script>
+        <script src="/javascripts/icon.js" defer></script>
+
+        <link rel="icon" href="/images/logo-light.svg" type="image/svg+xml">
+        <title>ShowPass</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Barra de navegação -->
+        <header id="header">
+            <%- include('../components/admin-header') %>
+        </header>
+
+        <!-- Conteúdo da página -->
+        <div class="content flex-grow-1" id="content">
+            <!-- Barra de pesquisa -->
+            <%- include('../components/search-bar', { actionUrl: '/admin/eventos' }) %>
+            
+            <!-- Seção de eventos -->
+            <section class="event-section search-section py-1">
+                <div class="container">
+                    <!-- Título da seção -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="section-title">Eventos</h2>
+                        <a href="/admin/eventos/criar" class="btn-create-event btn btn-shop ms-3">Criar Novo Evento</a>
+                    </div>
+                    <!-- Cards de eventos -->
+                    <div class="row">
+                        <% if (events.length > 0) { %>
+                            <% events.forEach(event => { %>
+                                <div class="col-md-4 mb-4">
+                                    <a href="<%= event.link %>" class="event-card">
+                                        <div class="card h-80">
+                                            <img src="<%= event.image %>" class="card-img-top" alt="<%= event.name %>">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%= event.name %></h5>
+                                                <p class="card-text"><%= event.description %></p>
+                                                <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Editar</a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        <% } else { %>
+                            <div class="no-results-message">
+                                Nenhum evento encontrado.
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Rodapé  -->
+        <footer id="footer">
+            <%- include('../components/footer') %>
+        </footer>
+    </body>
+</html>

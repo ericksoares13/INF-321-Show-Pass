@@ -16,13 +16,13 @@
     <body class="d-flex flex-column min-vh-100">
         <!-- Barra de navegação -->
         <header id="header">
-            <%- include('components/header') %>
+            <%- include('../components/admin-header') %>
         </header>
 
         <!-- Conteúdo da página -->
         <div class="content flex-grow-1" id="content">
             <!-- Barra de pesquisa -->
-            <%- include('components/search-bar', { actionUrl: '/' }) %>
+            <%- include('../components/search-bar', { actionUrl: '/' }) %>
 
             <!-- Banner SlideShow inicial -->
             <% if (carouselEvents) { %>
@@ -102,52 +102,11 @@
                     </section>
                 <% }); %>
             <% }; %>
-
-            <!-- Seções de resultado de pesquisa -->
-            <% if (eventsSearch) { %>
-                <section class="event-section search-section py-1">
-                    <div class="container">
-                        <!-- Título da seção -->
-                        <div class="text-center mb-4">
-                            <h2 class="section-title">Eventos</h2>
-                        </div>
-                        <% if (eventsSearch.length > 0) { %>
-                            <!-- Cards de eventos -->
-                            <div class="row">
-                                <% eventsSearch.forEach(event => { %>
-                                    <div class="col-md-4 mb-4">
-                                        <% if (event.active) { %>
-                                            <a href="<%= event.link %>" class="event-card">
-                                        <% } else { %>
-                                            <a class="event-card">
-                                        <% } %>
-                                                <div class="card h-80">
-                                                    <img src="<%= event.image %>" class="card-img-top" alt="<%= event.name %>">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"><%= event.name %></h5>
-                                                        <p class="card-text"><%= event.description %></p>
-                                                        <% if (event.active) { %>
-                                                            <a href="<%= event.link %>" class="btn btn-shop" id="btn-card-shop">Comprar</a>
-                                                        <% } %>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                    </div>
-                                <% }); %>
-                            </div>
-                        <% } else { %>
-                            <div class="no-results-message">
-                                Nenhum evento encontrado.
-                            </div>
-                        <% } %>
-                    </div>
-                </section>
-            <% } %>
         </div>
 
         <!-- Rodapé  -->
         <footer id="footer">
-            <%- include('components/footer') %>
+            <%- include('../components/footer') %>
         </footer>
     </body>
 </html>

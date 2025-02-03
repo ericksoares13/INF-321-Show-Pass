@@ -9,10 +9,12 @@ const EventService = require('../services/eventService');
 const authenticate = function(req, res, next) {
     const authToken = req.cookies.authToken;
   
-    if (!authToken) return res.status(401).json({ message: 'Acesso negado.' });
+    if (!authToken) {
+        return res.status(401).json({ message: 'Acesso negado.' });
+    }
   
     try {
-        const verified = jwt.verify(authToken, process.env.JWT_SECRET);
+        jwt.verify(authToken, process.env.JWT_SECRET);
         next();
     } catch (error) {
         res.status(400).json({ message: 'Acesso negado.' });
@@ -170,8 +172,8 @@ router.post('/cadastrar', async function(req, res, next) {
     try {
         const createdUser = await UserService.createUser(user);
         const token = UserService.generateToken(createdUser);
-        res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 3600000 });
-        res.cookie('userId', createdUser._id, { httpOnly: true, secure: true, maxAge: 3600000 });
+        res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 86400000 });
+        res.cookie('userId', createdUser._id, { httpOnly: true, secure: true, maxAge: 86400000 });
         res.redirect('/');
     } catch (error) {
         res.status(400).render('register', { user, error });
@@ -196,9 +198,14 @@ router.post('/entrar', async function(req, res, next) {
     try {
         const loggedUser = await UserService.loginUser(user);
         const token = UserService.generateToken(loggedUser);
-        res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 3600000 });
-        res.cookie('userId', loggedUser._id, { httpOnly: true, secure: true, maxAge: 3600000 });
-        res.redirect('/');
+        res.cookie('authToken', token, { httpOnly: true, secure: true, maxAge: 86400000 });
+        res.cookie('userId', loggedUser._id, { httpOnly: true, secure: true, maxAge: 86400000 });
+        
+        if (loggedUser.admin) {
+            res.redirect('/admin');
+        } else {
+            res.redirect('/');
+        }
     } catch (error) {
         res.status(400).render('login', { user, error });
     }

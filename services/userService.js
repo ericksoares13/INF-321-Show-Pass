@@ -37,7 +37,7 @@ class UserService {
     async createUser(user) {
         await this.#validateUser(user);
         user.password = await this.hashPassword(user.password);
-        const createdUser = await User.create(user);
+        const createdUser = await User.create({...user, admin: false});
         return createdUser;
     }
 
