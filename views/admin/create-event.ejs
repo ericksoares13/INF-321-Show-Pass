@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href="/stylesheets/register.css" rel="stylesheet"> 
+        <link href="/stylesheets/admin/create-event.css" rel="stylesheet"> 
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -92,11 +93,11 @@
                                             <label for="state<%= dateIndex %>" class="form-label">Estado</label>
                                             <input type="text" class="form-control" id="state<%= dateIndex %>" name="dates[<%= dateIndex %>][state]" value="<%= date.state || '' %>" required>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <label for="city<%= dateIndex %>" class="form-label">Cidade</label>
                                             <input type="text" class="form-control" id="city<%= dateIndex %>" name="dates[<%= dateIndex %>][city]" value="<%= date.city || '' %>" required>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label for="date<%= dateIndex %>" class="form-label">Data</label>
                                             <input type="date" class="form-control" id="date<%= dateIndex %>" name="dates[<%= dateIndex %>][date]" value="<%= date.date || '' %>" required>
                                         </div>
@@ -147,7 +148,7 @@
                             <% }); %>
                         <% } %>
                     </div>
-                    <button type="button" class="btn btn-secondary" id="addEventDate">Adicionar Data</button>
+                    <button type="button" class="btn btn-additional" id="addEventDate">Adicionar Data</button>
                 </div>
 
                 <!-- Botão de Submissão -->

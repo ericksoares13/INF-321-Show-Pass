@@ -147,7 +147,6 @@ function changeQuantity(button, delta) {
 function getTotalTickets() {
     let total = 0;
 
-    // Soma os ingressos de todos os setores
     Object.values(selectedTickets).forEach(sector => {
         Object.values(sector).forEach(quantity => {
             total += quantity;
