@@ -66,6 +66,27 @@ class EventService {
         return carouselFlated;
     }
 
+    async getCarouseAdmin() {
+        const carousel = await Carousel.find({}).populate('events');
+        const carouselFlated = carousel.flatMap(carouselItem => carouselItem.events);
+        return carouselFlated.map(event => {
+            return {
+                link: event.link,
+                name: event.name,
+                image: event.image,
+                description: event.description
+            };
+        });
+    }
+
+    async deleteCarouselItem(eventLink) {
+        const event = await this.getEventByField({ link: eventLink });
+        await Carousel.updateOne(
+            {},
+            { $pull: { events: event._id } }
+        );
+    }
+
     async getSections() {
         const sections = await Section.find({});
         return sections;

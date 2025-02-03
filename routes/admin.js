@@ -217,7 +217,27 @@ router.post('/eventos/editar/:eventLink', upload.fields([
 
 /* GET admin-carousel page. */
 router.get('/carrossel', authenticate, async function(req, res, next) {
-    res.render('admin/carousel');
+    try {
+        const events = await EventService.getCarouseAdmin();
+        res.render('admin/carousel', { events: events });
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao listar carrossel'
+        }});
+    }
+});
+
+/* DELETE carousel item. */
+router.post('/carrossel/deletar/:eventLink', authenticate, async function(req, res, next) {
+    try {
+        const eventLink = req.params.eventLink;
+        await EventService.deleteCarouselItem(eventLink);
+        res.redirect('/admin/carrossel');
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao deletar item.'
+        }});
+    }
 });
 
 /* GET admin-sections page. */
