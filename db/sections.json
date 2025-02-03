@@ -4,6 +4,7 @@
             "$oid": "679989dc1aa7bc550f1f5e27"
         },
         "name": "Para toda a família",
+        "link": "para-toda-a-familia",
         "events": [
             {
                 "$oid": "679987884fcf0fdfe9533e1e"
@@ -22,6 +23,7 @@
             "$oid": "679989dc1aa7bc550f1f5e28"
         },
         "name": "Destaques da semana",
+        "link": "destaques-da-semana",
         "events": [
             {
                 "$oid": "679987884fcf0fdfe9533e58"

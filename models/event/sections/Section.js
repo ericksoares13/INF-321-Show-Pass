@@ -5,6 +5,11 @@ const SectionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    link: {
+        type: String,
+        required: true,
+        unique: true
+    },
     events: [
         {
             type: mongoose.ObjectId,

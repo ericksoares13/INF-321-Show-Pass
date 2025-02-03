@@ -104,12 +104,12 @@ router.post('/eventos', authenticate, async function(req, res, next) {
     }
 });
 
-/* GET admin-events page. */
+/* GET admin-create-events page. */
 router.get('/eventos/criar', authenticate, async function(req, res, next) {
     res.render('admin/create-event', { event: {}, error: {} });
 });
 
-/* GET admin-events page. */
+/* Create-event. */
 router.post('/eventos/criar', upload.fields([
     { name: 'image', maxCount: 1 },
     { name: 'sectorImage', maxCount: 1 }
@@ -157,6 +157,7 @@ router.post('/eventos/criar', upload.fields([
     }
 });
 
+/* GET admin-edit-events page. */
 router.get('/eventos/editar/:eventLink', async function(req, res, next) {
     try {
         const eventLink = req.params.eventLink;
@@ -188,6 +189,7 @@ router.get('/eventos/editar/:eventLink', async function(req, res, next) {
     }
 });
 
+/* Edit-event. */
 router.post('/eventos/editar/:eventLink', upload.fields([
     { name: 'image', maxCount: 1 },
     { name: 'sectorImage', maxCount: 1 }
@@ -278,8 +280,86 @@ router.post('/carrossel/adicionar/:eventLink', authenticate, async function(req,
 });
 
 /* GET admin-sections page. */
-router.get('/secoes', authenticate, function(req, res, next) {
-    res.render('admin/sections');
+router.get('/secoes', authenticate, async function(req, res, next) {
+    try {
+        const sections = await EventService.getSections();
+        const sectionsEvents = await Promise.all(
+            sections.map(async section => {
+                const eventInfos = await Promise.all(
+                    section.events.map(async eventId => await EventService.getIndexEventInfosAdmin(eventId))
+                );
+                return {
+                    section: section.name,
+                    link: section.link,
+                    events: eventInfos
+                };
+            })
+        );
+
+        res.render('admin/sections', {
+            eventsSections: sectionsEvents,
+            eventsSearch: null
+        });
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Não foi possível carregar as seções.'
+        }});
+    }
+});
+
+/* DELETE carousel item. */
+router.post('/secoes/:sectionLink/:eventLink/remover', authenticate, async function(req, res, next) {
+    try {
+        const sectionLink = req.params.sectionLink;
+        const eventLink = req.params.eventLink;
+        await EventService.deleteSectionlItem(sectionLink, eventLink);
+        res.redirect('/admin/secoes');
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao deletar item.'
+        }});
+    }
+});
+
+/* ADD carousel item. */
+router.post('/secoes/:sectionLink/adicionar', authenticate, async function(req, res, next) {
+    try {
+        const sectionLink = req.params.sectionLink;
+        const eventsIds = await EventService.getAllEventsWithOutSection(sectionLink);
+        const events = await Promise.all(eventsIds.map(async eventId => {
+            const eventInfos =  await EventService.getIndexEventInfosAdmin(eventId);
+            return {
+                section: sectionLink,
+                name: eventInfos.name,
+                link: eventInfos.link,
+                image: eventInfos.image,
+                description: eventInfos.description
+            };
+        }));
+
+        res.render('admin/sections', {
+            eventsSections: null,
+            eventsSearch: events
+        });
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao listar itens para adicionar.'
+        }});
+    }
+});
+
+/* ADD carousel item. */
+router.post('/secoes/:sectionLink/adicionar/:eventLink', authenticate, async function(req, res, next) {
+    try {
+        const sectionLink = req.params.sectionLink;
+        const eventLink = req.params.eventLink;
+        await EventService.addSectionlItem(sectionLink, eventLink);
+        res.redirect('/admin/secoes');
+    } catch (e) {
+        res.status(400).render('error', { error: {
+            message: 'Erro ao listar itens para adicionar.'
+        }});
+    }
 });
 
 /* Authenticate admin */

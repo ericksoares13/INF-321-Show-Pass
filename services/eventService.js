@@ -96,6 +96,39 @@ class EventService {
         );
     }
 
+    async getIndexEventInfosAdmin(eventId) {
+        const event = await this.getEventById(eventId);
+        return {
+            isCarouselItem: true,
+            name: event.name,
+            image: event.image,
+            description: event.description,
+            link: event.link
+        };
+    }
+
+    async deleteSectionlItem(sectionLink, eventLink) {
+        const event = await this.getEventByField({ link: eventLink });
+        await Section.updateOne(
+            { link: sectionLink },
+            { $pull: { events: event._id } }
+        );
+    }
+
+    async addSectionlItem(sectionLink, eventLink) {
+        const event = await this.getEventByField({ link: eventLink });
+        await Section.findOneAndUpdate(
+            { link: sectionLink },
+            { $addToSet: { events: event._id } }
+        );
+    }
+
+    async getAllEventsWithOutSection(sectionLink) {
+        const allEventsIds = (await this.getAllEvents()).map(event => event._id);
+        const sectionIds = (await Section.findOne({ link: sectionLink })).events;
+        return allEventsIds.filter(eventId => !sectionIds.includes(eventId));
+    }
+
     async getSections() {
         const sections = await Section.find({});
         return sections;
